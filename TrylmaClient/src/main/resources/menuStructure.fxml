@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8.0.161-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+   <children>
+      <Label layoutX="181.0" layoutY="66.0" text="Trylma">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Button layoutX="145.0" layoutY="273.0" mnemonicParsing="false" text="Rozpocznij rozgrywkę" />
+      <Button layoutX="190.0" layoutY="324.0" mnemonicParsing="false" onAction="#menuExit" text="Wyjście" />
+   </children>
+</Pane>
