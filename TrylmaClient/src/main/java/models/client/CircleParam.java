@@ -11,9 +11,6 @@ public class CircleParam {
     public CircleParam(Circle c) {
         this.circle=c;
     }
-    public CircleParam() {
-        this.circle=new Circle();
-    }
     public void setCircleColor(Color color) {
         this.circle.setFill(color);
     }

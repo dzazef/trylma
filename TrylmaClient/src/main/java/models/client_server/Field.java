@@ -2,8 +2,6 @@ package models.client_server;
 
 import java.io.Serializable;
 
-
-
 /**
  * Klasa określa strukturę pojedynczego pola.
  * Wartości x, y i z to współrzędne danego pola.
@@ -31,5 +29,4 @@ public class Field implements Serializable {
     public int getZ() {
         return z;
     }
-
 }
