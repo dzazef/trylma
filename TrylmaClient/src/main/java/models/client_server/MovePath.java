@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Klasa obsługująca konkretną ścieżkę możliwych ruchów.
+ * Klasa obsługująca pojedynczy ruch.
  */
 public class MovePath implements Serializable {
     private int index = 0;

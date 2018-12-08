@@ -1,5 +1,6 @@
 import javafx.application.Application;
 import javafx.stage.Stage;
+import views.Menu;
 
 import java.io.IOException;
 
@@ -14,8 +15,9 @@ public class TrylmaClient extends Application {
         try {
             menu.initialize(stage);
             menu.show(stage);
+
         } catch (IOException e) {
-            System.out.println("Failed to initialize Menu");
+            System.out.println("Failed to initialize views.Menu");
         }
 
 

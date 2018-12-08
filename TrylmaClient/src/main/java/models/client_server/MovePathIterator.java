@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Iterator po ruchach dla danej scieżki.
+ * Iterator po polach dla danego ruchu.
  */
 public class MovePathIterator implements Iterator, Serializable {
     private List<Field> movePath;

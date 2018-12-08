@@ -1,14 +1,15 @@
 package models.client;
 
+import javafx.scene.shape.Circle;
 import models.client_server.Field;
 
 /**
- * Klasy łączy graficzne koło z polem na planszy.
+ * Klasa łącząca obiekt klasy Field z kołem na planszy
  */
 public class FieldCircle {
     private Field field;
-    private CircleParam circle;
-    public FieldCircle(Field f, CircleParam c) {
+    private Circle circle;
+    public FieldCircle(Field f, Circle c) {
         this.circle=c;
         this.field=f;
     }
@@ -20,11 +21,11 @@ public class FieldCircle {
         this.field = field;
     }
 
-    public CircleParam getCircle() {
+    public Circle getCircle() {
         return circle;
     }
 
-    public void setCircle(CircleParam circle) {
+    public void setCircle(Circle circle) {
         this.circle = circle;
     }
 }
