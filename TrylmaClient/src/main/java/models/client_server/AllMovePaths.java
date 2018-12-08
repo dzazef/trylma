@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Klasa obsługująca wszystkie mozliwe ścieżki w danym ruchu.
+ * Klasa obsługująca wszystkie możliwe ścieżki dla danego ruchu.
  */
 public class AllMovePaths {
     private List<MovePath> allMovePaths;

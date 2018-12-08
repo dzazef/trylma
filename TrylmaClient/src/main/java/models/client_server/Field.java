@@ -11,14 +11,14 @@ public class Field implements Serializable {
     private int y;
     private int z;
 
-    public Field with(int x, int y, int z) {
+    Field with(int x, int y, int z) {
         this.x=x;
         this.y=y;
         this.z=z;
         return this;
     }
 
-    public int getX() {
+    int getX() {
         return x;
     }
 

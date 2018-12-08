@@ -4,7 +4,7 @@ import javafx.scene.shape.Circle;
 import models.client_server.Field;
 
 /**
- * Klasy łączy graficzne koło z polem na planszy.
+ * Klasa łącząca obiekt klasy Field z kołem na planszy
  */
 public class FieldCircle {
     private Field field;
