@@ -7,7 +7,7 @@ import player.Player;
 import java.util.ArrayList;
 
 public abstract class GameManager {
-    public Board board;
+    public static Board board;
     public static ArrayList<Player> players;
     public ArrayList<Path> paths;
 

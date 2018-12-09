@@ -79,14 +79,14 @@ public class Connector {
         }
         catch (IOException e)
         {
-            System.out.println("connestion failure");
+            System.out.println("creating server failure");
             return ;
         }
         try {
             try {
-                while (true){
+                /*while (true){
                     new Handler(server.accept()).start();
-                }
+                }*/
 
             } finally {
                 server.close();
