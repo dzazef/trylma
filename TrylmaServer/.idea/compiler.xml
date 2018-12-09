@@ -6,11 +6,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="TrylmaClient" />
+        <module name="TrylmaServer" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="TrylmaClient" target="9" />
-    </bytecodeTargetLevel>
   </component>
 </project>
