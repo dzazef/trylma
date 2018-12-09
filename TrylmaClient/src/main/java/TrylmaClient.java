@@ -18,8 +18,9 @@ public class TrylmaClient extends Application {
         {
             System.out.println("connection failure");
         }
-
+        if(connection.isConnectionsuccess()) {
             connection.write("To ja klient");
+        }
 
         launch(args);
 
