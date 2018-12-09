@@ -1,17 +1,13 @@
 package views;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-/**
- * Widok menu.
- */
-public class Menu {
+public class MenuView {
     public void initialize(Stage menuStage) throws IOException {
         final Parent menuParent = FXMLLoader.load(getClass().getResource("../menuStructure.fxml"));
         menuStage.setScene(new Scene(menuParent));

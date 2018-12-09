@@ -1,11 +1,8 @@
 package controllers;
 
 import javafx.fxml.FXML;
-import views.Board;
+import views.BoardView;
 
-/**
- * Kontroler obsługujący widok Menu;
- */
 public class MenuController {
     @FXML
     public void menuExit() {
@@ -13,9 +10,9 @@ public class MenuController {
     }
     @FXML
     public void menuNewGame() {
-        Board board = new Board();
-        board.setDimensions(700, 700);
-        board.initialize();
-        board.show();
+        BoardView boardView = new BoardView(700, 4, 5, 5);
+        boardView.initialize();
+        boardView.show();
+        boardView.initializeFields();
     }
 }

@@ -1,7 +1,7 @@
 import javafx.application.Application;
 import javafx.stage.Stage;
 import models.client_server.Connection;
-import views.Menu;
+import views.MenuView;
 
 
 import java.io.IOException;
@@ -26,13 +26,13 @@ public class TrylmaClient extends Application {
     }
 
     public void start(final Stage stage) {
-        Menu menu = new Menu();
+        MenuView menuView = new MenuView();
         try {
-            menu.initialize(stage);
-            menu.show(stage);
+            menuView.initialize(stage);
+            menuView.show(stage);
 
         } catch (IOException e) {
-            System.out.println("Failed to initialize views.Menu");
+            System.out.println("Failed to initialize views.MenuView");
         }
 
 
