@@ -6,15 +6,15 @@ public class Field {
         TAKEN,FREE
     }
     State state;
-    int getX()
+    public int getX()
     {
         return this.x;
     }
-    int getY()
+    public int getY()
     {
         return  this.y;
     }
-    int getZ()
+    public int getZ()
     {
         return this.z;
     }

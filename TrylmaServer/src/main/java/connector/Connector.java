@@ -84,9 +84,9 @@ public class Connector {
         }
         try {
             try {
-                /*while (true){
+                while (true){
                     new Handler(server.accept()).start();
-                }*/
+                }
 
             } finally {
                 server.close();

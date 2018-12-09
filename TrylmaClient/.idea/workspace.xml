@@ -2,11 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="63c90eab-028f-44c2-91e5-543cfc98ea18" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../TrylmaServer/src/main/java/Server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/Server/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TrylmaServer/src/main/java/connector/Connector.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/connector/Connector.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/player/Player1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/player/Player2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/player/Player3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/player/Player4.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/player/Player5.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/player/Player6.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TrylmaServer/src/main/java/gamemanager/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/gamemanager/GameManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TrylmaServer/src/main/java/gamemanager/board/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/gamemanager/board/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/src/main/java/gamemanager/Path.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/gamemanager/Path.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TrylmaServer/src/main/java/gamemanager/board/Field.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/gamemanager/board/Field.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/src/main/java/player/Pawn.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/player/Pawn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/src/main/java/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/player/Player.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -222,46 +229,6 @@
               <item name="TrylmaClient" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="board_players" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TrylmaClient" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TrylmaClient" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="board" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TrylmaClient" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TrylmaClient" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TrylmaClient" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TrylmaClient" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="handlers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TrylmaClient" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TrylmaClient" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TrylmaClient" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TrylmaClient" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -327,12 +294,12 @@
       <workItem from="1544308127684" duration="2821000" />
       <workItem from="1544314128335" duration="2061000" />
       <workItem from="1544362549514" duration="634000" />
-      <workItem from="1544364424323" duration="2748000" />
+      <workItem from="1544364424323" duration="3368000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8808000" />
+    <option name="totallyTimeSpent" value="9428000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="0" width="781" height="830" extended-state="1" />
@@ -348,11 +315,11 @@
       <window_info anchor="right" id="Maven Projects" order="9" />
       <window_info anchor="bottom" id="Database Changes" order="12" />
       <window_info anchor="bottom" id="Version Control" order="13" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.34149855" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.34149855" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="4" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.41192788" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.41192788" />
       <window_info anchor="bottom" id="Analysis" order="14" />
       <window_info anchor="right" id="Database" order="6" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />

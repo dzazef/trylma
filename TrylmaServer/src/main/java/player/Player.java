@@ -6,10 +6,7 @@ import gamemanager.board.Field;
 import java.util.ArrayList;
 
 public interface Player {
-     String id="";
-     ArrayList<Pawn> pawns=null;
-     boolean bot = false;
-     Pawn botchoosenpawn=null;
+
 
      String getId();
      boolean checkWin();

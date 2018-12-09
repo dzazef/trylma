@@ -1,10 +1,15 @@
 package player;
 
-import gamemanager.board.Field;
 
 public class Pawn {
-    int x,y,z;
+    private int x,y,z;
 
+    public Pawn(int x, int y, int z)
+    {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+    }
 
     int getX()
     {
@@ -20,7 +25,9 @@ public class Pawn {
     }
     public void setXYZ(int x,int y,int z)
     {
-
+        this.x = x;
+        this.y = y;
+        this.z = z;
     }
 
     public String getId()
