@@ -1,6 +1,5 @@
 import javafx.application.Application;
 import javafx.stage.Stage;
-import models.client_server.Connection;
 import views.MenuView;
 
 
@@ -8,7 +7,7 @@ import java.io.IOException;
 
 public class TrylmaClient extends Application {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) {/*
         Connection connection = new Connection();
         if(connection.establishConnection())
         {
@@ -18,10 +17,9 @@ public class TrylmaClient extends Application {
         {
             System.out.println("connection failure");
         }
-        if(connection.isConnectionsuccess()) {
-            connection.write("To ja klient");
-        }
 
+            connection.write("To ja klient");
+        */
         launch(args);
 
     }

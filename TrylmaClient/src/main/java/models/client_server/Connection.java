@@ -6,11 +6,16 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
+/**
+ * Klasa obsługuje połączenie z serwerem.
+ * TODO: dokończ
+ */
 public class Connection {
     private Socket socket;
     private BufferedReader input;
     private PrintWriter output;
-    boolean connectionsuccess = false;
+    private boolean connectionsuccess = false;
+    private boolean myTurn = false;
 
     public boolean establishConnection()
     {
@@ -26,7 +31,7 @@ public class Connection {
             return false;
         }
     }
-    public boolean isConnectionsuccess() {
+    public boolean isConnectionSuccessfull() {
         return connectionsuccess;
     }
     public String read()
@@ -45,4 +50,29 @@ public class Connection {
     {
         this.output.println(s);
     }
+
+    public void commandInterpreter(String command) {
+        if (command.equals("yourturn")) {
+            myTurn=true;
+        } else if (command.matches("moved(.*)")) {
+            String[] temp = command.split(":");
+            MovePath movePath = null; //finish
+            //BoardView.makeMove(Integer.parseInt(temp[1]), movePath);
+        } else if (command.equals("newgame")) {
+            //createnewgame
+        } else if (command.matches("joingame(.*)")) {
+            String[] temp = command.split(":");
+            int playerid = Integer.parseInt(temp[1]);
+            //create new player for me and players for the rest
+        } else if (command.equals("gamefull")) {
+            //disconnect from server and shutdown
+        } else if (command.matches("won(.*)")) {
+            String[] temp = command.split(":");
+            int playerid = Integer.parseInt(temp[1]);
+            //end game, check who won
+        } else {
+            System.out.println("Failed to interprete command.");
+        }
+    }
+
 }

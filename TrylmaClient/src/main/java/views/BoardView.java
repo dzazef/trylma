@@ -1,83 +1,91 @@
 package views;
 
-import board_players.board.Board;
-import board_players.players.Player;
+import models.client.CircleField;
+import models.client.board_players.board.Board;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import models.client.FieldCircle;
+import models.client.board_players.players.Player;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.Math.abs;
 
+/**
+ * Klasa obsługująca widok okna Board.
+ */
+@SuppressWarnings("Duplicates")
 public class BoardView {
-    //game elements
-    private List<Player> players = new ArrayList<>();
     //board parameters
-    private int ch;
-    private double hGap, wGap, radius;
+    private static int ch;
+    private static double hGap, wGap, radius;
     //window elements
-    private Stage boardStage;
-    private Group group;
-    private double windowWidth, windowHeight;
+    private static Stage boardStage;
+    private static Group group;
 
-    public BoardView(int s, int c, double w, double h) {
-        this.boardStage=new Stage();
-        this.group=new Group();
-        this.ch =c;
-        this.wGap =w;
-        this.hGap =h;
-        this.windowWidth=s;
-        this.radius=(windowWidth - wGap *(3* ch +2))/(2*(3* ch + 1));
-        this.windowHeight=(2*(4* ch +1))*radius+2*abs(hGap)-4* ch * hGap;
-    }
-
-    public void initialize() {
-        Scene scene = new Scene(group, windowWidth, windowHeight);
+    /**
+     * Funkcja ustawiająca parametry okna Board.
+     * Ponieważ wysokość okna zależy od trybu gry (i szerokości), parametry te są ustawiane bezpośrenio w konstruktorze tej klasy.
+     * @param windowWidth1 szerokość okna.
+     * @param ch1 określa z ilu pól składa się sługość bazy trójkąta gracza.
+     * @param wGap1 określa lukę pomiędzy polami w poziomie.
+     * @param hGap1 określa lukę pomiędzy polami w pionie.
+     */
+    public static void initialize(int windowWidth1, int ch1, double wGap1, double hGap1) {
+        boardStage=new Stage();
+        group=new Group();
+        BoardView.ch =ch1;
+        wGap=wGap1;
+        hGap=hGap1;
+        radius=(windowWidth1 - wGap *(3* BoardView.ch +2))/(2*(3* BoardView.ch + 1));
+        double windowHeight = (2 * (4 * BoardView.ch + 1)) * radius + 2 * abs(hGap) - 4 * BoardView.ch * hGap;
+        Scene scene = new Scene(group, windowWidth1, windowHeight);
         boardStage.setScene(scene);
         boardStage.setResizable(false);
         boardStage.setTitle("Trylma");
         boardStage.initModality(Modality.APPLICATION_MODAL);
     }
 
-    public void show() {
+    /**
+     * Funkcja pokazująca okno Board.
+     */
+    public static void show() {
         boardStage.show();
     }
 
-    public void hide() {
+    /**
+     * Funkcja ukrywająca okno Board.
+     */
+    public static void hide() {
         boardStage.hide();
     }
 
-    public void initializeFields() {
-        Board.generateFields(radius, ch, wGap, hGap);
-        draw(Board.getFieldCircles());
-        Board.addHandlersToCircles(radius, ch, wGap, hGap);
-        addNewPlayer(true);
-        addNewPlayer(true);
-        addNewPlayer(true);
-        addNewPlayer(true);
-        addNewPlayer(true);
-        addNewPlayer(true);
-    }
-
-    private void draw(List<FieldCircle> fieldCircles) {
-        for (FieldCircle fieldCircle : fieldCircles) {
-            group.getChildren().add(fieldCircle.getCircle());
+    /**
+     * Funkcja zapełnia planszę polami.
+     */
+    public static void initializeFields() {
+        Board.set(radius, ch, wGap, hGap);
+        Board.generateFields();
+        draw(Board.getCircleFields());
+        Board.addHandlersToCircles();
+        Board.addNewPlayer(true);
+        Board.addNewPlayer(true);
+        Board.addNewPlayer(true);
+        Board.addNewPlayer(true);
+        for (Player player : Board.getPlayers()) {
+            draw(player.getCircleFields());
         }
     }
 
-    public Player getPlayer(int i) {
-        return this.players.get(i-1);
+    /**
+     * Funkcja umieszcza pola na planszy.
+     * @param circleFields lista pól do umieszczenia na planszy.
+     */
+    private static void draw(List<CircleField> circleFields) {
+        for (CircleField circleField : circleFields) {
+            group.getChildren().add(circleField);
+        }
     }
 
-    public void addNewPlayer(boolean isThisMe) {
-        int playerID = players.size()+1;
-        Player player = new Player(playerID);
-        player.generateFields(isThisMe, radius, ch, wGap, hGap);
-        players.add(player);
-        draw(player.getFieldCircles());
-    }
 }
