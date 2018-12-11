@@ -1,7 +1,7 @@
 package models.client.board_players.players;
 
 import models.client.CircleField;
-import models.client.board_players.FieldGenerator;
+import models.client.FieldGenerator;
 import handlers.Handle;
 import javafx.scene.paint.Color;
 
@@ -15,6 +15,9 @@ public class Player {
     private int ID;
     private List<CircleField> circleFieldList;
 
+    public Player(){
+        System.out.println("run empty constructor for player");
+    }
     public Player(int id) {
         this.ID=id;
     }

@@ -14,9 +14,11 @@ public class Handle {
         if (Handle.circleField!=null) {
             moveTo(circleField, cf.getField(), radius, ch, wGap, hGap);
         }
+        System.out.println(cf.getField().getX()+" "+cf.getField().getY()+" "+cf.getField().getZ());
     }
     public static void playerHandle(CircleField circleField1, double radius, int ch, double wGap, double hGap) {
         Handle.circleField = circleField1;
+        System.out.println(circleField1.getField().getX()+" "+circleField1.getField().getY()+" "+circleField1.getField().getZ());
     }
 
     @SuppressWarnings("Duplicates")

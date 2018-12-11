@@ -1,7 +1,6 @@
-package models.client.board_players;
+package models.client;
 
 import javafx.scene.paint.Color;
-import models.client.CircleField;
 import models.client_server.Field;
 
 import java.util.ArrayList;
@@ -40,7 +39,7 @@ public class FieldGenerator {
             x = xlevel; y = ylevel; z = zlevel; currentCenterX=currentCenterXLevel;
             for (int j = 0; j <= i; j++) {
                 final Field field = (new Field()).with(x, y, z);
-                CircleField circleField = new CircleField().with(field, currentCenterX, currentCenterY, radius, color);
+                CircleField circleField = new CircleField(field, currentCenterX, currentCenterY, radius, color);
                 if (d3) {
                     circleField.setScaleX(1.03);
                     circleField.setScaleY(1.03);

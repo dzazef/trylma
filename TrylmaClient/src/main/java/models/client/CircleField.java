@@ -16,16 +16,20 @@ public class CircleField extends Circle implements Serializable {
 
     private Field field;
 
-    public CircleField with(Field field1, double centerX, double centerY, double radius, Color color){
-        setCenterX(centerX);
-        setCenterY(centerY);
-        setRadius(radius);
-        setFill(color);
+    public CircleField() {
+        System.out.println("run empty constructor for circlefield");
+    }
+
+    public CircleField(Field field1, double centerX, double centerY, double radius, Color color){
+        super(centerX, centerY, radius, color);
         this.field=field1;
-        return this;
     }
 
     public Field getField() {
         return field;
+    }
+
+    public boolean compare(Field field1) {
+        return (field.getX()==field1.getX() && field.getY()==field1.getY() && field.getZ()==field1.getZ());
     }
 }

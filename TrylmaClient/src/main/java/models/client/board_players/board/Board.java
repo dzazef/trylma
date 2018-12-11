@@ -1,22 +1,34 @@
 package models.client.board_players.board;
 
+import javafx.animation.PathTransition;
+import javafx.scene.shape.LineTo;
+import javafx.scene.shape.MoveTo;
+import javafx.scene.shape.Path;
+import javafx.util.Duration;
 import models.client.CircleField;
-import models.client.board_players.FieldGenerator;
+import models.client.FieldGenerator;
 import handlers.Handle;
 import javafx.scene.paint.Color;
 import models.client.board_players.players.Player;
+import models.client_server.Field;
+import models.client_server.MovePath;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import static java.lang.Math.abs;
 
 /**
  * Klasa obsługująca planszę.
  */
+@SuppressWarnings("Duplicates")
 public class Board {
     private static double radius, wGap, hGap;
     private static int ch;
     private static List<CircleField> circleFields = new ArrayList<>();
-    private static List<Player> players = new ArrayList<>();
+    private static List<Player> playerList = new ArrayList<>();
 
     /**
      * Ustawia parametry planszy.
@@ -44,8 +56,8 @@ public class Board {
     public static List<CircleField> getCircleFields() {
         return circleFields;
     }
-    public static List<Player> getPlayers() {
-        return players;
+    public static List<Player> getPlayerList() {
+        return playerList;
     }
     public static void addHandlersToCircles() {
         for(CircleField circleField : circleFields) {
@@ -53,7 +65,7 @@ public class Board {
         }
     }
     public static Player getPlayerByID(int id) {
-        for (Player player : players) {
+        for (Player player : playerList) {
             if (player.getID()==id) return player;
         }
         return null;
@@ -64,9 +76,65 @@ public class Board {
      * @param isThisMe parametr określa czy dany gracz jest obsługiwany przez aktualnie uruchomionego klienta (czy jest innym klientem.
      */
     public static void addNewPlayer(boolean isThisMe) {
-        int playerID = players.size()+1;
+        int playerID = playerList.size()+1;
         Player player = new Player(playerID);
         player.generateFields(isThisMe, radius, ch, wGap, hGap);
-        players.add(player);
+        playerList.add(player);
+    }
+
+    /**
+     * Funkcja wykonuje przesunięcie dla danej ścieżki. Zostaje odtworzona animacja.
+     * @param playerID id gracza do którego należy pionek.
+     * @param movePath ścieżka po której porusza się pionek.
+     */
+    public static void makeMove(int playerID, MovePath movePath) {
+
+        Iterator iterator = movePath.createIterator();
+        Field sourceField = (Field) iterator.next();
+        Field temp = sourceField;
+        System.out.println("source: "+sourceField.getX()+" "+sourceField.getY()+" "+sourceField.getZ()+" ");
+        CircleField sourceCircle = null;
+        Player player = null;
+
+        Path path;
+        PathTransition pathTransition;
+        double centerX;
+        double centerY;
+
+        for (Player p : playerList) {
+            if (p.getID()==playerID) player=p;
+        }
+        if (player!=null) {
+            System.out.println("player: "+player.getID());
+            for (CircleField cf : player.getCircleFields()) {
+                if (cf.compare(sourceField)) sourceCircle = cf;
+            }
+            if (sourceCircle!=null) {
+                int duration = 0;
+                path = new Path();
+                pathTransition = new PathTransition();
+                path.getElements().add(new MoveTo(sourceCircle.getCenterX(), sourceCircle.getCenterY()));
+                while(iterator.hasNext()) {
+                    temp = (Field) iterator.next();
+                    System.out.println("moveto: "+temp.getX()+" "+temp.getY()+" "+temp.getZ());
+                    centerX = (temp.getY()-((float)temp.getX()/2-(1.5*ch)))*(wGap+2*radius)+wGap+radius;
+                    centerY = abs(hGap)+radius+(temp.getX()+2*ch)*(2*radius-hGap);
+                    path.getElements().add(new LineTo(centerX, centerY));
+                    duration += 300;
+                }
+                sourceCircle.setField(temp);
+                pathTransition.setDuration(Duration.millis(duration));
+                pathTransition.setPath(path);
+                pathTransition.setNode(sourceCircle);
+                pathTransition.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+                pathTransition.play();
+            }
+            else {
+                System.err.println("Circle not found. Command error");
+            }
+        }
+        else {
+            System.err.println("Player not found. Command error");
+        }
     }
 }

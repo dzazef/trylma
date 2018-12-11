@@ -13,7 +13,7 @@ public class MenuController {
     }
     @FXML
     public void menuNewGame() {
-        BoardView.initialize(500, 4, 1, 0);
+        BoardView.initialize(800, 4, 1, 0);
         BoardView.show();
         BoardView.initializeFields();
     }
