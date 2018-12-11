@@ -13,6 +13,8 @@ public class Player6 implements Player {
     int numOfPawns;
     boolean bot;
     Pawn botchoosenpawn=null;
+    Path botchoosenpath = null;
+    Field botchoosendestination = null;
 
     public Player6(int numOfPawns,boolean bot)
     {
@@ -34,6 +36,38 @@ public class Player6 implements Player {
             initialz--;
         }
     }
+    public Pawn getPawnById(String id)
+    {
+        for(int i = 0; i < pawns.size();i++)
+        {
+            if(pawns.get(i).getId()==id)
+            {
+                return pawns.get(i);
+            }
+        }
+        return null;
+    }
+    public ArrayList<Pawn> getPawns()
+    {
+        return pawns;
+    }
+
+    public boolean isBot() {
+        return bot;
+    }
+
+    public Pawn getBotchoosenpawn() {
+        return botchoosenpawn;
+    }
+
+    public Field getBotchoosendestination() {
+        return botchoosendestination;
+    }
+
+    public Path getBotchoosenpath() {
+        return botchoosenpath;
+    }
+
     public String getId() {
         return id;
     }
@@ -50,7 +84,7 @@ public class Player6 implements Player {
         return true;
     }
 
-    public void botMove(Pawn pawn, Field destination, Path path) {
+    public void botMove() {
         int y = 2*numOfPawns;
         for(int j = 0; j < pawns.size();j++) {
             GameManager.generateMovePaths(pawns.get(j));
@@ -58,12 +92,14 @@ public class Player6 implements Player {
             for (int i = 0; i < GameManager.paths.size(); i++) {
 
                 if (GameManager.paths.get(i).end.getY() < y) {
+                    this.botchoosenpawn = pawns.get(j);
                     y = GameManager.paths.get(i).end.getY();
-                    path = GameManager.paths.get(i);
+                    this.botchoosenpath = GameManager.paths.get(i);
+
                 }
             }
         }
-        destination = path.end;
+        this.botchoosendestination = this.botchoosenpath.end;
 
     }
 

@@ -2,9 +2,10 @@ package gamemanager;
 
 import gamemanager.board.Field;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Path {
+public class Path implements Serializable {
     public Field start;
     public Field end;
     public ArrayList<Field> path;

@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="TrylmaClient" target="8" />
+      <module name="TrylmaClient" target="9" />
     </bytecodeTargetLevel>
   </component>
 </project>

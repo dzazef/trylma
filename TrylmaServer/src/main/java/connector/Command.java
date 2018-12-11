@@ -1,36 +1,62 @@
 package connector;
 
+import gamemanager.GameManager;
+import gamemanager.MoveManager;
 import gamemanager.Path;
 import gamemanager.board.Board;
 import gamemanager.board.Field;
 import player.Pawn;
 import player.Player;
 
+import java.io.*;
+
 public class Command {
-    private String message;
-    private String object;
-    private enum commandType{
-        PATH,WIN,ACTUALIZE_BOARD,BOT
+    private ObjectOutputStream objout;
+    private PrintWriter out;
+
+
+
+    public Command(ObjectOutputStream objectout,PrintWriter out)
+    {
+        this.objout = objectout;
+        this.out = out;
     }
 
-    public String getMessage()
+    public void sendWinMessage(Player winner)
     {
-        return "Suck my dick";
-    }
-    public void generatePathMessage(Path path)
-    {
+        out.println("won;"+winner.getId());
 
     }
-    public void generateWinMessage(boolean win, Player winner)
-    {
 
+    public void sendMoveMessage(Pawn pawn, Field destination)
+    {
+        for(int i = 0; i< MoveManager.paths.size();i++)
+        {
+            if(MoveManager.paths.get(i).end.getId() == destination.getId())
+            {
+                for(int j = 0; j < GameManager.playersobjout.size();j++) {
+                    GameManager.playersout.get(j).println("moved;" + GameManager.actualplayer.getId());
+                    try {
+                        GameManager.playersobjout.get(j).writeObject(MoveManager.paths.get(i));
+                    } catch (IOException e) {
+                        System.out.println("failed to send path object");
+                    }
+                }
+                return;
+            }
+        }
     }
-    public void generateActualizeBoardMessage(Board board)
+    public void sendPossibleMovesMessage(Field field)
     {
-
-    }
-    public void generateMoveMessage(Pawn pawn, Field destination,Path path)
-    {
-
+        Pawn pawn =GameManager.actualplayer.getPawnById(field.getId());
+        MoveManager.generateMovePaths(pawn);
+        try {
+            out.println("possible_fields");
+            objout.writeObject(MoveManager.moveDestinations);
+        }
+        catch(IOException e)
+        {
+            System.out.println("Sending possible move destinations failed");
+        }
     }
 }
