@@ -16,7 +16,6 @@ import models.client_server.MovePath;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import static java.lang.Math.abs;
 
@@ -64,12 +63,6 @@ public class Board {
             circleField.setOnMouseClicked(e -> Handle.boardHandle(circleField, radius, ch, wGap, hGap));
         }
     }
-    public static Player getPlayerByID(int id) {
-        for (Player player : playerList) {
-            if (player.getID()==id) return player;
-        }
-        return null;
-    }
 
     /**
      * Funkcja dodaje nowego gracza.
@@ -98,8 +91,8 @@ public class Board {
 
         Path path;
         PathTransition pathTransition;
-        double centerX;
-        double centerY;
+        double centerX = 0;
+        double centerY = 0;
 
         for (Player p : playerList) {
             if (p.getID()==playerID) player=p;
@@ -127,6 +120,14 @@ public class Board {
                 pathTransition.setPath(path);
                 pathTransition.setNode(sourceCircle);
                 pathTransition.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+                CircleField finalSourceCircle = sourceCircle;
+                double finalCenterX = centerX;
+                double finalCenterY = centerY;
+                pathTransition.setOnFinished(e -> {
+                    finalSourceCircle.setTranslateX(0);
+                    finalSourceCircle.setTranslateY(0);
+                    finalSourceCircle.setXY(finalCenterX, finalCenterY);
+                });
                 pathTransition.play();
             }
             else {

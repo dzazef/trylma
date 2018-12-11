@@ -32,4 +32,9 @@ public class CircleField extends Circle implements Serializable {
     public boolean compare(Field field1) {
         return (field.getX()==field1.getX() && field.getY()==field1.getY() && field.getZ()==field1.getZ());
     }
+
+    public void setXY(double x, double y) {
+        this.setCenterX(x);
+        this.setCenterY(y);
+    }
 }

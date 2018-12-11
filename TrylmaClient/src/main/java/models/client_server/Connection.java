@@ -1,9 +1,6 @@
 package models.client_server;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.Socket;
 
 /**
@@ -11,19 +8,23 @@ import java.net.Socket;
  * TODO: dokończ
  */
 public class Connection {
-    private Socket socket;
-    private BufferedReader input;
-    private PrintWriter output;
-    private boolean connectionsuccess = false;
-    private boolean myTurn = false;
+    private static Socket socket;
+    private static BufferedReader input;
+    private static PrintWriter output;
+    private static ObjectInputStream is;
+    private static ObjectOutputStream os;
+    private static boolean connectionSuccess = false;
+    private static boolean myTurn = false;
 
-    public boolean establishConnection()
+    public static boolean establishConnection()
     {
         try {
-            this.socket = new Socket("localhost", 9090);
-            this.input = new BufferedReader(new InputStreamReader(this.socket.getInputStream()));
-            this.output = new PrintWriter(this.socket.getOutputStream(),true);
-            this.connectionsuccess = true;
+            Connection.socket = new Socket("localhost", 9090);
+            Connection.input = new BufferedReader(new InputStreamReader(Connection.socket.getInputStream()));
+            Connection.output = new PrintWriter(Connection.socket.getOutputStream(),true);
+            Connection.connectionSuccess = true;
+            Connection.is = new ObjectInputStream(socket.getInputStream());
+            Connection.os = new ObjectOutputStream(socket.getOutputStream());
             return true;
         }
         catch (Exception e)
@@ -31,14 +32,15 @@ public class Connection {
             return false;
         }
     }
-    public boolean isConnectionSuccessfull() {
-        return connectionsuccess;
+    public static boolean isConnectionSuccessfull() {
+        return connectionSuccess;
     }
+
     public String read()
     {
         String s;
         try {
-            s = this.input.readLine();
+            s = Connection.input.readLine();
         }
         catch(IOException e)
         {
@@ -48,7 +50,23 @@ public class Connection {
     }
     public void write(String s)
     {
-        this.output.println(s);
+        Connection.output.println(s);
+    }
+
+    public static void sendCreateNewGameCommand(int players, int bots) {
+        String info = "create"+":"+bots+":"+players;
+        if (isConnectionSuccessfull()) {
+            try {
+                os.writeObject(info);
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("Failed to write NewGameCommand to ObjectOutputStream");
+            }
+        }
+    }
+
+    public static void sendChosenPawn(Field field) {
+
     }
 
     public void commandInterpreter(String command) {
@@ -75,4 +93,7 @@ public class Connection {
         }
     }
 
+    public static boolean isitMyTurn() {
+        return myTurn;
+    }
 }
