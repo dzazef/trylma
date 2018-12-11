@@ -1,6 +1,6 @@
 package player;
 
-import gamemanager.GameManager;
+import gamemanager.MoveManager;
 import gamemanager.Path;
 import gamemanager.board.Field;
 
@@ -86,14 +86,14 @@ public class Player2 implements Player {
     public void botMove() {
         int x = 2*numOfPawns;
         for(int j = 0; j < pawns.size();j++) {
-            GameManager.generateMovePaths(pawns.get(j));
+            MoveManager.generateMovePaths(pawns.get(j));
 
-            for (int i = 0; i < GameManager.paths.size(); i++) {
+            for (int i = 0; i < MoveManager.paths.size(); i++) {
 
-                if (GameManager.paths.get(i).end.getX() < x) {
+                if (MoveManager.paths.get(i).end.getX() < x) {
                     this.botchoosenpawn = pawns.get(j);
-                    x = GameManager.paths.get(i).end.getX();
-                    this.botchoosenpath = GameManager.paths.get(i);
+                    x = MoveManager.paths.get(i).end.getX();
+                    this.botchoosenpath = MoveManager.paths.get(i);
 
                 }
             }
