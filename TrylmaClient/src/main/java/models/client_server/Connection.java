@@ -15,19 +15,16 @@ import java.net.Socket;
  */
 public class Connection {
     private static Socket socket;
-    private static BufferedReader input;
-    private static PrintWriter output;
     private static ObjectInputStream is;
     private static ObjectOutputStream os;
     private static boolean connectionSuccess = false;
     private static boolean myTurn = false;
+    private static NewGameView newGameView;
 
     public static boolean establishConnection()
     {
         try {
             Connection.socket = new Socket("localhost", 9090);
-            Connection.input = new BufferedReader(new InputStreamReader(Connection.socket.getInputStream()));
-            Connection.output = new PrintWriter(Connection.socket.getOutputStream(),true);
             Connection.connectionSuccess = true;
             Connection.is = new ObjectInputStream(socket.getInputStream());
             Connection.os = new ObjectOutputStream(socket.getOutputStream());
@@ -47,7 +44,8 @@ public class Connection {
         if (isConnectionSuccessfull()) {
             try {
                 os.writeObject(info);
-            } catch (IOException e) {
+                Connection.newGameView.hide();
+            } catch (Exception e) {
                 e.printStackTrace();
                 System.out.println("Failed to write NewGameCommand to ObjectOutputStream");
             }
@@ -94,17 +92,23 @@ public class Connection {
         }
     }
 
-    public void commandInterpreter(String command) {
+    public static boolean commandInterpreter(String command) {
         if (command.equals("yourturn")) {
             myTurn=true;
         } else if (command.matches("moved(.*)")) {
             String[] temp = command.split(":");
-            MovePath movePath = null; //TODO: finish
-            Board.makeMove(Integer.parseInt(temp[1]), movePath);
+            MovePath movePath = null;
+            try {
+                movePath = (MovePath) is.readObject();
+                Board.makeMove(Integer.parseInt(temp[1]), movePath);
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+                System.out.println("failed to read object");
+            }
         }
         else if (command.equals("newgame")) {
             try {
-                NewGameView newGameView = new NewGameView();
+                newGameView = new NewGameView();
                 newGameView.initialize();
                 newGameView.show();
             } catch (IOException e) {
@@ -113,15 +117,16 @@ public class Connection {
             }
         }
         else if (command.matches("joingame(.*)")) {
+            //TODO: dodaj graczy;
             String[] temp = command.split(":");
             BoardView.initialize(800, 4, 1, 0);
             BoardView.show();
             BoardView.initializeFields();
             int playerid = Integer.parseInt(temp[1]);
-            for (int i = 1; i<playerid; i++) {
-                Board.addNewPlayer(false);
+            for (int i = 1; i<=Integer.parseInt(temp[2]); i++) {
+                if (i==playerid) Board.addNewPlayer(true);
+                else Board.addNewPlayer(false);
             }
-            Board.addNewPlayer(true);
         }
         else if (command.equals("gamefull")) {
             ErrorController.message = "Gra jest pełna";
@@ -137,12 +142,30 @@ public class Connection {
             String[] temp = command.split(":");
             int playerid = Integer.parseInt(temp[1]);
             //end game, check who won
+            return false;
         }
         else if (command.equals("possible_fields")) {
-
+            try {
+                MovePath movePath = (MovePath) is.readObject();
+                Board.showPossibleFields(movePath);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         else {
             System.out.println("Failed to interprete command.");
+        }
+        return true;
+    }
+
+    public static void startConnectionLoop () {
+        while(true) {
+            try {
+                String command = (String) is.readObject();
+                if (commandInterpreter(command)) break;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 

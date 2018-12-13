@@ -15,6 +15,6 @@ public class Handle {
         if (Connection.isitMyTurn()) Connection.sendChosenPawn(cf.getField());
     }
     public static void possibleFieldHandle(CircleField cf) {
-
+        Connection.sendChosenField(cf.getField());
     }
 }

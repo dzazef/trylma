@@ -13,11 +13,9 @@ import models.client.board_players.players.Player;
 import models.client_server.Field;
 import models.client_server.MovePath;
 import views.BoardView;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
 import static java.lang.Math.abs;
 
 /**
@@ -141,11 +139,13 @@ public class Board {
         }
     }
 
-    public static void showPossibleFields(List<Field> fieldList) {
+    public static void showPossibleFields(MovePath movePath) {
         possibleFields = new ArrayList<>();
         CircleField circleField;
         double centerX, centerY;
-        for (Field field : fieldList) {
+        Iterator iterator = movePath.createIterator();
+        while (iterator.hasNext()) {
+            Field field = (Field) iterator.next();
             centerX = (field.getY()-((float)field.getX()/2-(1.5*ch)))*(wGap+2*radius)+wGap+radius;
             centerY = abs(hGap)+radius+(field.getX()+2*ch)*(2*radius-hGap);
             circleField = new CircleField(field, centerX, centerY, radius, Color.GOLD);

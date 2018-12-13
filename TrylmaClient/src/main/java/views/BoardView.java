@@ -89,7 +89,7 @@ public class BoardView {
         movePath.addField(new Field().with(1, -2, 3));
         movePath.addField(new Field().with(2, -2, 4));
         movePath.addField(new Field().with(3, -1, 4));
-        Board.makeMove(2, movePath);
+        Board.makeMove(1, movePath);
     }
 
     /**
