@@ -39,12 +39,31 @@ public class Connection {
         return connectionSuccess;
     }
 
+    public static void sendConnect() {
+        try {
+            os.writeObject("connect");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void sendCreateNewGameCommand(int players, int bots) {
-        String info = "create" + ":" + bots + ":" + players;
+        String info = "creategame" + ":" + bots + ":" + players; //TODO: size of plansza
         if (isConnectionSuccessfull()) {
             try {
                 os.writeObject(info);
-                Connection.newGameView.hide();
+                Connection.newGameView.hide(); //TODO: show board
+                BoardView.initialize(800, 4, 1, 0); //TODO: checkers as variable
+                BoardView.show();
+                BoardView.initializeFields();
+                //TODO: gracz po botach
+                for (int i = 1; i<=bots; i++) {
+                    Board.addNewPlayer(false);
+                }
+                if (players>bots) Board.addNewPlayer(true);
+                for (int i = bots+2; i<=players; i++) {
+                    Board.addNewPlayer(false);
+                }
             } catch (Exception e) {
                 e.printStackTrace();
                 System.out.println("Failed to write NewGameCommand to ObjectOutputStream");
@@ -92,12 +111,12 @@ public class Connection {
         }
     }
 
-    public static boolean commandInterpreter(String command) {
+    private static boolean commandInterpreter(String command) {
         if (command.equals("yourturn")) {
             myTurn=true;
         } else if (command.matches("moved(.*)")) {
             String[] temp = command.split(":");
-            MovePath movePath = null;
+            MovePath movePath;
             try {
                 movePath = (MovePath) is.readObject();
                 Board.makeMove(Integer.parseInt(temp[1]), movePath);
@@ -117,9 +136,8 @@ public class Connection {
             }
         }
         else if (command.matches("joingame(.*)")) {
-            //TODO: dodaj graczy;
             String[] temp = command.split(":");
-            BoardView.initialize(800, 4, 1, 0);
+            BoardView.initialize(800, 4, 1, 0); //TODO: checkers as variable
             BoardView.show();
             BoardView.initializeFields();
             int playerid = Integer.parseInt(temp[1]);

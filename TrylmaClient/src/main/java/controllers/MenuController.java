@@ -16,7 +16,8 @@ public class MenuController {
     }
     @FXML
     public void menuNewGame() {
-            Connection.commandInterpreter("newgame");
+            Connection.sendConnect();
+            Connection.startConnectionLoop();
     }
     @FXML
     public void handleNewGame() {

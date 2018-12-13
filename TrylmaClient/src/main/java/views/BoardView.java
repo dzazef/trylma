@@ -71,25 +71,6 @@ public class BoardView {
         Board.generateFields();
         draw(Board.getCircleFields());
         Board.addHandlersToCircles();
-        Board.addNewPlayer(true);
-        Board.addNewPlayer(true);
-        Board.addNewPlayer(true);
-        Board.addNewPlayer(true);
-        for (Player player : Board.getPlayerList()) {
-            draw(player.getCircleFields());
-        }
-        MovePath movePath = new MovePath();
-        movePath.addField(new Field().with(-5, -3, -2));
-        movePath.addField(new Field().with(-4, -2, -2));
-        movePath.addField(new Field().with(-3, -2, -1));
-        movePath.addField(new Field().with(-3, -3, 0));
-        movePath.addField(new Field().with(-2, -3, 1));
-        movePath.addField(new Field().with(-1, -3, 2));
-        movePath.addField(new Field().with(0, -2, 2));
-        movePath.addField(new Field().with(1, -2, 3));
-        movePath.addField(new Field().with(2, -2, 4));
-        movePath.addField(new Field().with(3, -1, 4));
-        Board.makeMove(1, movePath);
     }
 
     /**

@@ -73,6 +73,7 @@ public class Board {
         Player player = new Player(playerID);
         player.generateFields(isThisMe, radius, ch, wGap, hGap);
         playerList.add(player);
+        BoardView.draw(player.getCircleFields());
     }
 
     /**

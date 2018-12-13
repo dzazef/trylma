@@ -4,12 +4,13 @@
     <list default="true" id="63c90eab-028f-44c2-91e5-543cfc98ea18" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/MenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/handlers/Handle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handlers/Handle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/models/client/board_players/board/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/client/board_players/board/Board.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/models/client_server/Connection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/client_server/Connection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/views/BoardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/BoardView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controllers/MenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/MenuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/models/client/board_players/board/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/models/client/board_players/board/Board.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/models/client_server/Connection.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/models/client_server/Connection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/views/BoardView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/BoardView.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,78 +34,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/controllers/MenuController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="21" column="32" lean-forward="true" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/handlers/Handle.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="34" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="34" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#601#602#0" expanded="true" />
-                <element signature="e#621#622#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/models/client_server/Connection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="79" column="28" lean-forward="true" selection-start-line="79" selection-start-column="28" selection-end-line="79" selection-end-column="28" />
+            <state relative-caret-position="578">
+              <caret line="43" selection-start-line="43" selection-end-line="43" />
               <folding>
-                <element signature="e#5710#5711#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/TrylmaClient.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="37" column="5" selection-start-line="37" selection-end-line="38" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/controllers/NewGameController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="20" lean-forward="true" selection-start-column="20" selection-end-column="20" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/views/BoardView.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="385">
-              <caret line="92" column="5" lean-forward="true" selection-start-line="92" selection-start-column="5" selection-end-line="92" selection-end-column="5" />
-              <folding>
-                <element signature="e#3352#3353#0" expanded="true" />
-                <element signature="e#3408#3409#0" expanded="true" />
-                <element signature="e#3473#3474#0" expanded="true" />
-                <element signature="e#3532#3533#0" expanded="true" />
+                <element signature="e#6372#6373#0" expanded="true" />
+                <element signature="e#6401#6402#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -113,17 +50,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/models/client/board_players/board/Board.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="470">
-              <caret line="152" column="55" selection-start-line="152" selection-start-column="55" selection-end-line="152" selection-end-column="55" />
+            <state relative-caret-position="816">
+              <caret line="68" column="82" selection-start-line="68" selection-start-column="82" selection-end-line="68" selection-end-column="82" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/models/client_server/MovePath.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/views/BoardView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
+            <state relative-caret-position="969">
+              <caret line="73" column="5" selection-start-line="73" selection-start-column="5" selection-end-line="73" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -165,7 +102,6 @@
         <option value="$PROJECT_DIR$/src/main/java/models/client_server/AllMovePaths.java" />
         <option value="$PROJECT_DIR$/src/main/java/models/client/board_players/CircleField.java" />
         <option value="$PROJECT_DIR$/src/main/java/models/client/board_players/players/PlayerFieldIterator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/TrylmaClient.java" />
         <option value="$PROJECT_DIR$/src/main/java/models/client/board_players/FieldGenerator.java" />
         <option value="$PROJECT_DIR$/src/main/java/models/client/FieldGenerator.java" />
         <option value="$PROJECT_DIR$/src/main/java/models/client/board_players/players/Player.java" />
@@ -179,11 +115,12 @@
         <option value="$PROJECT_DIR$/src/main/java/views/ErrorView.java" />
         <option value="$PROJECT_DIR$/src/main/resources/errorStructure.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/controllers/ErrorController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controllers/MenuController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/views/BoardView.java" />
-        <option value="$PROJECT_DIR$/src/main/java/models/client/board_players/board/Board.java" />
-        <option value="$PROJECT_DIR$/src/main/java/models/client_server/Connection.java" />
         <option value="$PROJECT_DIR$/src/main/java/handlers/Handle.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controllers/MenuController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/TrylmaClient.java" />
+        <option value="$PROJECT_DIR$/src/main/java/models/client_server/Connection.java" />
+        <option value="$PROJECT_DIR$/src/main/java/models/client/board_players/board/Board.java" />
+        <option value="$PROJECT_DIR$/src/main/java/views/BoardView.java" />
       </list>
     </option>
   </component>
@@ -195,17 +132,16 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="41" />
-    <option name="y" value="25" />
-    <option name="width" value="1879" />
-    <option name="height" value="1055" />
+    <option name="x" value="71" />
+    <option name="y" value="87" />
+    <option name="width" value="940" />
+    <option name="height" value="789" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -324,15 +260,16 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544698367573" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544701410137" />
     <property name="last.edited.regexp" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../git1/trylma/TrylmaClient" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -399,18 +336,19 @@
       <workItem from="1544643805851" duration="630000" />
       <workItem from="1544653635085" duration="2725000" />
       <workItem from="1544663185614" duration="7000" />
-      <workItem from="1544695093633" duration="2362000" />
+      <workItem from="1544695093633" duration="4959000" />
+      <workItem from="1544700921637" duration="524000" />
+      <workItem from="1544701503037" duration="638000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50274000" />
+    <option name="totallyTimeSpent" value="54033000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="41" y="25" width="1879" height="1055" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21931261" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18330605" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -419,7 +357,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.095032394" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.16090713" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.2224622" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39956802" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -500,16 +438,16 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/menuStructure.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/errorStructure.fxml">
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
       <provider editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" selection-start-line="15" selection-end-line="15" />
         </state>
       </provider>
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/views/NewGameView.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -570,12 +508,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/newGameStructure.fxml">
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
       <provider editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="131" selection-start-line="15" selection-start-column="131" selection-end-line="15" selection-end-column="131" />
         </state>
       </provider>
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/models/client/board_players/players/Player.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -591,23 +529,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controllers/MenuController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="21" column="32" lean-forward="true" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
+        <state relative-caret-position="221">
+          <caret line="19" column="45" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/views/BoardView.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/handlers/Handle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="92" column="5" lean-forward="true" selection-start-line="92" selection-start-column="5" selection-end-line="92" selection-end-column="5" />
+        <state relative-caret-position="221">
+          <caret line="14" column="40" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
           <folding>
-            <element signature="e#3352#3353#0" expanded="true" />
-            <element signature="e#3408#3409#0" expanded="true" />
-            <element signature="e#3473#3474#0" expanded="true" />
-            <element signature="e#3532#3533#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#601#602#0" expanded="true" />
+            <element signature="e#658#659#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/TrylmaClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/NewGameController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -619,52 +576,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/NewGameController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/models/client_server/Connection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="20" lean-forward="true" selection-start-column="20" selection-end-column="20" />
+        <state relative-caret-position="578">
+          <caret line="43" selection-start-line="43" selection-end-line="43" />
           <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/TrylmaClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="37" column="5" selection-start-line="37" selection-end-line="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#6372#6373#0" expanded="true" />
+            <element signature="e#6401#6402#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/models/client/board_players/board/Board.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="152" column="55" selection-start-line="152" selection-start-column="55" selection-end-line="152" selection-end-column="55" />
+        <state relative-caret-position="816">
+          <caret line="68" column="82" selection-start-line="68" selection-start-column="82" selection-end-line="68" selection-end-column="82" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/handlers/Handle.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/views/BoardView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="34" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#601#602#0" expanded="true" />
-            <element signature="e#621#622#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/models/client_server/Connection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="79" column="28" lean-forward="true" selection-start-line="79" selection-start-column="28" selection-end-line="79" selection-end-column="28" />
-          <folding>
-            <element signature="e#5710#5711#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="969">
+          <caret line="73" column="5" selection-start-line="73" selection-start-column="5" selection-end-line="73" selection-end-column="5" />
         </state>
       </provider>
     </entry>
