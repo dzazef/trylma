@@ -14,4 +14,7 @@ public class Handle {
     public static void playerHandle(CircleField cf, double radius, int ch, double wGap, double hGap) {
         if (Connection.isitMyTurn()) Connection.sendChosenPawn(cf.getField());
     }
+    public static void possibleFieldHandle(CircleField cf) {
+
+    }
 }

@@ -89,17 +89,18 @@ public class BoardView {
         movePath.addField(new Field().with(1, -2, 3));
         movePath.addField(new Field().with(2, -2, 4));
         movePath.addField(new Field().with(3, -1, 4));
-        Board.makeMove(1, movePath);
+        Board.makeMove(2, movePath);
     }
 
     /**
      * Funkcja umieszcza pola na planszy.
      * @param circleFields lista pól do umieszczenia na planszy.
      */
-    private static void draw(List<CircleField> circleFields) {
-        for (CircleField circleField : circleFields) {
-            group.getChildren().add(circleField);
-        }
+    public static void draw(List<CircleField> circleFields) {
+        group.getChildren().addAll(circleFields);
     }
 
+    public static void undraw(List<CircleField> circleFields) {
+        group.getChildren().removeAll(circleFields);
+    }
 }

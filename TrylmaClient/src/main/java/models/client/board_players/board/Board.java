@@ -12,6 +12,7 @@ import javafx.scene.paint.Color;
 import models.client.board_players.players.Player;
 import models.client_server.Field;
 import models.client_server.MovePath;
+import views.BoardView;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -28,6 +29,7 @@ public class Board {
     private static int ch;
     private static List<CircleField> circleFields = new ArrayList<>();
     private static List<Player> playerList = new ArrayList<>();
+    private static List<CircleField> possibleFields;
 
     /**
      * Ustawia parametry planszy.
@@ -137,5 +139,25 @@ public class Board {
         else {
             System.err.println("Player not found. Command error");
         }
+    }
+
+    public static void showPossibleFields(List<Field> fieldList) {
+        possibleFields = new ArrayList<>();
+        CircleField circleField;
+        double centerX, centerY;
+        for (Field field : fieldList) {
+            centerX = (field.getY()-((float)field.getX()/2-(1.5*ch)))*(wGap+2*radius)+wGap+radius;
+            centerY = abs(hGap)+radius+(field.getX()+2*ch)*(2*radius-hGap);
+            circleField = new CircleField(field, centerX, centerY, radius, Color.GOLD);
+            possibleFields.add(circleField);
+            CircleField finalCircleField = circleField;
+            circleField.setOnMouseClicked(e -> Handle.possibleFieldHandle(finalCircleField));
+        }
+        BoardView.draw(possibleFields);
+    }
+
+    public static void removePossibleFields() {
+        BoardView.undraw(possibleFields);
+        possibleFields = new ArrayList<>();
     }
 }

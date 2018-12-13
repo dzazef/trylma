@@ -1,6 +1,5 @@
 package views;
 
-import controllers.NewGameController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
