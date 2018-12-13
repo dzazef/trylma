@@ -12,19 +12,26 @@ import java.io.*;
 
 public class Command {
     private ObjectOutputStream objout;
-    private PrintWriter out;
 
 
 
-    public Command(ObjectOutputStream objectout,PrintWriter out)
+
+    public Command(ObjectOutputStream objectout)
     {
         this.objout = objectout;
-        this.out = out;
+
     }
 
     public void sendWinMessage(Player winner)
     {
-        out.println("won;"+winner.getId());
+        String message = "won;"+winner.getId();
+        try {
+            objout.writeObject(message);
+        }
+        catch (IOException e)
+        {
+            System.out.println("Failed to send won message: IOExcception" + e);
+        }
 
     }
 
@@ -35,11 +42,13 @@ public class Command {
             if(MoveManager.paths.get(i).end.getId() == destination.getId())
             {
                 for(int j = 0; j < GameManager.playersobjout.size();j++) {
-                    GameManager.playersout.get(j).println("moved;" + GameManager.actualplayer.getId());
+                    String message = "moved;" + GameManager.actualplayer.getId();
+
                     try {
+                        GameManager.playersobjout.get(j).writeObject(message);
                         GameManager.playersobjout.get(j).writeObject(MoveManager.paths.get(i));
                     } catch (IOException e) {
-                        System.out.println("failed to send path object");
+                        System.out.println("failed to send path object: IOException" + e);
                     }
                 }
                 return;
@@ -51,7 +60,7 @@ public class Command {
         Pawn pawn =GameManager.actualplayer.getPawnById(field.getId());
         MoveManager.generateMovePaths(pawn);
         try {
-            out.println("possible_fields");
+            objout.writeObject("possiblefields");
             objout.writeObject(MoveManager.moveDestinations);
         }
         catch(IOException e)

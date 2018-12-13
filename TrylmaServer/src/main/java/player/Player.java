@@ -5,15 +5,12 @@ import gamemanager.board.Field;
 
 import java.util.ArrayList;
 
+
 public interface Player {
-     ArrayList<Pawn> getPawns();
-
+      ArrayList<Pawn> getPawns();
       boolean isBot() ;
-
       Pawn getBotchoosenpawn() ;
-
       Field getBotchoosendestination() ;
-
       Path getBotchoosenpath() ;
 
       Pawn getPawnById(String id);

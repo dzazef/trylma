@@ -17,7 +17,6 @@ public abstract class GameManager {
     public static int freePlacesForGame = 1;
     public static Board board;
     public static ArrayList<Player> players;
-    public static ArrayList<PrintWriter> playersout;
     public static ArrayList<ObjectOutputStream> playersobjout;
     public static Player actualplayer;
 
@@ -38,6 +37,7 @@ public abstract class GameManager {
     }
     public static void initialize()
     {
+        playersobjout = new ArrayList<ObjectOutputStream>();
         board = new Board();
         players = new ArrayList<Player>();
     }

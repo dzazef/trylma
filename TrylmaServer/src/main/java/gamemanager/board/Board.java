@@ -22,7 +22,7 @@ public class Board {
     {
         for(int i = 0; i < fields.size(); i++)
         {
-            if(fields.get(i).getId() == id)
+            if(fields.get(i).getId().equals(id))
             {
                 return fields.get(i);
             }

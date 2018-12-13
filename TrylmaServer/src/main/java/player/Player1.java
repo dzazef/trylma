@@ -40,7 +40,7 @@ public class Player1 implements Player {
     {
         for(int i = 0; i < pawns.size();i++)
         {
-            if(pawns.get(i).getId()==id)
+            if(pawns.get(i).getId().equals(id))
             {
                 return pawns.get(i);
             }
@@ -105,7 +105,7 @@ public class Player1 implements Player {
     public void movePawn(Pawn pawn, Field destination) {
         for(int i = 0; i < pawns.size();i++)
         {
-            if(pawns.get(i).getId()== pawn.getId())
+            if(pawns.get(i).getId().equals( pawn.getId()))
             {
                 pawns.get(i).setXYZ(destination.getX(),destination.getY(),destination.getZ());
             }
