@@ -2,9 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="63c90eab-028f-44c2-91e5-543cfc98ea18" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/MenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/handlers/Handle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/handlers/Handle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/serializable/Field.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/boardStructure.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/client/CircleField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/client/CircleField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/client/FieldGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/client/FieldGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/client/board_players/board/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/client/board_players/board/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/client_server/Connection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/client_server/Connection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/client_server/Field.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/client_server/MovePath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/client_server/MovePath.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/models/client_server/MovePathIterator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/client_server/MovePathIterator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/views/BoardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/BoardView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/models/client/FieldGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/models/client/FieldGenerator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/models/client_server/Connection.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/models/client_server/Connection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/models/client_server/Field.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/views/BoardView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/BoardView.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,10 +41,57 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/models/client_server/Connection.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2132">
+              <caret line="44" column="38" selection-start-line="44" selection-start-column="38" selection-end-line="44" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/models/client/FieldGenerator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="316">
+              <caret line="40" column="63" selection-start-line="40" selection-start-column="63" selection-end-line="40" selection-end-column="63" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/models/client/CircleField.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="442">
+              <caret line="30" selection-start-line="30" selection-end-line="30" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#449#450#0" expanded="true" />
+                <element signature="e#524#525#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/models/client/board_players/players/PlayerFieldIterator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/models/client/board_players/players/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="913">
-              <caret line="66" column="13" lean-forward="true" selection-start-line="66" selection-start-column="13" selection-end-line="66" selection-end-column="13" />
+            <state relative-caret-position="850">
+              <caret line="66" column="13" selection-start-line="66" selection-start-column="13" selection-end-line="66" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#372#373#0" expanded="true" />
@@ -45,114 +104,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/models/client_server/Connection.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1066">
-              <caret line="146" column="49" selection-start-line="146" selection-start-column="48" selection-end-line="146" selection-end-column="49" />
-              <folding>
-                <element signature="e#7068#7069#0" expanded="true" />
-                <element signature="e#7097#7098#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/views/ErrorView.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/TrylmaClient.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="213">
-              <caret line="23" selection-start-line="23" selection-end-line="23" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/controllers/MenuController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="23" column="41" selection-start-line="23" selection-start-column="40" selection-end-line="23" selection-end-column="41" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/views/NewGameView.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#559#560#0" expanded="true" />
-                <element signature="e#594#595#0" expanded="true" />
-                <element signature="e#619#620#0" expanded="true" />
-                <element signature="e#654#655#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/views/MenuView.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="25" column="7" lean-forward="true" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/models/client/board_players/board/Board.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="536">
-              <caret line="68" column="82" selection-start-line="68" selection-start-column="82" selection-end-line="68" selection-end-column="82" />
+            <state relative-caret-position="34">
+              <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/views/BoardView.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/serializable/Field.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="63" column="29" selection-start-line="63" selection-start-column="29" selection-end-line="63" selection-end-column="29" />
-              <folding>
-                <element signature="e#2994#2995#0" expanded="true" />
-                <element signature="e#3114#3115#0" expanded="true" />
-                <element signature="e#3615#3616#0" expanded="true" />
-                <element signature="e#3739#3740#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/handlers/Handle.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="37" lean-forward="true" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#601#602#0" expanded="true" />
-                <element signature="e#658#659#0" expanded="true" />
-                <element signature="e#733#734#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="68">
+              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -162,8 +129,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -178,6 +145,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/models/client_server/MovePath.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/serializable/Field.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -187,7 +158,6 @@
         <option value="$PROJECT_DIR$/src/main/java/views/Menu.java" />
         <option value="$PROJECT_DIR$/src/main/java/models/client_server/TreeMoves.java" />
         <option value="$PROJECT_DIR$/src/main/java/connection/Connection.java" />
-        <option value="$PROJECT_DIR$/src/main/java/models/client_server/Field.java" />
         <option value="$PROJECT_DIR$/src/main/java/models/client/FieldCircle.java" />
         <option value="$PROJECT_DIR$/src/main/java/board_players/FieldGenerator.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
@@ -197,7 +167,6 @@
         <option value="$PROJECT_DIR$/src/main/java/models/client/board_players/CircleField.java" />
         <option value="$PROJECT_DIR$/src/main/java/models/client/board_players/players/PlayerFieldIterator.java" />
         <option value="$PROJECT_DIR$/src/main/java/models/client/board_players/FieldGenerator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/models/client/FieldGenerator.java" />
         <option value="$PROJECT_DIR$/src/main/java/models/client/board_players/players/Player.java" />
         <option value="$PROJECT_DIR$/src/main/resources/newgameStructure.fxml" />
         <option value="$PROJECT_DIR$/src/main/resources/menuStructure.fxml" />
@@ -207,15 +176,18 @@
         <option value="$PROJECT_DIR$/src/main/java/views/ErrorView.java" />
         <option value="$PROJECT_DIR$/src/main/resources/errorStructure.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/controllers/ErrorController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/models/client/board_players/board/Board.java" />
         <option value="$PROJECT_DIR$/src/main/java/models/client_server/ConnectionLoop.java" />
         <option value="$PROJECT_DIR$/src/main/java/views/MenuView.java" />
         <option value="$PROJECT_DIR$/src/main/java/views/NewGameView.java" />
         <option value="$PROJECT_DIR$/src/main/java/TrylmaClient.java" />
         <option value="$PROJECT_DIR$/src/main/java/handlers/Handle.java" />
-        <option value="$PROJECT_DIR$/src/main/java/models/client_server/Connection.java" />
-        <option value="$PROJECT_DIR$/src/main/java/controllers/MenuController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/boardStructure.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/views/BoardView.java" />
+        <option value="$PROJECT_DIR$/src/main/java/controllers/MenuController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/models/client_server/Connection.java" />
+        <option value="$PROJECT_DIR$/src/main/java/models/client_server/Field.java" />
+        <option value="$PROJECT_DIR$/src/main/java/models/client/FieldGenerator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/models/client/board_players/board/Board.java" />
       </list>
     </option>
   </component>
@@ -226,10 +198,10 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="5">
     <option name="x" value="41" />
     <option name="y" value="25" />
-    <option name="width" value="1879" />
+    <option name="width" value="940" />
     <option name="height" value="1055" />
   </component>
   <component name="ProjectView">
@@ -237,7 +209,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -352,25 +323,83 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="TrylmaClient" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TrylmaClient" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TrylmaClient" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TrylmaClient" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+              <item name="classes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TrylmaClient" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TrylmaClient" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+              <item name="classes" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TrylmaClient" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TrylmaClient" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+              <item name="classes" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TrylmaClient" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TrylmaClient" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+              <item name="classes" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="board_players" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TrylmaClient" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TrylmaClient" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+              <item name="classes" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="board_players" type="462c0819:PsiDirectoryNode" />
+              <item name="board" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="TrylmaClient" type="b2602c69:ProjectViewProjectNode" />
+              <item name="TrylmaClient" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
+              <item name="classes" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+              <item name="client_server" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544786485877" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544796744219" />
     <property name="last.edited.regexp" value="wonwonwownown" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../TrylmaServer" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="handlers" />
     </key>
@@ -443,18 +472,21 @@
       <workItem from="1544744863638" duration="304000" />
       <workItem from="1544746144071" duration="318000" />
       <workItem from="1544773848879" duration="249000" />
-      <workItem from="1544774345578" duration="11223000" />
+      <workItem from="1544774345578" duration="12919000" />
+      <workItem from="1544790525861" duration="815000" />
+      <workItem from="1544791530553" duration="242000" />
+      <workItem from="1544792751097" duration="287000" />
+      <workItem from="1544795909557" duration="818000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71531000" />
+    <option name="totallyTimeSpent" value="75389000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="41" y="25" width="1879" height="1055" extended-state="6" />
-    <editor active="true" />
+    <frame x="41" y="25" width="940" height="1055" extended-state="4" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21058375" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2997763" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -463,7 +495,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.095032394" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49972722" visible="true" weight="0.40172786" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49972722" visible="true" weight="0.3898488" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39956802" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -488,7 +520,7 @@
       <window_info anchor="right" id="Theme Preview" order="8" />
       <window_info anchor="right" id="Maven Projects" order="9" />
       <window_info anchor="right" id="Coverage" order="10" side_tool="true" weight="0.32965213" />
-      <window_info anchor="right" x="0" y="0" width="419" height="855" id="Documentation" order="11" side_tool="true" visible="true" weight="0.32951444" />
+      <window_info anchor="right" x="0" y="0" width="419" height="855" id="Documentation" order="11" side_tool="true" weight="0.32951444" />
     </layout>
     <layout-to-restore>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.43176734" />
@@ -538,28 +570,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/models/client_server/TreeMoves.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/models/client_server/AllMovePaths.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/models/client/FieldCircle.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/models/client_server/MovePathIterator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/models/client_server/Field.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="32" column="5" selection-start-line="32" selection-start-column="5" selection-end-line="32" selection-end-column="5" />
-          <folding>
-            <element signature="e#571#572#0" expanded="true" />
-            <element signature="e#597#598#0" expanded="true" />
-            <element signature="e#628#629#0" expanded="true" />
-            <element signature="e#654#655#0" expanded="true" />
-            <element signature="e#685#686#0" expanded="true" />
-            <element signature="e#711#712#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/menuStructure.fxml">
       <provider selected="true" editor-type-id="text-editor" />
       <provider editor-type-id="JavaFX-Scene-Builder" />
@@ -580,18 +590,6 @@
             <element signature="imports" expanded="true" />
             <element signature="e#188#189#0" expanded="true" />
             <element signature="e#224#225#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/models/client/CircleField.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#449#450#0" expanded="true" />
-            <element signature="e#524#525#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -621,20 +619,131 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/models/client_server/MovePath.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/models/client_server/ConnectionLoop.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/boardStructure.fxml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/TrylmaClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
+        <state relative-caret-position="272">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/models/client_server/ConnectionLoop.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/models/client/FieldGenerator.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/handlers/Handle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="33" column="62" selection-start-line="33" selection-start-column="62" selection-end-line="33" selection-end-column="62" />
+        <state relative-caret-position="272">
+          <caret line="18" column="37" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#689#690#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/MenuController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="23" column="8" selection-start-line="23" selection-start-column="8" selection-end-line="25" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/views/NewGameView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#654#655#0" expanded="true" />
+            <element signature="e#689#690#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/views/MenuView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="25" column="7" lean-forward="true" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/views/ErrorView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/views/BoardView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="833">
+          <caret line="70" column="99" selection-start-line="70" selection-start-column="99" selection-end-line="70" selection-end-column="99" />
+          <folding>
+            <element signature="e#3141#3142#0" expanded="true" />
+            <element signature="e#3174#3175#0" expanded="true" />
+            <element signature="e#3261#3262#0" expanded="true" />
+            <element signature="e#3294#3295#0" expanded="true" />
+            <element signature="e#3739#3740#0" expanded="true" />
+            <element signature="e#3795#3796#0" expanded="true" />
+            <element signature="e#3860#3861#0" expanded="true" />
+            <element signature="e#3919#3920#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/models/client_server/MovePathIterator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/models/client_server/MovePath.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="17" column="40" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/models/client_server/Connection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2132">
+          <caret line="44" column="38" selection-start-line="44" selection-start-column="38" selection-end-line="44" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/models/client/FieldGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="316">
+          <caret line="40" column="63" selection-start-line="40" selection-start-column="63" selection-end-line="40" selection-end-column="63" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/models/client/CircleField.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#449#450#0" expanded="true" />
+            <element signature="e#524#525#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -649,58 +758,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/views/MenuView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="25" column="7" lean-forward="true" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/views/NewGameView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#559#560#0" expanded="true" />
-            <element signature="e#594#595#0" expanded="true" />
-            <element signature="e#619#620#0" expanded="true" />
-            <element signature="e#654#655#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/models/client/board_players/board/Board.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="536">
-          <caret line="68" column="82" selection-start-line="68" selection-start-column="82" selection-end-line="68" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/views/ErrorView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/TrylmaClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/models/client/board_players/players/Player.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="913">
-          <caret line="66" column="13" lean-forward="true" selection-start-line="66" selection-start-column="13" selection-end-line="66" selection-end-column="13" />
+        <state relative-caret-position="850">
+          <caret line="66" column="13" selection-start-line="66" selection-start-column="13" selection-end-line="66" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#372#373#0" expanded="true" />
@@ -711,50 +772,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/models/client_server/Connection.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/models/client/board_players/board/Board.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1066">
-          <caret line="146" column="49" selection-start-line="146" selection-start-column="48" selection-end-line="146" selection-end-column="49" />
-          <folding>
-            <element signature="e#7068#7069#0" expanded="true" />
-            <element signature="e#7097#7098#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/handlers/Handle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="37" lean-forward="true" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#601#602#0" expanded="true" />
-            <element signature="e#658#659#0" expanded="true" />
-            <element signature="e#733#734#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/MenuController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="23" column="41" selection-start-line="23" selection-start-column="40" selection-end-line="23" selection-end-column="41" />
+        <state relative-caret-position="34">
+          <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/views/BoardView.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/serializable/Field.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="63" column="29" selection-start-line="63" selection-start-column="29" selection-end-line="63" selection-end-column="29" />
-          <folding>
-            <element signature="e#2994#2995#0" expanded="true" />
-            <element signature="e#3114#3115#0" expanded="true" />
-            <element signature="e#3615#3616#0" expanded="true" />
-            <element signature="e#3739#3740#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="68">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
         </state>
       </provider>
     </entry>

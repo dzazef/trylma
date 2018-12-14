@@ -2,17 +2,15 @@ package models.client_server;
 
 import controllers.ErrorController;
 import javafx.application.Platform;
+import javafx.scene.control.Alert;
 import models.client.board_players.board.Board;
+import serializable.Field;
 import views.BoardView;
 import views.ErrorView;
 import views.NewGameView;
 
 import java.io.*;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
 
 /**
  * Klasa obsługuje połączenie z serwerem.
@@ -37,7 +35,6 @@ public class Connection {
         }
         catch (Exception e)
         {
-            e.printStackTrace();
             return false;
         }
     }
@@ -46,6 +43,7 @@ public class Connection {
     }
 
     public static void sendConnect() {
+        System.out.println("connect");
         try {
             os.writeObject("connect");
         } catch (IOException e) {
@@ -56,12 +54,13 @@ public class Connection {
     public static void sendCreateNewGameCommand(int players, int bots) {
         String info = "creategame" + ":" + bots + ":" + players+":4"; //TODO: size of plansza
         if (isConnectionSuccessfull()) {
+            System.out.println(info);
             try {
                 os.writeObject(info);
                 NewGameView.hide();
-                BoardView.initialize(800, 4, 1, 0); //TODO: checkers as variable
-                BoardView.show();
+                BoardView.initialize(600, 4, 5, 0);
                 BoardView.initializeFields();
+                BoardView.show();
                 for (int i = 1; i<=bots; i++) {
                     Board.addNewPlayer(false);
                 }
@@ -79,6 +78,7 @@ public class Connection {
     public static void sendChosenPawn(Field field) {
         if(isitMyTurn()) {
             String command = "startfield";
+            System.out.println(command);
             try {
                 os.writeObject(command);
                 os.writeObject(field);
@@ -104,6 +104,7 @@ public class Connection {
     public static void sendChosenField(Field field) {
         if(isitMyTurn()) {
             String command = "endfield";
+            System.out.println(command);
             try {
                 os.writeObject(command);
                 os.writeObject(field);
@@ -119,6 +120,7 @@ public class Connection {
     public static boolean commandInterpreter(String command) {
         System.out.println(command);
         if (command.equals("yourturn")) {
+            System.out.println("Now is my turn.");
             myTurn=true;
         } else if (command.matches("moved(.*)")) {
             String[] temp = command.split(":");
@@ -170,7 +172,13 @@ public class Connection {
         else if (command.matches("won(.*)")) {
             String[] temp = command.split(":");
             int playerid = Integer.parseInt(temp[1]);
-            //end game, check who won
+            Platform.runLater( () -> {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Koniec gry");
+                alert.setHeaderText(null);
+                alert.setContentText("Wygrał gracz nr "+playerid);
+                alert.showAndWait();
+            });
             return true;
         }
         else if (command.equals("possible_fields")) {

@@ -10,7 +10,7 @@ import models.client.FieldGenerator;
 import handlers.Handle;
 import javafx.scene.paint.Color;
 import models.client.board_players.players.Player;
-import models.client_server.Field;
+import serializable.Field;
 import models.client_server.MovePath;
 import views.BoardView;
 import java.util.ArrayList;

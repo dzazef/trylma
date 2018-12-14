@@ -1,5 +1,7 @@
 package models.client_server;
 
+import serializable.Field;
+
 import java.io.Serializable;
 import java.util.Iterator;
 import java.util.List;

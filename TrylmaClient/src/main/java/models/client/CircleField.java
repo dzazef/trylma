@@ -2,7 +2,7 @@ package models.client;
 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import models.client_server.Field;
+import serializable.Field;
 
 import java.io.Serializable;
 

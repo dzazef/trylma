@@ -1,7 +1,7 @@
 package models.client;
 
 import javafx.scene.paint.Color;
-import models.client_server.Field;
+import serializable.Field;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +38,7 @@ public class FieldGenerator {
         for (int i = 0; i < lines; i++) {
             x = xlevel; y = ylevel; z = zlevel; currentCenterX=currentCenterXLevel;
             for (int j = 0; j <= i; j++) {
-                final Field field = (new Field()).with(x, y, z);
+                final Field field = (new Field(x, y, z, false));
                 CircleField circleField = new CircleField(field, currentCenterX, currentCenterY, radius, color);
                 if (d3) {
                     circleField.setScaleX(1.03);

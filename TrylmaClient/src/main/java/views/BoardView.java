@@ -6,6 +6,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -58,19 +59,20 @@ public class BoardView {
         double windowHeight = 50+(2 * (4 * BoardView.ch + 1)) * radius + 2 * abs(hGap) - 4 * BoardView.ch * hGap;
 
         skip=new Button("Pas");
-        yourMove = new Text("Twój ruch: ");
+        yourMove = new Text("Twój kolor: ");
         yourMove.setFill(Color.WHITESMOKE);
         yourMove.setStyle("-fx-font-weight: bold");
-        //circle = new Circle(Color.SALMON);
+        circle = new Circle(8, Color.SALMON);
 
 
         gridPane = new GridPane();
-        gridPane.setPadding(new Insets(8, 5, 8, 0.2*windowWidth1));
+        gridPane.setPadding(new Insets(8, 5, 8, 0.27*windowWidth1));
         skip.setMaxHeight(10);
-        gridPane.setVgap(30);
+        gridPane.getColumnConstraints().addAll(new ColumnConstraints(100), new ColumnConstraints(90), new ColumnConstraints(100));
         gridPane.setStyle("-fx-background-color: #575757");
-        gridPane.add(yourMove, 1, 0);
         gridPane.add(skip, 0, 0);
+        gridPane.add(yourMove, 1, 0);
+        gridPane.add(circle, 2, 0);
 
         Scene scene = new Scene(borderPane, windowWidth1, windowHeight);
         boardStage.setScene(scene);
