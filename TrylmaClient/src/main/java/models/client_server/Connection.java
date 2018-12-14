@@ -1,6 +1,7 @@
 package models.client_server;
 
 import controllers.ErrorController;
+import javafx.application.Platform;
 import models.client.board_players.board.Board;
 import views.BoardView;
 import views.ErrorView;
@@ -8,18 +9,22 @@ import views.NewGameView;
 
 import java.io.*;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 /**
  * Klasa obsługuje połączenie z serwerem.
  * TODO: dokończ
  */
+@SuppressWarnings("Duplicates")
 public class Connection {
     private static Socket socket;
     private static ObjectInputStream is;
     private static ObjectOutputStream os;
     private static boolean connectionSuccess = false;
     private static boolean myTurn = false;
-    private static NewGameView newGameView;
 
     public static boolean establishConnection()
     {
@@ -32,6 +37,7 @@ public class Connection {
         }
         catch (Exception e)
         {
+            e.printStackTrace();
             return false;
         }
     }
@@ -48,15 +54,14 @@ public class Connection {
     }
 
     public static void sendCreateNewGameCommand(int players, int bots) {
-        String info = "creategame" + ":" + bots + ":" + players; //TODO: size of plansza
+        String info = "creategame" + ":" + bots + ":" + players+":4"; //TODO: size of plansza
         if (isConnectionSuccessfull()) {
             try {
                 os.writeObject(info);
-                Connection.newGameView.hide(); //TODO: show board
+                NewGameView.hide();
                 BoardView.initialize(800, 4, 1, 0); //TODO: checkers as variable
                 BoardView.show();
                 BoardView.initializeFields();
-                //TODO: gracz po botach
                 for (int i = 1; i<=bots; i++) {
                     Board.addNewPlayer(false);
                 }
@@ -111,7 +116,8 @@ public class Connection {
         }
     }
 
-    private static boolean commandInterpreter(String command) {
+    public static boolean commandInterpreter(String command) {
+        System.out.println(command);
         if (command.equals("yourturn")) {
             myTurn=true;
         } else if (command.matches("moved(.*)")) {
@@ -119,53 +125,58 @@ public class Connection {
             MovePath movePath;
             try {
                 movePath = (MovePath) is.readObject();
-                Board.makeMove(Integer.parseInt(temp[1]), movePath);
+                Platform.runLater( () -> Board.makeMove(Integer.parseInt(temp[1]), movePath));
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
                 System.out.println("failed to read object");
             }
         }
         else if (command.equals("newgame")) {
-            try {
-                newGameView = new NewGameView();
-                newGameView.initialize();
-                newGameView.show();
-            } catch (IOException e) {
-                e.printStackTrace();
-                System.err.println("Unable to start new game, FXML not found");
-            }
+            Platform.runLater(() -> {
+               try {
+                    NewGameView.initialize();
+                    NewGameView.show();
+               } catch (IOException e) {
+                   e.printStackTrace();
+               }
+            });
         }
         else if (command.matches("joingame(.*)")) {
             String[] temp = command.split(":");
-            BoardView.initialize(800, 4, 1, 0); //TODO: checkers as variable
-            BoardView.show();
-            BoardView.initializeFields();
-            int playerid = Integer.parseInt(temp[1]);
-            for (int i = 1; i<=Integer.parseInt(temp[2]); i++) {
-                if (i==playerid) Board.addNewPlayer(true);
-                else Board.addNewPlayer(false);
-            }
+            Platform.runLater( () -> {
+                BoardView.initialize(800, 4, 5, 5); //TODO: checkers as variable
+                BoardView.show();
+                BoardView.initializeFields();
+                int playerid = Integer.parseInt(temp[1]); //TODO: potrzebuję tylko id, bez 'player'
+                for (int i = 1; i <= Integer.parseInt(temp[2]); i++) {
+                    if (i == playerid) Board.addNewPlayer(true);
+                    else Board.addNewPlayer(false);
+                }
+            });
         }
         else if (command.equals("gamefull")) {
             ErrorController.message = "Gra jest pełna";
-            ErrorView errorView = new ErrorView();
-            try {
-                errorView.initialize();
-            } catch (IOException e) {
-                e.printStackTrace();
-                System.err.println("Error while showing error message xD");
-            }
+            Platform.runLater( () -> {
+                ErrorView errorView = new ErrorView();
+                try {
+                    errorView.initialize();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    System.err.println("Error while showing error message xD");
+                }
+            });
+
         }
         else if (command.matches("won(.*)")) {
             String[] temp = command.split(":");
             int playerid = Integer.parseInt(temp[1]);
             //end game, check who won
-            return false;
+            return true;
         }
         else if (command.equals("possible_fields")) {
             try {
                 MovePath movePath = (MovePath) is.readObject();
-                Board.showPossibleFields(movePath);
+                Platform.runLater(() -> Board.showPossibleFields(movePath));
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -173,18 +184,22 @@ public class Connection {
         else {
             System.out.println("Failed to interprete command.");
         }
-        return true;
+        return false;
     }
 
     public static void startConnectionLoop () {
-        while(true) {
-            try {
-                String command = (String) is.readObject();
-                if (commandInterpreter(command)) break;
-            } catch (Exception e) {
-                e.printStackTrace();
+        new Thread(() -> {
+            while(true) {
+                System.out.println("loop1");
+                try {
+                    Object object = is.readObject();
+                    Connection.commandInterpreter((String)object);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    System.exit(1);
+                }
             }
-        }
+        }).start();
     }
 
     public static boolean isitMyTurn() {

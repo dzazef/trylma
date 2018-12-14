@@ -8,17 +8,28 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class NewGameView {
-    private Stage newGameStage = new Stage();
-    public void initialize() throws IOException {
-        final Parent newGameParent = FXMLLoader.load(getClass().getResource("../newGameStructure.fxml"));
+    private static Stage newGameStage = new Stage();
+    public static void initialize() throws IOException {
+        final Parent newGameParent = FXMLLoader.load(NewGameView.class.getResource("../newGameStructure.fxml"));
         newGameStage.setScene(new Scene(newGameParent));
         newGameStage.setResizable(false);
         newGameStage.setTitle("Nowa gra");
     }
-    public void show() {
+    public static void show() {
         newGameStage.show();
     }
-    public void hide() {
+    public static void hide() {
         newGameStage.hide();
     }
 }
+/*
+public class NewGameView {
+    public static Stage stage;
+    public static void initialize() throws IOException {
+        System.out.println("tu");
+        final Parent newGameParent = FXMLLoader.load(NewGameView.class.getResource("../newGameStructure.fxml"));
+        stage.setScene(new Scene(newGameParent));
+        stage.setTitle("Nowa gra");
+        System.out.println("tu");
+    }
+}*/

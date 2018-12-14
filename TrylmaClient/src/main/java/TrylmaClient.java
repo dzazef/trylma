@@ -1,8 +1,9 @@
 import javafx.application.Application;
 import javafx.stage.Stage;
 import models.client_server.Connection;
+import views.BoardView;
 import views.MenuView;
-
+import views.NewGameView;
 
 import java.io.IOException;
 
@@ -19,12 +20,10 @@ public class TrylmaClient extends Application {
 
     }
 
-    public void start(final Stage stage) {
-        MenuView menuView = new MenuView();
+    public void start(Stage stage) {
+        MenuView.menuStage = stage;
         try {
-            menuView.initialize(stage);
-            menuView.show(stage);
-
+            MenuView.initialize();
         } catch (IOException e) {
             System.out.println("Failed to initialize views.MenuView");
         }
