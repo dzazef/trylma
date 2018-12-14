@@ -58,37 +58,43 @@ public class Connector {
          */
         private void addPlayer()
         {
-            if((GameManager.numberOfPlayers - GameManager.freePlacesForGame + 1)==1)
+
+            if((GameManager.numberOfPlayers - GameManager.freePlacesForGame +1)==1)
             {
                 GameManager.players.add(new Player1(GameManager.numberOfPawns,false));
                 this.name = "player1";
             }
-            else if((GameManager.numberOfPlayers - GameManager.freePlacesForGame + 1)==2)
+            else if((GameManager.numberOfPlayers - GameManager.freePlacesForGame +1)==2)
             {
+
                 GameManager.players.add(new Player2(GameManager.numberOfPawns,false));
                 this.name = "player2";
+
             }
-            else if((GameManager.numberOfPlayers - GameManager.freePlacesForGame + 1)==3)
+            else if((GameManager.numberOfPlayers - GameManager.freePlacesForGame +1)==3)
             {
                 GameManager.players.add(new Player3(GameManager.numberOfPawns,false));
                 this.name = "player3";
             }
-            else if((GameManager.numberOfPlayers - GameManager.freePlacesForGame + 1)==4)
+            else if((GameManager.numberOfPlayers - GameManager.freePlacesForGame +1)==4)
             {
                 GameManager.players.add(new Player4(GameManager.numberOfPawns,false));
                 this.name = "player4";
             }
-            else if((GameManager.numberOfPlayers - GameManager.freePlacesForGame + 1)==5)
+            else if((GameManager.numberOfPlayers - GameManager.freePlacesForGame +1)==5)
             {
                 GameManager.players.add(new Player5(GameManager.numberOfPawns,false));
                 this.name = "player5";
             }
-            else if((GameManager.numberOfPlayers - GameManager.freePlacesForGame + 1)==6)
+            else if((GameManager.numberOfPlayers - GameManager.freePlacesForGame +1)==6)
             {
                 GameManager.players.add(new Player6(GameManager.numberOfPawns,false));
                 this.name = "player6";
             }
             this.connected = true;
+
+            GameManager.freePlacesForGame--;
+
         }
 
         /**
@@ -98,6 +104,7 @@ public class Connector {
         public Handler(Socket socket) {
             this.connected =false;
             this.socket = socket;
+            this.name = "...";
         }
 
         /**
@@ -111,153 +118,167 @@ public class Connector {
             this.socket = socket;
             this.name = name;
         }
+        private void handleCommands() {
+            try {
+                String s;
+                if (GameManager.actualplayer.getId().equals(this.name)) {
+                    if(!GameManager.actualplayer.isBot()) {
+                        objout.writeObject("yourturn");
+                        s = (String) objin.readObject();
+                        System.out.println(s);
+                        s = "startfield";
+                        if (s.startsWith("startfield")) {
+                            Field field = null;
+                            try {
+                                field = (Field) objin.readObject();
+                            } catch (ClassNotFoundException e) {
+                                System.out.println("Failed to read object");
+                            }
+                            if (field != null) {
+                                command.sendPossibleMovesMessage(field);
+                                MoveManager.choosenPawn = GameManager.actualplayer.getPawnById(field.getId());
+                            }
+                        } else if (s.startsWith("endfield")) {
+                            Field field = null;
+                            try {
+                                field = (Field) objin.readObject();
+                            } catch (ClassNotFoundException e) {
+                                System.out.println("Failed to read object");
+                            }
+                            GameManager.actualplayer.movePawn(MoveManager.choosenPawn, field);
+                            GameManager.board.move(MoveManager.choosenPawn, field);
+                            command.sendMoveMessage(MoveManager.choosenPawn, field);
+                            GameManager.nextPlayer();
+                        } else if (s.startsWith("skip")) {
+                            GameManager.nextPlayer();
+                        }
+                    }
+                    else
+                    {
+                        GameManager.actualplayer.botMove();
+                        command.sendMoveMessage(GameManager.actualplayer.getBotchoosenpawn(),GameManager.actualplayer.getBotchoosendestination());
+                    }
+                }
+            }
+            catch (Exception e) {
+                System.out.println("Failed to handle command: " + e);
+            }
+        }
 
+        private void createGame()
+        {
+            String s;
+            try {
+                objout.writeObject("newgame");
+            }
+            catch (IOException e)
+            {
+                System.out.println("Failed to send newgame command");
+            }
+            try {
+                s = (String) objin.readObject();
+            if (s.startsWith("creategame")) {
+                String[] parts = s.split(":");
+                String numOfBots = parts[1];
+                String numOfPlayers = parts[2];
+                String numOfPawns = parts[3];
+                int numOfPawnsint = 0;
+                int numOfBotsint = 0;
+                int numOfPlayersint = 0;
+                try {
+                    numOfPlayersint = Integer.parseInt(numOfPlayers);
+                    numOfBotsint = Integer.parseInt(numOfBots);
+                    numOfPawnsint = Integer.parseInt(numOfPawns);
+                } catch (Exception e) {
+                    System.out.println("Creating board error");
+                }
 
+                GameManager.freePlacesForGame = numOfPlayersint - numOfBotsint;
+                GameManager.numberOfPlayers = numOfPlayersint;
+                GameManager.numberOfPawns = numOfPawnsint;
+                GameManager.board.build(numOfPawnsint);
+                for (int i = 1; i <= numOfBotsint; i++) {
+                    if (i == 1) {
+                        GameManager.players.add(new Player1(numOfPawnsint, true));
+                        //new Handler(socket, "player1").start();
+                    } else if (i == 2) {
+                        GameManager.players.add(new Player2(numOfPawnsint, true));
+                        new Handler(socket, "player2").start();
+                    } else if (i == 3) {
+                        GameManager.players.add(new Player3(numOfPawnsint, true));
+                        new Handler(socket, "player3").start();
+                    } else if (i == 4) {
+                        GameManager.players.add(new Player4(numOfPawnsint, true));
+                        new Handler(socket, "player4").start();
+                    } else if (i == 5) {
+                        GameManager.players.add(new Player5(numOfPawnsint, true));
+                        new Handler(socket, "player5").start();
+                    } else if (i == 6) {
+                        GameManager.players.add(new Player6(numOfPawnsint, true));
+                        new Handler(socket, "player6").start();
+                    }
+                }
+
+                addPlayer();
+                GameManager.playersobjout.add(objout);
+                GameManager.actualplayer = GameManager.players.get(GameManager.numberOfPlayers - 1 - GameManager.freePlacesForGame);
+            }
+
+            else {
+                System.out.println("Failure, game has not been created");
+            }
+            } catch (Exception e) {
+                System.out.println("failed to read line" + e);
+            }
+        }
         public void run() {
             try {
                 this.objout = new ObjectOutputStream(socket.getOutputStream());
                 this.objin = new ObjectInputStream(socket.getInputStream());
-                GameManager.playersobjout.add(objout);
+
                 command = new Command(objout);
                 while(true) {
-                    if(!GameManager.gameInProgerss && !this.connected)
-                    {
+                    System.out.println(this.name);
+                    if (GameManager.freePlacesForGame == 0) {
+                        GameManager.gameInProgerss = true;
+                    }
+                    if (!GameManager.gameInProgerss && !this.connected) {
                         String s;
                         if (GameManager.freePlacesForGame == 0) {
                             GameManager.gameInProgerss = true;
                         }
-
                         s = (String) objin.readObject();
-                        System.out.println(s);
                         if (s.startsWith("connect") && !GameManager.gameInProgerss) {
                             if (GameManager.numberOfPlayers == 0) {
-                                objout.writeObject("newgame");
-                                try {
-                                    s = (String) objin.readObject();
-                                } catch (IOException e) {
-                                    System.out.println("failed to read line");
-                                }
-                                if (s.startsWith("creategame")) {
-                                    String[] parts = s.split(":");
-                                    String numOfBots = parts[1];
-                                    String numOfPlayers = parts[2];
-                                    String numOfPawns = parts[3];
-                                    int numOfPawnsint = 0;
-                                    int numOfBotsint = 0;
-                                    int numOfPlayersint = 0;
-                                    try {
-                                        numOfPlayersint = Integer.parseInt(numOfPlayers);
-                                        numOfBotsint = Integer.parseInt(numOfBots);
-                                        numOfPawnsint = Integer.parseInt(numOfPawns);
-                                    } catch (Exception e) {
-                                        System.out.println("Creating board error");
-                                    }
-                                    GameManager.freePlacesForGame = numOfPlayersint - numOfBotsint;
-                                    GameManager.numberOfPlayers = numOfPlayersint;
-                                    GameManager.numberOfPawns = numOfPawnsint;
-                                    GameManager.board.build(numOfPawnsint);
-                                    for (int i = 1; i <= numOfBotsint; i++) {
-                                        if (i == 1) {
-                                            GameManager.players.add(new Player1(numOfPawnsint, true));
-                                            new Handler(socket, "player1").start();
-                                        } else if (i == 2) {
-                                            GameManager.players.add(new Player2(numOfPawnsint, true));
-                                            new Handler(socket, "player2").start();
-                                        } else if (i == 3) {
-                                            GameManager.players.add(new Player3(numOfPawnsint, true));
-                                            new Handler(socket, "player3").start();
-                                        } else if (i == 4) {
-                                            GameManager.players.add(new Player4(numOfPawnsint, true));
-                                            new Handler(socket, "player4").start();
-                                        } else if (i == 5) {
-                                            GameManager.players.add(new Player5(numOfPawnsint, true));
-                                            new Handler(socket, "player5").start();
-                                        } else if (i == 6) {
-                                            GameManager.players.add(new Player6(numOfPawnsint, true));
-                                            new Handler(socket, "player6").start();
-                                        }
-                                    }
-                                    addPlayer();
-                                    GameManager.actualplayer = GameManager.players.get(GameManager.numberOfPlayers - GameManager.freePlacesForGame);
-                                    System.out.println(GameManager.board.getFieldById("0,0,0").getState());
-                                    if (GameManager.freePlacesForGame == 0) {
-                                        GameManager.gameInProgerss = true;
-                                    }
-                                } else {
-                                    System.out.println("Failure, game has not been created");
-                                }
-                            }
-                            else if (GameManager.freePlacesForGame >0){
-                                addPlayer();
-                                String message = "joingame" + ":"+GameManager.players.get(GameManager.numberOfPlayers - GameManager.freePlacesForGame + 1).getId() + ":" + GameManager.numberOfPlayers;
-                                objout.writeObject(message);
-                                GameManager.freePlacesForGame--;
+                                createGame();
                                 if (GameManager.freePlacesForGame == 0) {
                                     GameManager.gameInProgerss = true;
                                 }
+                                this.connected = true;
                             }
-                        }
+                        } else if (GameManager.freePlacesForGame > 0) {
+                            addPlayer();
 
-                    }
-                    else if(GameManager.gameInProgerss && this.connected)
-                    {
-                        String s;
-                        s = (String) objin.readObject();
+                            GameManager.playersobjout.add(objout);
+                            String message = "joingame" + ":" + GameManager.players.get(GameManager.numberOfPlayers - 1 - GameManager.freePlacesForGame).getId() + ":" + GameManager.numberOfPlayers;
+                            objout.writeObject(message);
 
-                        if(GameManager.actualplayer.getId().equals(name))
-                        {
-                            objout.writeObject("yourturn");
-                            if(s.startsWith("startfield"))
-                            {
-                                Field field = null;
-                                try {
-                                    field = (Field) objin.readObject();
-                                }
-                                catch (ClassNotFoundException e)
-                                {
-                                    System.out.println("Failed to read object");
-                                }
-                                if(field != null) {
-                                    command.sendPossibleMovesMessage(field);
-                                    MoveManager.choosenPawn = GameManager.actualplayer.getPawnById(field.getId());
-                                }
-                            }
-                            else if(s.startsWith("endfield"))
-                            {
-                                Field field = null;
-                                try {
-                                    field = (Field) objin.readObject();
-                                }
-                                catch (ClassNotFoundException e)
-                                {
-                                    System.out.println("Failed to read object");
-                                }
-                                GameManager.actualplayer.movePawn(MoveManager.choosenPawn,field);
-                                GameManager.board.move(MoveManager.choosenPawn,field);
-                                command.sendMoveMessage(MoveManager.choosenPawn,field);
-                                GameManager.nextPlayer();
-                            }
-                            else if(s.startsWith("skip"))
-                            {
-                                GameManager.nextPlayer();
-                            }
                         }
-                        else if(GameManager.gameInProgerss && !this.connected)
-                        {
-                            if (s.startsWith("connect")) {
-                                objout.writeObject("gamefull");
-                            }
+                    } else if (GameManager.gameInProgerss && this.connected) {
+                        handleCommands();
+                    } else if (GameManager.gameInProgerss && !this.connected) {
+                        String s = (String) objin.readObject();
+                        if (s.startsWith("connect")) {
+                            objout.writeObject("gamefull");
                         }
                     }
                 }
-
             } catch (Exception e) {
-
                 System.out.println(e);
-
             }
         }
     }
+
 
     /**
      * Funkcja połączenia, która odpowiada za całe połączenie serwera.

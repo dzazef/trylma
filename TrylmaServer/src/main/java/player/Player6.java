@@ -1,5 +1,6 @@
 package player;
 
+import gamemanager.GameManager;
 import gamemanager.MoveManager;
 import gamemanager.Path;
 import gamemanager.board.Field;
@@ -30,6 +31,7 @@ public class Player6 implements Player {
             for (int i = 0; i < k; i++) {
                 Pawn pawn = new Pawn(x,y,z);
                 this.pawns.add(pawn);
+                GameManager.board.getFieldById(pawn.getId()).changeState();
                 y++;
                 z--;
             }

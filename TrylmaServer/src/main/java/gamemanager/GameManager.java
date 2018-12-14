@@ -4,6 +4,8 @@ import gamemanager.board.Board;
 import gamemanager.board.Field;
 import player.Pawn;
 import player.Player;
+import player.Player1;
+import player.Player6;
 
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
@@ -37,6 +39,7 @@ public abstract class GameManager {
     }
     public static void initialize()
     {
+        actualplayer = null;
         playersobjout = new ArrayList<ObjectOutputStream>();
         board = new Board();
         players = new ArrayList<Player>();

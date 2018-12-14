@@ -1,6 +1,8 @@
 package gamemanager.board;
 
-public class Field {
+import java.io.Serializable;
+
+public class Field implements Serializable {
     int x,y,z;
     public enum State{
         TAKEN,FREE
@@ -18,12 +20,7 @@ public class Field {
     {
         return this.z;
     }
-    public void setXYZ(int x,int y,int z)
-    {
-        this.x = x;
-        this.y = y;
-        this.z = z;
-    }
+
     public void changeState()
     {
         if(state.equals(State.FREE))
@@ -43,12 +40,13 @@ public class Field {
     {
         return x+","+y+","+z;
     }
+    public Field(){}
     public Field(int x,int y,int z,boolean taken)
     {
         this.x=x;
         this.y = y;
         this.z = z;
-        if(taken = true)
+        if(taken)
         {
             this.state = State.TAKEN;
         }

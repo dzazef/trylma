@@ -41,8 +41,8 @@ public class Board {
                \  /
                 \/
          */
-        int initialy = -2*numOfPawns;
-        int initialz = numOfPawns;
+        int initialy = numOfPawns;
+        int initialz = -2*numOfPawns;
         int x = -numOfPawns;
         for(int k = 3*numOfPawns + 1; x<=2*numOfPawns+1;x++,k--)
         {
@@ -50,13 +50,13 @@ public class Board {
             int z = initialz;
             for(int i = 0; i<k;i++)
             {
-
-                fields.add(new Field(x,y,z,false));
-                y++;
-                z--;
+                Field field = new Field(x,y,z,false);
+                fields.add(field);
+                y--;
+                z++;
             }
 
-            initialy++;
+            initialz++;
         }
 
         /*    /\
@@ -67,8 +67,8 @@ public class Board {
          /  \    /  \
         /____\  /____\
          */
-        initialy = -numOfPawns;
-        initialz = 2*numOfPawns;
+        initialy = 2*numOfPawns;
+        initialz = -numOfPawns;
         x = numOfPawns;
         for(int k = 3*numOfPawns + 1; x>=-2*numOfPawns - 1;x--,k--) {
             int y = initialy;
@@ -80,10 +80,10 @@ public class Board {
                     Field field = new Field(x,y,z,false);
                     fields.add(field);
                 }
-                y++;
-                z--;
+                y--;
+                z++;
             }
-            initialz--;
+            initialy--;
         }
     }
 }

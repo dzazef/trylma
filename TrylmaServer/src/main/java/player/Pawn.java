@@ -4,6 +4,7 @@ package player;
 public class Pawn {
     private int x,y,z;
 
+
     public Pawn(int x, int y, int z)
     {
         this.x = x;
@@ -32,6 +33,6 @@ public class Pawn {
 
     public String getId()
     {
-        return "x,y,z";
+        return x+","+y+","+z;
     }
 }

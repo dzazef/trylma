@@ -1,5 +1,6 @@
 package player;
 
+import gamemanager.GameManager;
 import gamemanager.MoveManager;
 import gamemanager.Path;
 import gamemanager.board.Field;
@@ -21,7 +22,7 @@ public class Player2 implements Player {
         this.numOfPawns = numOfPawns;
         this.pawns = new ArrayList<Pawn>();
         int initialy = numOfPawns;
-        int initialz = numOfPawns;
+        int initialz = 1;
         int x = (numOfPawns+1);
         for(int k = numOfPawns; x<=2*numOfPawns ;x++,k--) {
             int y = initialy;
@@ -29,11 +30,12 @@ public class Player2 implements Player {
             for (int i = 0; i < k; i++) {
                 Pawn pawn = new Pawn(x,y,z);
                 this.pawns.add(pawn);
-
-                y++;
-                z--;
+                GameManager.board.getFieldById(pawn.getId()).changeState();
+                System.out.println(pawn.getId());
+                y--;
+                z++;
             }
-            initialy--;
+            initialz++;
         }
     }
     public Pawn getPawnById(String id)
