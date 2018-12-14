@@ -21,7 +21,7 @@ public class MenuController {
     }
     @FXML
     public void handleNewGame() {
-        BoardView.initialize(800, 4, 5, 5);
+        BoardView.initialize(600, 4, 5, 0);
         BoardView.show();
         BoardView.initializeFields();
     }
