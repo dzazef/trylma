@@ -1,6 +1,7 @@
 package gamemanager.board;
 
 import player.Pawn;
+import serializable.Field;
 
 import java.util.ArrayList;
 

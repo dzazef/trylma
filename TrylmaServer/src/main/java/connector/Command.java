@@ -2,9 +2,7 @@ package connector;
 
 import gamemanager.GameManager;
 import gamemanager.MoveManager;
-import gamemanager.Path;
-import gamemanager.board.Board;
-import gamemanager.board.Field;
+import serializable.Field;
 import player.Pawn;
 import player.Player;
 

@@ -3,7 +3,7 @@ package player;
 import gamemanager.GameManager;
 import gamemanager.MoveManager;
 import gamemanager.Path;
-import gamemanager.board.Field;
+import serializable.Field;
 
 import java.util.ArrayList;
 

@@ -1,7 +1,5 @@
 package gamemanager;
-import gamemanager.board.Board;
-import gamemanager.board.Field;
-import player.Pawn;
+import serializable.Field;
 import player.Pawn;
 
 import java.util.ArrayList;
@@ -53,36 +51,56 @@ public class MoveManager {
     private static void jump(Path previousPath)
     {
         Field whereWeAre = previousPath.end;
+        Field jumpOver;
+        Field jumpEnd;
         // Sprawdza czy jest możliwy skok w prawo i jak tak to go dodaje do liste ścieżek
-        Field jumpOver = GameManager.board.getFieldById(getIdFromCoordinates(whereWeAre.getX(),whereWeAre.getY()+1,whereWeAre.getZ()-1));
-        Field jumpEnd = GameManager.board.getFieldById(getIdFromCoordinates(whereWeAre.getX(),whereWeAre.getY()+2,whereWeAre.getZ()-2));
-        addJump(jumpEnd,jumpOver,previousPath);
+        if(GameManager.board.getFieldById(getIdFromCoordinates(whereWeAre.getX(),whereWeAre.getY()+1,whereWeAre.getZ()-1))!=null &&
+                GameManager.board.getFieldById(getIdFromCoordinates(whereWeAre.getX(),whereWeAre.getY()+2,whereWeAre.getZ()-2))!=null  ) {
+             jumpOver = GameManager.board.getFieldById(getIdFromCoordinates(whereWeAre.getX(), whereWeAre.getY() + 1, whereWeAre.getZ() - 1));
+             jumpEnd = GameManager.board.getFieldById(getIdFromCoordinates(whereWeAre.getX(), whereWeAre.getY() + 2, whereWeAre.getZ() - 2));
+            addJump(jumpEnd, jumpOver, previousPath);
+        }
 
 
         // Sprawdza czy jest możliwy skok w lewo i jak tak to go dodaje do listy ścieżek
-        jumpOver = GameManager.board.getFieldById(getIdFromCoordinates(whereWeAre.getX(),whereWeAre.getY()-1,whereWeAre.getZ()+1));
-        jumpEnd = GameManager.board.getFieldById(getIdFromCoordinates(whereWeAre.getX(),whereWeAre.getY()-2,whereWeAre.getZ()+2));
-        addJump(jumpEnd,jumpOver,previousPath);
+        if(GameManager.board.getFieldById(getIdFromCoordinates(whereWeAre.getX(), whereWeAre.getY() - 1, whereWeAre.getZ() + 1))!=null &&
+                GameManager.board.getFieldById(getIdFromCoordinates(whereWeAre.getX(), whereWeAre.getY() - 2, whereWeAre.getZ() + 2))!=null  ) {
+            jumpOver = GameManager.board.getFieldById(getIdFromCoordinates(whereWeAre.getX(), whereWeAre.getY() - 1, whereWeAre.getZ() + 1));
+            jumpEnd = GameManager.board.getFieldById(getIdFromCoordinates(whereWeAre.getX(), whereWeAre.getY() - 2, whereWeAre.getZ() + 2));
+            addJump(jumpEnd, jumpOver, previousPath);
+        }
 
         // Sprawdza czy jest możliwy skok w prawy górny róg i jak tak to go dodaje do listy ścieżek
-        jumpOver = GameManager.board.getFieldById(getIdFromCoordinates(whereWeAre.getX()-1,whereWeAre.getY(),whereWeAre.getZ()-1));
-        jumpEnd = GameManager.board.getFieldById(getIdFromCoordinates(whereWeAre.getX()-2,whereWeAre.getY(),whereWeAre.getZ()-2));
-        addJump(jumpEnd,jumpOver,previousPath);
+        if(GameManager.board.getFieldById(getIdFromCoordinates(whereWeAre.getX() - 1, whereWeAre.getY(), whereWeAre.getZ() - 1))!=null &&
+                GameManager.board.getFieldById(getIdFromCoordinates(whereWeAre.getX() - 2, whereWeAre.getY(), whereWeAre.getZ() - 2))!=null  ) {
+            jumpOver = GameManager.board.getFieldById(getIdFromCoordinates(whereWeAre.getX() - 1, whereWeAre.getY(), whereWeAre.getZ() - 1));
+            jumpEnd = GameManager.board.getFieldById(getIdFromCoordinates(whereWeAre.getX() - 2, whereWeAre.getY(), whereWeAre.getZ() - 2));
+            addJump(jumpEnd, jumpOver, previousPath);
+        }
 
         // Sprawdza czy jest możliwy skok w lewy górny róg i jak tak to go dodaje do listy ścieżek
-        jumpOver = GameManager.board.getFieldById(getIdFromCoordinates(whereWeAre.getX()-1,whereWeAre.getY()-1,whereWeAre.getZ()));
-        jumpEnd = GameManager.board.getFieldById(getIdFromCoordinates(whereWeAre.getX() - 2,whereWeAre.getY()-2,whereWeAre.getZ()));
-        addJump(jumpEnd,jumpOver,previousPath);
+        if(GameManager.board.getFieldById(getIdFromCoordinates(whereWeAre.getX() - 1, whereWeAre.getY() - 1, whereWeAre.getZ()))!=null &&
+                GameManager.board.getFieldById(getIdFromCoordinates(whereWeAre.getX() - 2, whereWeAre.getY() - 2, whereWeAre.getZ()))!=null  ) {
+            jumpOver = GameManager.board.getFieldById(getIdFromCoordinates(whereWeAre.getX() - 1, whereWeAre.getY() - 1, whereWeAre.getZ()));
+            jumpEnd = GameManager.board.getFieldById(getIdFromCoordinates(whereWeAre.getX() - 2, whereWeAre.getY() - 2, whereWeAre.getZ()));
+            addJump(jumpEnd, jumpOver, previousPath);
+        }
 
         // Sprawdza czy jest możliwy skok w lewy dolny róg i jak tak to go dodaje do listy ścieżek
-        jumpOver = GameManager.board.getFieldById(getIdFromCoordinates(whereWeAre.getX()+1,whereWeAre.getY(),whereWeAre.getZ()+1));
-        jumpEnd = GameManager.board.getFieldById(getIdFromCoordinates(whereWeAre.getX()+2,whereWeAre.getY(),whereWeAre.getZ()+2));
-        addJump(jumpEnd,jumpOver,previousPath);
+        if(GameManager.board.getFieldById(getIdFromCoordinates(whereWeAre.getX() + 1, whereWeAre.getY(), whereWeAre.getZ() + 1))!=null &&
+                GameManager.board.getFieldById(getIdFromCoordinates(whereWeAre.getX() + 2, whereWeAre.getY(), whereWeAre.getZ() + 2))!=null  ) {
+            jumpOver = GameManager.board.getFieldById(getIdFromCoordinates(whereWeAre.getX() + 1, whereWeAre.getY(), whereWeAre.getZ() + 1));
+            jumpEnd = GameManager.board.getFieldById(getIdFromCoordinates(whereWeAre.getX() + 2, whereWeAre.getY(), whereWeAre.getZ() + 2));
+            addJump(jumpEnd, jumpOver, previousPath);
+        }
 
         // Sprawdza czy jest możliwy skok w prawy dolny róg i jak tak to go dodaje do listy ścieżek
-        jumpOver = GameManager.board.getFieldById(getIdFromCoordinates(whereWeAre.getX()+1,whereWeAre.getY()+1,whereWeAre.getZ()));
-        jumpEnd = GameManager.board.getFieldById(getIdFromCoordinates(whereWeAre.getX()+2,whereWeAre.getY()+2,whereWeAre.getZ()));
-        addJump(jumpEnd,jumpOver,previousPath);
+        if(GameManager.board.getFieldById(getIdFromCoordinates(whereWeAre.getX() + 1, whereWeAre.getY() + 1, whereWeAre.getZ()))!=null &&
+                GameManager.board.getFieldById(getIdFromCoordinates(whereWeAre.getX() + 2, whereWeAre.getY() + 2, whereWeAre.getZ()))!=null  ) {
+            jumpOver = GameManager.board.getFieldById(getIdFromCoordinates(whereWeAre.getX() + 1, whereWeAre.getY() + 1, whereWeAre.getZ()));
+            jumpEnd = GameManager.board.getFieldById(getIdFromCoordinates(whereWeAre.getX() + 2, whereWeAre.getY() + 2, whereWeAre.getZ()));
+            addJump(jumpEnd, jumpOver, previousPath);
+        }
     }
     private static void addStep(Field stepEnd)
     {
@@ -101,28 +119,41 @@ public class MoveManager {
     }
     private static void step(Field field)
     {
+        Field stepEnd;
         // Sprawdza, czy jest możliwy krok w prawo i dodaje do listy ścieżek
-        Field stepEnd = GameManager.board.getFieldById(getIdFromCoordinates(field.getX(),field.getY()+1,field.getZ()-1));
-        addStep(stepEnd);
+        if(GameManager.board.getFieldById(getIdFromCoordinates(field.getX(),field.getY()+1,field.getZ()-1))!=null) {
+            stepEnd = GameManager.board.getFieldById(getIdFromCoordinates(field.getX(), field.getY() + 1, field.getZ() - 1));
+            addStep(stepEnd);
+        }
 
         // Sprawdza, czy jest możliwy krok w lewo i dodaje do listy ścieżek
-        stepEnd = GameManager.board.getFieldById(getIdFromCoordinates(field.getX(),field.getY()-1,field.getZ()+1));
-        addStep(stepEnd);
+        if(GameManager.board.getFieldById(getIdFromCoordinates(field.getX(),field.getY()-1,field.getZ()+1))!=null) {
+            stepEnd = GameManager.board.getFieldById(getIdFromCoordinates(field.getX(), field.getY() - 1, field.getZ() + 1));
+            addStep(stepEnd);
+        }
 
         // Sprawdza, czy jest możliwy krok w prawy górny róg i dodaje do listy ścieżek
-        stepEnd = GameManager.board.getFieldById(getIdFromCoordinates(field.getX()-1,field.getY(),field.getZ()-1));
-        addStep(stepEnd);
+        if(GameManager.board.getFieldById(getIdFromCoordinates(field.getX()-1,field.getY(),field.getZ()-1))!=null) {
+            stepEnd = GameManager.board.getFieldById(getIdFromCoordinates(field.getX() - 1, field.getY(), field.getZ() - 1));
+            addStep(stepEnd);
+        }
 
         // Sprawdza, czy jest możliwy krok w lewy górny róg i dodaje do listy ścieżek
-        stepEnd = GameManager.board.getFieldById(getIdFromCoordinates(field.getX()-1,field.getY()-1,field.getZ()));
-        addStep(stepEnd);
+        if(GameManager.board.getFieldById(getIdFromCoordinates(field.getX()-1,field.getY()-1,field.getZ()))!=null) {
+            stepEnd = GameManager.board.getFieldById(getIdFromCoordinates(field.getX() - 1, field.getY() - 1, field.getZ()));
+            addStep(stepEnd);
+        }
 
         // Sprawdza, czy jest możliwy krok w prawy dolny róg i dodaje do listy ścieżek
-        stepEnd = GameManager.board.getFieldById(getIdFromCoordinates(field.getX()+1,field.getY()+1,field.getZ()));
-        addStep(stepEnd);
+        if(GameManager.board.getFieldById(getIdFromCoordinates(field.getX()+1,field.getY()+1,field.getZ()))!=null) {
+            stepEnd = GameManager.board.getFieldById(getIdFromCoordinates(field.getX() + 1, field.getY() + 1, field.getZ()));
+            addStep(stepEnd);
+        }
 
         // Sprawdza, czy jest możliwy krok w lewy dolny róg i dodaje do listy ścieżek
-        stepEnd = GameManager.board.getFieldById(getIdFromCoordinates(field.getX()+1,field.getY(),field.getZ()+1));
-        addStep(stepEnd);
+        if(GameManager.board.getFieldById(getIdFromCoordinates(field.getX()+1,field.getY(),field.getZ()+1))!=null) {
+            stepEnd = GameManager.board.getFieldById(getIdFromCoordinates(field.getX() + 1, field.getY(), field.getZ() + 1));
+            addStep(stepEnd);
+        }
     }
 }

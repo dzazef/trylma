@@ -1,4 +1,4 @@
-package gamemanager.board;
+package serializable;
 
 import java.io.Serializable;
 
@@ -40,7 +40,6 @@ public class Field implements Serializable {
     {
         return x+","+y+","+z;
     }
-    public Field(){}
     public Field(int x,int y,int z,boolean taken)
     {
         this.x=x;

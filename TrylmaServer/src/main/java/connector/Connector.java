@@ -2,7 +2,7 @@ package connector;
 
 import gamemanager.GameManager;
 import gamemanager.MoveManager;
-import gamemanager.board.Field;
+import serializable.Field;
 import player.*;
 
 import java.io.*;
@@ -47,54 +47,60 @@ public class Connector {
         /**
          * Nazwa gracza/klienta, którego handler obsługuje.
          */
-        private String name;
+        private Player player_to_handle;
         /**
          * Socket, na którym połączony jest klient.
          */
         private Socket socket;
+
 
         /**
          * Funkcja dodająca gracza w zależności ile graczy jest już w grze.
          */
         private void addPlayer()
         {
-
             if((GameManager.numberOfPlayers - GameManager.freePlacesForGame +1)==1)
             {
-                GameManager.players.add(new Player1(GameManager.numberOfPawns,false));
-                this.name = "player1";
+                Player1 player = new Player1(GameManager.numberOfPawns,false);
+                GameManager.players.add(player);
+                this.player_to_handle = player;
             }
             else if((GameManager.numberOfPlayers - GameManager.freePlacesForGame +1)==2)
             {
-
-                GameManager.players.add(new Player2(GameManager.numberOfPawns,false));
-                this.name = "player2";
-
+                Player2 player = new Player2(GameManager.numberOfPawns,false);
+                GameManager.players.add(player);
+                this.player_to_handle = player;
             }
             else if((GameManager.numberOfPlayers - GameManager.freePlacesForGame +1)==3)
             {
-                GameManager.players.add(new Player3(GameManager.numberOfPawns,false));
-                this.name = "player3";
+                Player3 player = new Player3(GameManager.numberOfPawns,false);
+                GameManager.players.add(player);
+                this.player_to_handle = player;
             }
             else if((GameManager.numberOfPlayers - GameManager.freePlacesForGame +1)==4)
             {
-                GameManager.players.add(new Player4(GameManager.numberOfPawns,false));
-                this.name = "player4";
+                Player4 player = new Player4(GameManager.numberOfPawns,false);
+                GameManager.players.add(player);
+                this.player_to_handle = player;
             }
             else if((GameManager.numberOfPlayers - GameManager.freePlacesForGame +1)==5)
             {
-                GameManager.players.add(new Player5(GameManager.numberOfPawns,false));
-                this.name = "player5";
+                Player5 player = new Player5(GameManager.numberOfPawns,false);
+                GameManager.players.add(player);
+                this.player_to_handle = player;
             }
             else if((GameManager.numberOfPlayers - GameManager.freePlacesForGame +1)==6)
             {
-                GameManager.players.add(new Player6(GameManager.numberOfPawns,false));
-                this.name = "player6";
+                Player6 player = new Player6(GameManager.numberOfPawns,false);
+                GameManager.players.add(player);
+                this.player_to_handle = player;
             }
             this.connected = true;
 
             GameManager.freePlacesForGame--;
-
+            if (GameManager.freePlacesForGame == 0) {
+                GameManager.gameInProgerss = true;
+            }
         }
 
         /**
@@ -104,65 +110,88 @@ public class Connector {
         public Handler(Socket socket) {
             this.connected =false;
             this.socket = socket;
-            this.name = "...";
+            this.player_to_handle = new Player1(0,false);
+            try {
+                this.objout = new ObjectOutputStream(socket.getOutputStream());
+                this.objin = new ObjectInputStream(socket.getInputStream());
+            }
+            catch (Exception e)
+            {
+                System.out.println("Failed to create Output or Input stream. Player Handler");
+            }
+            command = new Command(objout);
         }
 
-        /**
-         * Konstruktor, używany do tworzenia handlera dla botów.
-         * @param socket na który odpowiedzi będzie wysyłał bot.
-         * @param name Nazwa gracza, którą przyjmie bot.
-         */
-        public Handler(Socket socket,String name)
-        {
-            this.connected = true;
+
+        public Handler(Socket socket,Player player,ObjectInputStream in, ObjectOutputStream out) {
+            this.connected =true;
             this.socket = socket;
-            this.name = name;
+            this.player_to_handle = player;
+            this.objout =out;
+            this.objin = in;
+            command = new Command(objout);
+
         }
         private void handleCommands() {
-            try {
                 String s;
-                if (GameManager.actualplayer.getId().equals(this.name)) {
-                    if(!GameManager.actualplayer.isBot()) {
-                        objout.writeObject("yourturn");
-                        s = (String) objin.readObject();
+                if (GameManager.actualplayer.getId().equals(this.player_to_handle.getId())) {
+                    if (!this.player_to_handle.isBot()) {
+                        try {
+                            this.objout.writeObject("yourturn");
+                        } catch (Exception e) {
+                            System.out.println("Failed to send yourturn message" + e + " : " + this.player_to_handle.getId());
+                            return;
+                        }
+                        try {
+                            s = (String) this.objin.readObject();
+                        } catch (Exception e) {
+                            System.out.println("Failed to read startfield command from client"+ e + " : " + this.player_to_handle.getId());
+                            return;
+                        }
                         System.out.println(s);
-                        s = "startfield";
                         if (s.startsWith("startfield")) {
                             Field field = null;
                             try {
-                                field = (Field) objin.readObject();
-                            } catch (ClassNotFoundException e) {
-                                System.out.println("Failed to read object");
+                                synchronized (objin) {
+                                    field = (Field) objin.readObject();
+                                }
+                            } catch (Exception e) {
+                                System.out.println("Failed to read Field class object for startfield"+ e.getCause() + " : " + this.player_to_handle.getId());
                             }
                             if (field != null) {
                                 command.sendPossibleMovesMessage(field);
                                 MoveManager.choosenPawn = GameManager.actualplayer.getPawnById(field.getId());
                             }
-                        } else if (s.startsWith("endfield")) {
-                            Field field = null;
+
                             try {
-                                field = (Field) objin.readObject();
-                            } catch (ClassNotFoundException e) {
-                                System.out.println("Failed to read object");
+                                s = (String) objin.readObject();
+                            } catch (Exception e) {
+                                System.out.println("Failed to read endfield command from client"+ e + " : " + this.player_to_handle.getId());
+                                return;
                             }
-                            GameManager.actualplayer.movePawn(MoveManager.choosenPawn, field);
-                            GameManager.board.move(MoveManager.choosenPawn, field);
-                            command.sendMoveMessage(MoveManager.choosenPawn, field);
-                            GameManager.nextPlayer();
-                        } else if (s.startsWith("skip")) {
-                            GameManager.nextPlayer();
+
+                            if (s.startsWith("endfield")) {
+                                field = null;
+                                try {
+                                    field = (Field) objin.readObject();
+                                } catch (Exception e) {
+                                    System.out.println("Failed to read object for endfield"+ e + " : " + this.player_to_handle.getId());
+                                }
+                                GameManager.actualplayer.movePawn(MoveManager.choosenPawn, field);
+                                GameManager.board.move(MoveManager.choosenPawn, field);
+                                command.sendMoveMessage(MoveManager.choosenPawn, field);
+                                GameManager.nextPlayer();
+                            } else if (s.startsWith("skip")) {
+                                System.out.println("Tu wszedłem");
+                                GameManager.nextPlayer();
+                                System.out.println("Nie wyjebało");
+                            }
+                        } else {
+                            GameManager.actualplayer.botMove();
+                            command.sendMoveMessage(GameManager.actualplayer.getBotchoosenpawn(), GameManager.actualplayer.getBotchoosendestination());
                         }
                     }
-                    else
-                    {
-                        GameManager.actualplayer.botMove();
-                        command.sendMoveMessage(GameManager.actualplayer.getBotchoosenpawn(),GameManager.actualplayer.getBotchoosendestination());
-                    }
                 }
-            }
-            catch (Exception e) {
-                System.out.println("Failed to handle command: " + e);
-            }
         }
 
         private void createGame()
@@ -177,6 +206,10 @@ public class Connector {
             }
             try {
                 s = (String) objin.readObject();
+            } catch (Exception e) {
+                System.out.println("failed to read line" + e);
+                return;
+            }
             if (s.startsWith("creategame")) {
                 String[] parts = s.split(":");
                 String numOfBots = parts[1];
@@ -199,27 +232,33 @@ public class Connector {
                 GameManager.board.build(numOfPawnsint);
                 for (int i = 1; i <= numOfBotsint; i++) {
                     if (i == 1) {
-                        GameManager.players.add(new Player1(numOfPawnsint, true));
-                        //new Handler(socket, "player1").start();
+                        Player1 player1 = new Player1(numOfPawnsint, true);
+                        GameManager.players.add(player1);
+                        (new Handler(this.socket,player1,objin,objout)).start();
                     } else if (i == 2) {
-                        GameManager.players.add(new Player2(numOfPawnsint, true));
-                        new Handler(socket, "player2").start();
+                        Player2 player2 = new Player2(numOfPawnsint, true);
+                        GameManager.players.add(player2);
+                        (new Handler(this.socket,player2,objin,objout)).start();
                     } else if (i == 3) {
-                        GameManager.players.add(new Player3(numOfPawnsint, true));
-                        new Handler(socket, "player3").start();
+                        Player3 player3 = new Player3(numOfPawnsint, true);
+                        GameManager.players.add(player3);
+                        (new Handler(this.socket,player3,objin,objout)).start();
                     } else if (i == 4) {
-                        GameManager.players.add(new Player4(numOfPawnsint, true));
-                        new Handler(socket, "player4").start();
+                        Player4 player4 = new Player4(numOfPawnsint, true);
+                        GameManager.players.add(player4);
+                        (new Handler(this.socket,player4,objin,objout)).start();
                     } else if (i == 5) {
-                        GameManager.players.add(new Player5(numOfPawnsint, true));
-                        new Handler(socket, "player5").start();
+                        Player5 player5 = new Player5(numOfPawnsint, true);
+                        GameManager.players.add(player5);
+                        new Handler(this.socket,player5,objin,objout);
                     } else if (i == 6) {
-                        GameManager.players.add(new Player6(numOfPawnsint, true));
-                        new Handler(socket, "player6").start();
+                        Player6 player6 = new Player6(numOfPawnsint, true);
+                        GameManager.players.add(player6);
+                        (new Handler(this.socket,player6,objin, objout)).start();
                     }
                 }
-
                 addPlayer();
+                System.out.println(GameManager.numberOfPlayers);
                 GameManager.playersobjout.add(objout);
                 GameManager.actualplayer = GameManager.players.get(GameManager.numberOfPlayers - 1 - GameManager.freePlacesForGame);
             }
@@ -227,55 +266,99 @@ public class Connector {
             else {
                 System.out.println("Failure, game has not been created");
             }
-            } catch (Exception e) {
-                System.out.println("failed to read line" + e);
-            }
+
         }
         public void run() {
-            try {
-                this.objout = new ObjectOutputStream(socket.getOutputStream());
-                this.objin = new ObjectInputStream(socket.getInputStream());
 
-                command = new Command(objout);
                 while(true) {
-                    System.out.println(this.name);
-                    if (GameManager.freePlacesForGame == 0) {
-                        GameManager.gameInProgerss = true;
+                    if(!GameManager.gameInProgerss)
+                    {
+                        String s;
+                        try {
+                            s = (String) objin.readObject();
+                        }
+                        catch (Exception e)
+                        {
+                            System.out.println("Failedo to read connect command");
+                            break;
+                        }
+                        if (s.startsWith("connect"))
+                        {
+                            if(GameManager.freePlacesForGame == 0)
+                            {
+                                try {
+                                    objout.writeObject("gamefull");
+                                }
+                                catch (Exception e)
+                                {
+                                    System.out.println("Failed to send gamefull message");
+                                }
+                            }
+                            else if(GameManager.numberOfPlayers == 0)
+                            {
+                                createGame();
+                            }
+                            else if(GameManager.freePlacesForGame>0)
+                            {
+                                addPlayer();
+                                GameManager.playersobjout.add(objout);
+                                String message = "joingame" + ":" + GameManager.players.get(GameManager.numberOfPlayers - 1 - GameManager.freePlacesForGame).getId() + ":" + GameManager.numberOfPlayers;
+                                try {
+                                    objout.writeObject(message);
+                                }
+                                catch (Exception e)
+                                {
+                                    System.out.println("Failed to send joingame message");
+                                }
+                            }
+                        }
                     }
-                    if (!GameManager.gameInProgerss && !this.connected) {
+                    else
+                    {
+                        handleCommands();
+                    }
+                   /* if (!GameManager.gameInProgerss && !this.connected) {
                         String s;
                         if (GameManager.freePlacesForGame == 0) {
                             GameManager.gameInProgerss = true;
                         }
-                        s = (String) objin.readObject();
+                        try {
+                            s = (String) objin.readObject();
+                        }
+                        catch (Exception e)
+                        {
+                            System.out.println("Failedo to read connect command");
+                            break;
+                        }
                         if (s.startsWith("connect") && !GameManager.gameInProgerss) {
                             if (GameManager.numberOfPlayers == 0) {
                                 createGame();
-                                if (GameManager.freePlacesForGame == 0) {
-                                    GameManager.gameInProgerss = true;
-                                }
                                 this.connected = true;
                             }
                         } else if (GameManager.freePlacesForGame > 0) {
                             addPlayer();
-
                             GameManager.playersobjout.add(objout);
                             String message = "joingame" + ":" + GameManager.players.get(GameManager.numberOfPlayers - 1 - GameManager.freePlacesForGame).getId() + ":" + GameManager.numberOfPlayers;
-                            objout.writeObject(message);
-
+                            try {
+                                objout.writeObject(message);
+                            }
+                            catch (Exception e)
+                            {
+                                System.out.println("Failed to send joingame message");
+                            }
                         }
                     } else if (GameManager.gameInProgerss && this.connected) {
                         handleCommands();
                     } else if (GameManager.gameInProgerss && !this.connected) {
-                        String s = (String) objin.readObject();
+                        String s;
+
+
                         if (s.startsWith("connect")) {
                             objout.writeObject("gamefull");
                         }
-                    }
+                    }*/
                 }
-            } catch (Exception e) {
-                System.out.println(e);
-            }
+
         }
     }
 
@@ -296,6 +379,7 @@ public class Connector {
         try {
             try{
                 while (true){
+
                     new Handler(server.accept()).start();
                 }
             }

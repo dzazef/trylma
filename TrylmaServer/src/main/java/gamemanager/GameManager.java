@@ -1,15 +1,9 @@
 package gamemanager;
 
 import gamemanager.board.Board;
-import gamemanager.board.Field;
-import player.Pawn;
 import player.Player;
-import player.Player1;
-import player.Player6;
 
 import java.io.ObjectOutputStream;
-import java.io.OutputStream;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public abstract class GameManager {
@@ -29,7 +23,7 @@ public abstract class GameManager {
         {
             if(players.get(i).getId().equals(actualplayer.getId()))
             {
-                actualplayer = players.get((i+1)%6);
+                actualplayer = players.get((i+1)%numberOfPlayers);
             }
         }
     }

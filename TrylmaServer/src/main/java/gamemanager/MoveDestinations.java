@@ -1,6 +1,6 @@
 package gamemanager;
 
-import gamemanager.board.Field;
+import serializable.Field;
 
 import java.io.Serializable;
 import java.util.ArrayList;

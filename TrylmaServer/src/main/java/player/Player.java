@@ -1,7 +1,7 @@
 package player;
 
 import gamemanager.Path;
-import gamemanager.board.Field;
+import serializable.Field;
 
 import java.util.ArrayList;
 
