@@ -3,6 +3,7 @@ package serializable;
 import java.io.Serializable;
 
 public class Field implements Serializable {
+    static final long serialVersionUID = -1176358169417913238L;
     int x,y,z;
     public enum State{
         TAKEN,FREE
@@ -40,6 +41,7 @@ public class Field implements Serializable {
     {
         return x+","+y+","+z;
     }
+    public Field(){}
     public Field(int x,int y,int z,boolean taken)
     {
         this.x=x;

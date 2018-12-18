@@ -8,16 +8,17 @@ import serializable.Field;
 import java.util.ArrayList;
 
 public class Player1 implements Player {
-    String id="player1";
-    ArrayList<Pawn> pawns;
-    int numOfPawns;
-    boolean bot;
-    Pawn botchoosenpawn=null;
-    Path botchoosenpath = null;
-    Field botchoosendestination = null;
+    private String id;
+    private ArrayList<Pawn> pawns;
+    private int numOfPawns;
+    private boolean bot;
+    private Pawn botchoosenpawn=null;
+    private Path botchoosenpath = null;
+    private Field botchoosendestination = null;
 
     public Player1(int numOfPawns,boolean bot)
     {
+        this.id = "player1";
         this.bot = bot;
         this.numOfPawns = numOfPawns;
         this.pawns = new ArrayList<Pawn>();
@@ -40,11 +41,9 @@ public class Player1 implements Player {
 
     public Pawn getPawnById(String id)
     {
-        for(int i = 0; i < pawns.size();i++)
-        {
-            if(pawns.get(i).getId().equals(id))
-            {
-                return pawns.get(i);
+        for (Pawn pawn : pawns) {
+            if (pawn.getId().equals(id)) {
+                return pawn;
             }
         }
         return null;
@@ -75,10 +74,8 @@ public class Player1 implements Player {
     }
 
     public boolean checkWin() {
-        for(int i = 0;i<pawns.size();i++)
-        {
-            if(pawns.get(i).getX() >= numOfPawns)
-            {
+        for (Pawn pawn : pawns) {
+            if (pawn.getX() >= numOfPawns) {
                 return false;
             }
         }
@@ -88,13 +85,13 @@ public class Player1 implements Player {
     public void botMove() {
 
         int x = -2*numOfPawns;
-        for(int j = 0; j < pawns.size();j++) {
-            MoveManager.generateMovePaths(pawns.get(j));
+        for (Pawn pawn : pawns) {
+            MoveManager.generateMovePaths(pawn);
 
             for (int i = 0; i < MoveManager.paths.size(); i++) {
 
                 if (MoveManager.paths.get(i).end.getX() > x) {
-                    this.botchoosenpawn = pawns.get(j);
+                    this.botchoosenpawn = pawn;
                     x = MoveManager.paths.get(i).end.getX();
                     this.botchoosenpath = MoveManager.paths.get(i);
 
@@ -105,11 +102,9 @@ public class Player1 implements Player {
     }
 
     public void movePawn(Pawn pawn, Field destination) {
-        for(int i = 0; i < pawns.size();i++)
-        {
-            if(pawns.get(i).getId().equals( pawn.getId()))
-            {
-                pawns.get(i).setXYZ(destination.getX(),destination.getY(),destination.getZ());
+        for (Pawn pawn1 : pawns) {
+            if (pawn1.getId().equals(pawn.getId())) {
+                pawn1.setXYZ(destination.getX(), destination.getY(), destination.getZ());
             }
         }
     }

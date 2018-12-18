@@ -5,6 +5,7 @@ import gamemanager.MoveManager;
 import serializable.Field;
 import player.*;
 
+import javax.rmi.ssl.SslRMIClientSocketFactory;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -28,10 +29,7 @@ public class Connector {
      */
     public static class Handler extends Thread {
 
-        /**
-         * Zmienna sprawdzająca czy dany gracz jest już połączony.
-         */
-        private boolean connected;
+
         /**
          * Obiekt klasy Command, która posiada funkcje do generowanie i wysyłania wiadomości do klienta
          */
@@ -95,7 +93,6 @@ public class Connector {
                 GameManager.players.add(player);
                 this.player_to_handle = player;
             }
-            this.connected = true;
 
             GameManager.freePlacesForGame--;
             if (GameManager.freePlacesForGame == 0) {
@@ -108,9 +105,7 @@ public class Connector {
          * @param socket socket na którym połączony zostanie klient.
          */
         public Handler(Socket socket) {
-            this.connected =false;
             this.socket = socket;
-            this.player_to_handle = new Player1(0,false);
             try {
                 this.objout = new ObjectOutputStream(socket.getOutputStream());
                 this.objin = new ObjectInputStream(socket.getInputStream());
@@ -119,68 +114,74 @@ public class Connector {
             {
                 System.out.println("Failed to create Output or Input stream. Player Handler");
             }
-            command = new Command(objout);
+            command = new Command(objout,objin);
         }
 
 
-        public Handler(Socket socket,Player player,ObjectInputStream in, ObjectOutputStream out) {
-            this.connected =true;
+        private Handler(Socket socket,Player player,ObjectInputStream in, ObjectOutputStream out) {
             this.socket = socket;
             this.player_to_handle = player;
             this.objout =out;
             this.objin = in;
-            command = new Command(objout);
+            command = new Command(objout,objin);
 
         }
-        private void handleCommands() {
-                String s;
+        private void handleCommands() throws Exception {
+                Object t;
                 if (GameManager.actualplayer.getId().equals(this.player_to_handle.getId())) {
                     if (!this.player_to_handle.isBot()) {
                         try {
                             this.objout.writeObject("yourturn");
                         } catch (Exception e) {
-                            System.out.println("Failed to send yourturn message" + e + " : " + this.player_to_handle.getId());
-                            return;
+                            throw new Exception("Failed to send yourturn message" + e + " : " + this.player_to_handle.getId());
                         }
                         try {
-                            s = (String) this.objin.readObject();
+                            synchronized (objin) {
+                                t = this.objin.readObject();
+                            }
                         } catch (Exception e) {
-                            System.out.println("Failed to read startfield command from client"+ e + " : " + this.player_to_handle.getId());
-                            return;
+                            throw new Exception("Failed to read startfield command from client "+ e + " : " + this.player_to_handle.getId());
                         }
-                        System.out.println(s);
+                        String s = (String) t;
                         if (s.startsWith("startfield")) {
-                            Field field = null;
+                            System.out.println("Wszedłem do startfield");
+                            Field field;
                             try {
                                 synchronized (objin) {
                                     field = (Field) objin.readObject();
                                 }
                             } catch (Exception e) {
-                                System.out.println("Failed to read Field class object for startfield"+ e.getCause() + " : " + this.player_to_handle.getId());
+                                throw new Exception("Failed to read Field class object for startfield "+ e + " : " + this.player_to_handle.getId());
                             }
+                            System.out.println("Wczytałem obiekt");
                             if (field != null) {
+                                System.out.println("Chce wyslac sciezki");
                                 command.sendPossibleMovesMessage(field);
                                 MoveManager.choosenPawn = GameManager.actualplayer.getPawnById(field.getId());
                             }
-
+                            System.out.println("Wysłałem ścieżki");
                             try {
                                 s = (String) objin.readObject();
                             } catch (Exception e) {
-                                System.out.println("Failed to read endfield command from client"+ e + " : " + this.player_to_handle.getId());
-                                return;
-                            }
+                                System.out.println("4");
+                                throw new Exception("Failed to read endfield command from client "+ e + " : " + this.player_to_handle.getId());
 
+                            }
+                            System.out.println("Wczytałem obiekt");
                             if (s.startsWith("endfield")) {
-                                field = null;
+                                System.out.println("Wsaedłwm do endfield");
                                 try {
                                     field = (Field) objin.readObject();
                                 } catch (Exception e) {
-                                    System.out.println("Failed to read object for endfield"+ e + " : " + this.player_to_handle.getId());
+                                    System.out.println("5");
+                                    throw new Exception("Failed to read object for endfield "+ e + " : " + this.player_to_handle.getId());
                                 }
+                                System.out.println("Wczytałem obiekt");
                                 GameManager.actualplayer.movePawn(MoveManager.choosenPawn, field);
                                 GameManager.board.move(MoveManager.choosenPawn, field);
                                 command.sendMoveMessage(MoveManager.choosenPawn, field);
                                 GameManager.nextPlayer();
+                                System.out.println("Ruszyłem się");
                             } else if (s.startsWith("skip")) {
                                 System.out.println("Tu wszedłem");
                                 GameManager.nextPlayer();
@@ -258,7 +259,6 @@ public class Connector {
                     }
                 }
                 addPlayer();
-                System.out.println(GameManager.numberOfPlayers);
                 GameManager.playersobjout.add(objout);
                 GameManager.actualplayer = GameManager.players.get(GameManager.numberOfPlayers - 1 - GameManager.freePlacesForGame);
             }
@@ -279,7 +279,7 @@ public class Connector {
                         }
                         catch (Exception e)
                         {
-                            System.out.println("Failedo to read connect command");
+                            System.out.println("Failedo to read connect command" + this.player_to_handle.getId());
                             break;
                         }
                         if (s.startsWith("connect"))
@@ -315,7 +315,15 @@ public class Connector {
                     }
                     else
                     {
-                        handleCommands();
+                        try {
+                            handleCommands();
+                        }
+                        catch (Exception e)
+                        {
+                            System.out.println("Wywaliło serwer");
+                            System.out.println(e.getMessage());
+                            break;
+                        }
                     }
                    /* if (!GameManager.gameInProgerss && !this.connected) {
                         String s;

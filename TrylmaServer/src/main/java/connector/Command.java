@@ -10,13 +10,14 @@ import java.io.*;
 
 public class Command {
     private ObjectOutputStream objout;
+    private ObjectInputStream objin;
 
 
 
-
-    public Command(ObjectOutputStream objectout)
+    Command(ObjectOutputStream objectout, ObjectInputStream objectin)
     {
         this.objout = objectout;
+        this.objin = objectin;
 
     }
 
@@ -33,11 +34,11 @@ public class Command {
 
     }
 
-    public void sendMoveMessage(Pawn pawn, Field destination)
+    void sendMoveMessage(Pawn pawn, Field destination)
     {
         for(int i = 0; i< MoveManager.paths.size();i++)
         {
-            if(MoveManager.paths.get(i).end.getId() == destination.getId())
+            if(MoveManager.paths.get(i).end.getId().equals(destination.getId()))
             {
                 for(int j = 0; j < GameManager.playersobjout.size();j++) {
                     String message = "moved;" + GameManager.actualplayer.getId();
@@ -53,15 +54,25 @@ public class Command {
             }
         }
     }
-    public void sendPossibleMovesMessage(Field field)
+    void sendPossibleMovesMessage(Field field)
     {
+        System.out.println("Jestem w metodzie co sciezki wysyle");
         Pawn pawn =GameManager.actualplayer.getPawnById(field.getId());
+
+        System.out.println(GameManager.actualplayer.getId());
+        System.out.println(GameManager.actualplayer.getPawnById(field.getId()).getId());
+        if(pawn == null)
+        {
+            System.out.println("Juz tutaj pawn jest nullem");
+        }
         MoveManager.generateMovePaths(pawn);
+        System.out.println("Tworzę ścieżki i próbuję je wysłać");
         try {
             objout.writeObject("possiblefields");
-            objout.writeObject(MoveManager.moveDestinations);
+                objout.writeObject(MoveManager.moveDestinations);
+
         }
-        catch(IOException e)
+        catch(Exception e)
         {
             System.out.println("Sending possible move destinations failed");
         }
