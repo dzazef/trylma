@@ -1,12 +1,11 @@
 package models.client_server;
 
-import controllers.ErrorController;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import models.client.board_players.board.Board;
 import serializable.Field;
+import serializable.FieldsSet;
 import views.BoardView;
-import views.ErrorView;
 import views.NewGameView;
 
 import java.io.*;
@@ -46,8 +45,6 @@ public class Connection {
         if (isConnectionSuccessfull()) {
             System.out.println("connect");
             try {
-                os.writeObject("connect");
-                os.writeObject("connect");
                 os.writeObject("connect");
             } catch (IOException e) {
                 e.printStackTrace();
@@ -129,9 +126,9 @@ public class Connection {
             myTurn=true;
         } else if (command.matches("moved(.*)")) {
             String[] temp = command.split(":");
-            MovePath movePath;
+            FieldsSet movePath;
             try {
-                movePath = (MovePath) is.readObject();
+                movePath = (FieldsSet) is.readObject();
                 Platform.runLater( () -> Board.makeMove(Integer.parseInt(temp[1]), movePath));
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
@@ -184,7 +181,7 @@ public class Connection {
         }
         else if (command.equals("possible_fields")) {
             try {
-                MovePath movePath = (MovePath) is.readObject();
+                FieldsSet movePath = (FieldsSet) is.readObject();
                 Platform.runLater(() -> Board.showPossibleFields(movePath));
             } catch (Exception e) {
                 e.printStackTrace();

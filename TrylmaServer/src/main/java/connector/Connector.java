@@ -57,6 +57,10 @@ public class Connector {
          */
         private void addPlayer()
         {
+            if(GameManager.freePlacesForGame >0)
+            {
+                GameManager.playersobjout.add(objout);
+            }
             if((GameManager.numberOfPlayers - GameManager.freePlacesForGame +1)==1)
             {
                 Player1 player = new Player1(GameManager.numberOfPawns,false);
@@ -105,6 +109,7 @@ public class Connector {
          * @param socket socket na którym połączony zostanie klient.
          */
         public Handler(Socket socket) {
+            this.player_to_handle = null;
             this.socket = socket;
             try {
                 this.objout = new ObjectOutputStream(socket.getOutputStream());
@@ -124,7 +129,6 @@ public class Connector {
             this.objout =out;
             this.objin = in;
             command = new Command(objout,objin);
-
         }
         private void handleCommands() throws Exception {
                 Object t;
@@ -178,8 +182,11 @@ public class Connector {
                                 }
                                 System.out.println("Wczytałem obiekt");
                                 GameManager.actualplayer.movePawn(MoveManager.choosenPawn, field);
+                                System.out.println("Ruszyłem pionek gracza");
                                 GameManager.board.move(MoveManager.choosenPawn, field);
+                                System.out.println("Zmieniłem pole początkowe na wolne a końcowe na zajęte");
                                 command.sendMoveMessage(MoveManager.choosenPawn, field);
+                                System.out.println("Wysłałem wiadomość o ruchu");
                                 GameManager.nextPlayer();
                                 System.out.println("Ruszyłem się");
                             } else if (s.startsWith("skip")) {
@@ -270,48 +277,50 @@ public class Connector {
         }
         public void run() {
 
+
                 while(true) {
-                    if(!GameManager.gameInProgerss)
+                    if(this.player_to_handle!=null)
                     {
+                       // System.out.println(this.player_to_handle.getId());
+                    }
+                    if(!GameManager.gameInProgerss) {
+                        if(this.player_to_handle==null)
+                        {
                         String s;
                         try {
                             s = (String) objin.readObject();
-                        }
-                        catch (Exception e)
-                        {
-                            System.out.println("Failedo to read connect command" + this.player_to_handle.getId());
+                        } catch (Exception e) {
+                            if(this.player_to_handle!=null)
+                            {
+                                System.out.println("Failedo to read connect command" + this.player_to_handle.getId());
+                            }
+                            else
+                            {
+                                System.out.println("Failedo to read connect command  player is null" );
+                            }
                             break;
                         }
-                        if (s.startsWith("connect"))
-                        {
-                            if(GameManager.freePlacesForGame == 0)
-                            {
+                        if (s.startsWith("connect")) {
+                            if (GameManager.freePlacesForGame == 0) {
                                 try {
                                     objout.writeObject("gamefull");
-                                }
-                                catch (Exception e)
-                                {
+                                } catch (Exception e) {
                                     System.out.println("Failed to send gamefull message");
                                 }
-                            }
-                            else if(GameManager.numberOfPlayers == 0)
-                            {
+                            } else if (GameManager.numberOfPlayers == 0) {
                                 createGame();
-                            }
-                            else if(GameManager.freePlacesForGame>0)
-                            {
+                            } else if (GameManager.freePlacesForGame > 0) {
                                 addPlayer();
                                 GameManager.playersobjout.add(objout);
                                 String message = "joingame" + ":" + GameManager.players.get(GameManager.numberOfPlayers - 1 - GameManager.freePlacesForGame).getId() + ":" + GameManager.numberOfPlayers;
                                 try {
                                     objout.writeObject(message);
-                                }
-                                catch (Exception e)
-                                {
+                                } catch (Exception e) {
                                     System.out.println("Failed to send joingame message");
                                 }
                             }
                         }
+                    }
                     }
                     else
                     {

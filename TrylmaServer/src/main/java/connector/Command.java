@@ -38,7 +38,7 @@ public class Command {
     {
         for(int i = 0; i< MoveManager.paths.size();i++)
         {
-            if(MoveManager.paths.get(i).end.getId().equals(destination.getId()))
+            if(MoveManager.paths.get(i).end.getId().equals(destination.getId())&&pawn.getId().equals(MoveManager.paths.get(i).start.getId()))
             {
                 for(int j = 0; j < GameManager.playersobjout.size();j++) {
                     String message = "moved;" + GameManager.actualplayer.getId();
@@ -68,7 +68,7 @@ public class Command {
         MoveManager.generateMovePaths(pawn);
         System.out.println("Tworzę ścieżki i próbuję je wysłać");
         try {
-            objout.writeObject("possiblefields");
+            objout.writeObject("possible_fields");
                 objout.writeObject(MoveManager.moveDestinations);
 
         }

@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Path implements Serializable {
+    private static final long serialVersionUID = 4805198710182775393L;
     public Field start;
     public Field end;
     public ArrayList<Field> path;

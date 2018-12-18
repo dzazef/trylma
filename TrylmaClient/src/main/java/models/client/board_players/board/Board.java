@@ -11,7 +11,7 @@ import handlers.Handle;
 import javafx.scene.paint.Color;
 import models.client.board_players.players.Player;
 import serializable.Field;
-import models.client_server.MovePath;
+import serializable.FieldsSet;
 import views.BoardView;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -79,11 +79,11 @@ public class Board {
     /**
      * Funkcja wykonuje przesunięcie dla danej ścieżki. Zostaje odtworzona animacja.
      * @param playerID id gracza do którego należy pionek.
-     * @param movePath ścieżka po której porusza się pionek.
+     * @param FieldsSet ścieżka po której porusza się pionek.
      */
-    public static void makeMove(int playerID, MovePath movePath) {
+    public static void makeMove(int playerID, FieldsSet FieldsSet) {
 
-        Iterator iterator = movePath.createIterator();
+        Iterator iterator = FieldsSet.createIterator();
         Field sourceField = (Field) iterator.next();
         Field temp = sourceField;
         System.out.println("source: "+sourceField.getX()+" "+sourceField.getY()+" "+sourceField.getZ()+" ");
@@ -140,11 +140,11 @@ public class Board {
         }
     }
 
-    public static void showPossibleFields(MovePath movePath) {
+    public static void showPossibleFields(FieldsSet FieldsSet) {
         possibleFields = new ArrayList<>();
         CircleField circleField;
         double centerX, centerY;
-        Iterator iterator = movePath.createIterator();
+        Iterator iterator = FieldsSet.createIterator();
         while (iterator.hasNext()) {
             Field field = (Field) iterator.next();
             centerX = (field.getY()-((float)field.getX()/2-(1.5*ch)))*(wGap+2*radius)+wGap+radius;

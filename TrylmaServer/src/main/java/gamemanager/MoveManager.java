@@ -2,20 +2,21 @@ package gamemanager;
 import serializable.Field;
 import player.Pawn;
 import serializable.MoveDestinations;
+import serializable.FieldsSet;
 
 import java.util.ArrayList;
 
 public class MoveManager {
-    public static MoveDestinations moveDestinations;
-    public static ArrayList<Path> paths;
+    public static FieldsSet moveDestinations;
+    public static ArrayList<FieldsSet> paths;
     public static Pawn choosenPawn;
     public static void  generateMovePaths(Pawn pawn)
     {
         System.out.println("1");
-        moveDestinations = new MoveDestinations();
+        moveDestinations = new FieldsSet();
         System.out.println("2");
 
-        paths = new ArrayList<Path>();
+        paths = new ArrayList<FieldsSet>();
         System.out.println("3");
 
         if(pawn == null)
@@ -28,7 +29,7 @@ public class MoveManager {
         System.out.println("4");
 
 
-        Path path = new Path();
+        FieldsSet path = new FieldsSet();
         System.out.println("5");
 
         path.end = GameManager.board.getFieldById(pawn.getId());
@@ -44,7 +45,7 @@ public class MoveManager {
         return x+","+y+","+z;
     }
 
-    private static void addJump(Field jumpEnd, Field jumpOver, Path previousPath)
+    private static void addJump(Field jumpEnd, Field jumpOver, FieldsSet previousPath)
     {
         System.out.println("15");
 
@@ -64,9 +65,9 @@ public class MoveManager {
                 if (jumpEnd.getState() == Field.State.FREE) {
                     System.out.println("19");
 
-                    Path path = new Path(previousPath.getPath());
-                    path.addStepToPath(jumpEnd);
-                    moveDestinations.addMoveDestination(jumpEnd);
+                    FieldsSet path = new FieldsSet(previousPath.getPath());
+                    path.addField(jumpEnd);
+                    moveDestinations.addField(jumpEnd);
                     paths.add(path);
                     jump(path);
                     System.out.println("20");
@@ -79,7 +80,7 @@ public class MoveManager {
             }
         }
     }
-    private static void jump(Path previousPath)
+    private static void jump(FieldsSet previousPath)
     {
         System.out.println("8");
 
@@ -157,9 +158,9 @@ public class MoveManager {
             if(stepEnd.getState() == Field.State.FREE)
             {
                 System.out.println("29");
-                Path path = new Path();
-                path.addStepToPath(stepEnd);
-                moveDestinations.addMoveDestination(stepEnd);
+                FieldsSet path = new FieldsSet();
+                path.addField(stepEnd);
+                moveDestinations.addField(stepEnd);
                 paths.add(path);
             }
         }

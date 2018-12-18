@@ -2,8 +2,8 @@ package player;
 
 import gamemanager.GameManager;
 import gamemanager.MoveManager;
-import gamemanager.Path;
 import serializable.Field;
+import serializable.FieldsSet;
 
 import java.util.ArrayList;
 
@@ -14,7 +14,7 @@ public class Player6 implements Player {
     private int numOfPawns;
     private boolean bot;
     private Pawn botchoosenpawn=null;
-    private Path botchoosenpath = null;
+    private FieldsSet botchoosenpath = null;
     private Field botchoosendestination = null;
 
     public Player6(int numOfPawns,boolean bot)
@@ -65,7 +65,7 @@ public class Player6 implements Player {
         return botchoosendestination;
     }
 
-    public Path getBotchoosenpath() {
+    public FieldsSet getBotchoosenpath() {
         return botchoosenpath;
     }
 

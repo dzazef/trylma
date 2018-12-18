@@ -1,7 +1,8 @@
 package player;
 
-import gamemanager.Path;
+
 import serializable.Field;
+import serializable.FieldsSet;
 
 import java.util.ArrayList;
 
@@ -11,7 +12,7 @@ public interface Player {
       boolean isBot() ;
       Pawn getBotchoosenpawn() ;
       Field getBotchoosendestination() ;
-      Path getBotchoosenpath() ;
+      FieldsSet getBotchoosenpath() ;
 
       Pawn getPawnById(String id);
      String getId();
