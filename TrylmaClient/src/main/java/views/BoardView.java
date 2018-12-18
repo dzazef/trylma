@@ -58,7 +58,10 @@ public class BoardView {
         radius=(windowWidth1 - wGap *(3* BoardView.ch +2))/(2*(3* BoardView.ch + 1));
         double windowHeight = 50+(2 * (4 * BoardView.ch + 1)) * radius + 2 * abs(hGap) - 4 * BoardView.ch * hGap;
 
-        skip=new Button("Pas");
+        skip=new Button("P");
+        skip.setStyle("-fx-background-radius: 10em; "+"-fx-min-width: 16px; "+
+                "-fx-min-height: 16px; "+"-fx-max-width: 16px; "+"-fx-max-height: 16px; "+
+                "-fx-background-color: #c9c9c9;" + "-fx-background-insets: 0px; "+"-fx-padding: 0px;");
         yourMove = new Text("Twój kolor: ");
         yourMove.setFill(Color.WHITESMOKE);
         yourMove.setStyle("-fx-font-weight: bold");
@@ -119,5 +122,9 @@ public class BoardView {
 
     public static void undraw(List<CircleField> circleFields) {
         group.getChildren().removeAll(circleFields);
+    }
+
+    public static void setMyColor(Color color) {
+        BoardView.circle.setFill(color);
     }
 }

@@ -4,6 +4,7 @@ import models.client.CircleField;
 import models.client.FieldGenerator;
 import handlers.Handle;
 import javafx.scene.paint.Color;
+import views.BoardView;
 
 import java.util.Iterator;
 import java.util.List;
@@ -67,7 +68,10 @@ public class Player {
             }
         }
         circleFieldList = FieldGenerator.generateFields(true, ud, ch, x, y, z, ch, radius, wGap, hGap, color);
-        if (isThisMe) addPlayerHandlers(circleFieldList, radius, ch, wGap, hGap);
+        if (isThisMe) {
+            addPlayerHandlers(circleFieldList, radius, ch, wGap, hGap);
+            BoardView.setMyColor(color);
+        }
     }
     private void addPlayerHandlers(List<CircleField> circleFields, double radius, int ch, double wGap, double hGap) {
         for (CircleField circleField : circleFields) {

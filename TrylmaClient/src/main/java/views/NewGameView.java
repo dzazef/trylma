@@ -22,14 +22,3 @@ public class NewGameView {
         newGameStage.hide();
     }
 }
-/*
-public class NewGameView {
-    public static Stage stage;
-    public static void initialize() throws IOException {
-        System.out.println("tu");
-        final Parent newGameParent = FXMLLoader.load(NewGameView.class.getResource("../newGameStructure.fxml"));
-        stage.setScene(new Scene(newGameParent));
-        stage.setTitle("Nowa gra");
-        System.out.println("tu");
-    }
-}*/

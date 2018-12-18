@@ -3,6 +3,7 @@ package controllers;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
+@Deprecated
 public class ErrorController {
     public static String message;
     @FXML

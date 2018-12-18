@@ -24,10 +24,10 @@ public class Connection {
     private static boolean connectionSuccess = false;
     private static boolean myTurn = false;
 
-    public static boolean establishConnection()
+    public static boolean establishConnection(String host)
     {
         try {
-            Connection.socket = new Socket("localhost", 9090);
+            Connection.socket = new Socket(host, 9090);
             Connection.connectionSuccess = true;
             Connection.is = new ObjectInputStream(socket.getInputStream());
             Connection.os = new ObjectOutputStream(socket.getOutputStream());
@@ -43,11 +43,15 @@ public class Connection {
     }
 
     public static void sendConnect() {
-        System.out.println("connect");
-        try {
-            os.writeObject("connect");
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (isConnectionSuccessfull()) {
+            System.out.println("connect");
+            try {
+                os.writeObject("connect");
+                os.writeObject("connect");
+                os.writeObject("connect");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -92,6 +96,7 @@ public class Connection {
     public static void sendSkip() {
         if(isitMyTurn()) {
             String command = "skip";
+            System.out.println(command);
             try {
                 os.writeObject(command);
             } catch (IOException e) {
@@ -157,15 +162,11 @@ public class Connection {
             });
         }
         else if (command.equals("gamefull")) {
-            ErrorController.message = "Gra jest pełna";
             Platform.runLater( () -> {
-                ErrorView errorView = new ErrorView();
-                try {
-                    errorView.initialize();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    System.err.println("Error while showing error message xD");
-                }
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setContentText("Game is full now. Try next time!");
+                alert.showAndWait();
             });
 
         }
@@ -196,18 +197,20 @@ public class Connection {
     }
 
     public static void startConnectionLoop () {
-        new Thread(() -> {
-            while(true) {
-                System.out.println("loop1");
-                try {
-                    Object object = is.readObject();
-                    Connection.commandInterpreter((String)object);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    System.exit(1);
+        if (isConnectionSuccessfull()) {
+            new Thread(() -> {
+                while (true) {
+                    System.out.println("loop1");
+                    try {
+                        Object object = is.readObject();
+                        Connection.commandInterpreter((String) object);
+                    } catch (Exception e) {
+                        System.out.println("Lost connection to the server");
+                        System.exit(1);
+                    }
                 }
-            }
-        }).start();
+            }).start();
+        }
     }
 
     public static boolean isitMyTurn() {

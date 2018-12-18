@@ -7,6 +7,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+@Deprecated
 public class ErrorView {
     private Stage errorStage = new Stage();
     public void initialize() throws IOException {
