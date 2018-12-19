@@ -104,6 +104,7 @@ public class Connection {
     }
 
     public static void sendChosenField(Field field) {
+        System.out.println("Sending endfield");
         if(isitMyTurn()) {
             String command = "endfield";
             System.out.println(command);

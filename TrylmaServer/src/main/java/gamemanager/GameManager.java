@@ -24,6 +24,7 @@ public abstract class GameManager {
             if(players.get(i).getId().equals(actualplayer.getId()))
             {
                 actualplayer = players.get((i+1)%numberOfPlayers);
+                return;
             }
         }
     }

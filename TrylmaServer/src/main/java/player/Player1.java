@@ -13,13 +13,13 @@ public class Player1 implements Player {
     private ArrayList<Pawn> pawns;
     private int numOfPawns;
     private boolean bot;
-    private Pawn botchoosenpawn=null;
-    private FieldsSet botchoosenpath = null;
-    private Field botchoosendestination = null;
+    private Pawn botchoosenpawn;
+    private FieldsSet botchoosenpath ;
+    private Field botchoosendestination;
 
     public Player1(int numOfPawns,boolean bot)
     {
-        this.id = "player1";
+        this.id = "1";
         this.bot = bot;
         this.numOfPawns = numOfPawns;
         this.pawns = new ArrayList<Pawn>();
@@ -85,17 +85,42 @@ public class Player1 implements Player {
 
     public void botMove() {
 
-        int x = -2*numOfPawns;
+        int x = 0;
+        int oś = 8;
         for (Pawn pawn : pawns) {
             MoveManager.generateMovePaths(pawn);
 
+            if(botchoosenpawn != null)
+            {
+                if(botchoosenpawn.getId().equals(pawn.getId()))
+                {
+                    continue;
+                }
+            }
+
             for (int i = 0; i < MoveManager.paths.size(); i++) {
+                if (MoveManager.paths != null) {
+                    int delta = MoveManager.paths.get(i).end.getX()-pawn.getX();
+                    if (delta> x) {
+                        this.botchoosenpawn = pawn;
+                        x = delta;
+                        this.botchoosenpath = MoveManager.paths.get(i);
+                        System.out.println("Bot 1 -----------------");
 
-                if (MoveManager.paths.get(i).end.getX() > x) {
-                    this.botchoosenpawn = pawn;
-                    x = MoveManager.paths.get(i).end.getX();
-                    this.botchoosenpath = MoveManager.paths.get(i);
-
+                        for(Field field : this.botchoosenpath.getPath())
+                        {
+                            System.out.println(field.getId());
+                        }
+                        System.out.println("----------------------------");
+                    }
+                    else if(delta == x)
+                    {
+                        int newoś = Math.abs(MoveManager.paths.get(i).end.getZ()) + MoveManager.paths.get(i).end.getY();
+                        if( newoś < oś)
+                        {
+                            oś = newoś;
+                        }
+                    }
                 }
             }
         }

@@ -141,6 +141,7 @@ public class Board {
     }
 
     public static void showPossibleFields(FieldsSet FieldsSet) {
+        if (possibleFields!=null && possibleFields.size()>0) removePossibleFields();
         possibleFields = new ArrayList<>();
         CircleField circleField;
         double centerX, centerY;

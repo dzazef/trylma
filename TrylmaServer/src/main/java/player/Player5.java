@@ -18,10 +18,10 @@ public class Player5 implements Player {
 
     public Player5(int numOfPawns, boolean bot)
     {
-        this.id = "player5";
+        this.id = "5";
         this.bot = bot;
         this.numOfPawns = numOfPawns;
-        this.pawns = new ArrayList<Pawn>();
+        this.pawns = new ArrayList<>();
         int initialy = -2*numOfPawns;
         int x = -numOfPawns;
         for(int k = numOfPawns; x<0 ;x++,k--) {
@@ -91,7 +91,13 @@ public class Player5 implements Player {
                     this.botchoosenpawn = pawn;
                     y = MoveManager.paths.get(i).end.getY();
                     this.botchoosenpath = MoveManager.paths.get(i);
+                    System.out.println("Bot 5 -----------------");
 
+                    for(Field field : this.botchoosenpath.getPath())
+                    {
+                        System.out.println(field.getId());
+                    }
+                    System.out.println("----------------------------");
                 }
             }
         }

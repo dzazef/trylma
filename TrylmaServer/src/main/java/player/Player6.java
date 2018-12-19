@@ -19,7 +19,7 @@ public class Player6 implements Player {
 
     public Player6(int numOfPawns,boolean bot)
     {
-        this.id = "player6";
+        this.id = "6";
         this.bot = bot;
         this.numOfPawns = numOfPawns;
         this.pawns = new ArrayList<Pawn>();
@@ -91,10 +91,17 @@ public class Player6 implements Player {
             for (int i = 0; i < MoveManager.paths.size(); i++) {
 
                 if (MoveManager.paths.get(i).end.getY() < y) {
+
                     this.botchoosenpawn = pawn;
                     y = MoveManager.paths.get(i).end.getY();
                     this.botchoosenpath = MoveManager.paths.get(i);
+                    System.out.println("Bot 6 -----------------");
 
+                    for(Field field : this.botchoosenpath.getPath())
+                    {
+                        System.out.println(field.getId());
+                    }
+                    System.out.println("----------------------------");
                 }
             }
         }

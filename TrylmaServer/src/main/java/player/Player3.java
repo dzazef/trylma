@@ -19,7 +19,7 @@ public class Player3 implements Player {
 
     public Player3(int numOfPawns, boolean bot)
     {
-        this.id = "player3";
+        this.id = "3";
         this.bot = bot;
         this.numOfPawns= numOfPawns;
         this.pawns = new ArrayList<Pawn>();
@@ -93,7 +93,13 @@ public class Player3 implements Player {
                     this.botchoosenpawn = pawn;
                     z = MoveManager.paths.get(i).end.getZ();
                     this.botchoosenpath = MoveManager.paths.get(i);
+                    System.out.println("Bot 3 -----------------");
 
+                    for(Field field : this.botchoosenpath.getPath())
+                    {
+                        System.out.println(field.getId());
+                    }
+                    System.out.println("----------------------------");
                 }
             }
         }

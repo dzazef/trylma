@@ -4,6 +4,7 @@ import gamemanager.GameManager;
 import gamemanager.MoveManager;
 import serializable.Field;
 import player.*;
+import serializable.FieldsSet;
 
 import javax.rmi.ssl.SslRMIClientSocketFactory;
 import java.io.*;
@@ -57,6 +58,11 @@ public class Connector {
          */
         private void addPlayer()
         {
+            if (GameManager.freePlacesForGame == 0) {
+                GameManager.playersobjout.add(objout);
+                GameManager.gameInProgerss = true;
+                return;
+            }
             if(GameManager.freePlacesForGame >0)
             {
                 GameManager.playersobjout.add(objout);
@@ -133,7 +139,8 @@ public class Connector {
         private void handleCommands() throws Exception {
                 Object t;
                 if (GameManager.actualplayer.getId().equals(this.player_to_handle.getId())) {
-                    if (!this.player_to_handle.isBot()) {
+
+                        if (!this.player_to_handle.isBot()) {
                         try {
                             this.objout.writeObject("yourturn");
                         } catch (Exception e) {
@@ -157,6 +164,7 @@ public class Connector {
                             } catch (Exception e) {
                                 throw new Exception("Failed to read Field class object for startfield "+ e + " : " + this.player_to_handle.getId());
                             }
+                            MoveManager.choosenPawn = this.player_to_handle.getPawnById(field.getId());
                             System.out.println("Wczytałem obiekt");
                             if (field != null) {
                                 System.out.println("Chce wyslac sciezki");
@@ -164,41 +172,51 @@ public class Connector {
                                 MoveManager.choosenPawn = GameManager.actualplayer.getPawnById(field.getId());
                             }
                             System.out.println("Wysłałem ścieżki");
-                            try {
-                                s = (String) objin.readObject();
-                            } catch (Exception e) {
-                                System.out.println("4");
-                                throw new Exception("Failed to read endfield command from client "+ e + " : " + this.player_to_handle.getId());
 
+                        } else if (s.startsWith("skip")) {
+                            System.out.println("Tu wszedłem");
+                            GameManager.nextPlayer();
+                            System.out.println("Nie wyjebało");
+                        }
+                        else if (s.startsWith("endfield")) {
+                            System.out.println("Wszedłem do endfield");
+                            Field field;
+                            try {
+                                field = (Field) objin.readObject();
+                            } catch (Exception e) {
+                                System.out.println("5");
+                                throw new Exception("Failed to read object for endfield " + e + " : " + this.player_to_handle.getId());
                             }
-                            System.out.println("Wczytałem obiekt");
-                            if (s.startsWith("endfield")) {
-                                System.out.println("Wsaedłwm do endfield");
-                                try {
-                                    field = (Field) objin.readObject();
-                                } catch (Exception e) {
-                                    System.out.println("5");
-                                    throw new Exception("Failed to read object for endfield "+ e + " : " + this.player_to_handle.getId());
-                                }
-                                System.out.println("Wczytałem obiekt");
-                                GameManager.actualplayer.movePawn(MoveManager.choosenPawn, field);
-                                System.out.println("Ruszyłem pionek gracza");
-                                GameManager.board.move(MoveManager.choosenPawn, field);
-                                System.out.println("Zmieniłem pole początkowe na wolne a końcowe na zajęte");
-                                command.sendMoveMessage(MoveManager.choosenPawn, field);
-                                System.out.println("Wysłałem wiadomość o ruchu");
-                                GameManager.nextPlayer();
-                                System.out.println("Ruszyłem się");
-                            } else if (s.startsWith("skip")) {
-                                System.out.println("Tu wszedłem");
-                                GameManager.nextPlayer();
-                                System.out.println("Nie wyjebało");
+                            System.out.println(MoveManager.choosenPawn.getId());
+                            System.out.println(field.getId());
+                            command.sendMoveMessage(field);
+
+                            GameManager.board.move(MoveManager.choosenPawn, field);
+
+                            GameManager.actualplayer.movePawn(MoveManager.choosenPawn, field);
+
+                            System.out.println(MoveManager.choosenPawn.getId());
+                            System.out.println(field.getId());
+
+                            System.out.println("Wysłałem wiadomość o ruchu");
+                            GameManager.nextPlayer();
+                            System.out.println("Ruszyłem się");
+                            for (Field x : GameManager.board.fields) {
+                                System.out.println(x.getId() + "  :  " + x.getState());
                             }
-                        } else {
-                            GameManager.actualplayer.botMove();
-                            command.sendMoveMessage(GameManager.actualplayer.getBotchoosenpawn(), GameManager.actualplayer.getBotchoosendestination());
                         }
                     }
+                    else
+                    {
+                        sleep(2000);
+                        System.out.println("Teraz się rusza bot" + this.player_to_handle.getId());
+                        this.player_to_handle.botMove();
+                        command.sendMoveMessage(GameManager.actualplayer.getBotchoosendestination());
+                        GameManager.board.move(GameManager.actualplayer.getBotchoosenpawn(), GameManager.actualplayer.getBotchoosendestination());
+                        GameManager.actualplayer.movePawn(GameManager.actualplayer.getBotchoosenpawn(), GameManager.actualplayer.getBotchoosendestination());
+                        GameManager.nextPlayer();
+                    }
+
                 }
         }
 
@@ -258,7 +276,7 @@ public class Connector {
                     } else if (i == 5) {
                         Player5 player5 = new Player5(numOfPawnsint, true);
                         GameManager.players.add(player5);
-                        new Handler(this.socket,player5,objin,objout);
+                        new Handler(this.socket,player5,objin,objout).start();
                     } else if (i == 6) {
                         Player6 player6 = new Player6(numOfPawnsint, true);
                         GameManager.players.add(player6);
@@ -266,7 +284,6 @@ public class Connector {
                     }
                 }
                 addPlayer();
-                GameManager.playersobjout.add(objout);
                 GameManager.actualplayer = GameManager.players.get(GameManager.numberOfPlayers - 1 - GameManager.freePlacesForGame);
             }
 
@@ -325,6 +342,7 @@ public class Connector {
                     else
                     {
                         try {
+
                             handleCommands();
                         }
                         catch (Exception e)

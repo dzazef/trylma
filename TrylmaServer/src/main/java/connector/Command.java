@@ -2,9 +2,11 @@ package connector;
 
 import gamemanager.GameManager;
 import gamemanager.MoveManager;
+import gamemanager.Path;
 import serializable.Field;
 import player.Pawn;
 import player.Player;
+import serializable.FieldsSet;
 
 import java.io.*;
 
@@ -23,7 +25,7 @@ public class Command {
 
     public void sendWinMessage(Player winner)
     {
-        String message = "won;"+winner.getId();
+        String message = "won:"+winner.getId();
         try {
             objout.writeObject(message);
         }
@@ -34,29 +36,40 @@ public class Command {
 
     }
 
-    void sendMoveMessage(Pawn pawn, Field destination)
+    void move(FieldsSet path)
     {
-        for(int i = 0; i< MoveManager.paths.size();i++)
-        {
-            if(MoveManager.paths.get(i).end.getId().equals(destination.getId())&&pawn.getId().equals(MoveManager.paths.get(i).start.getId()))
-            {
-                for(int j = 0; j < GameManager.playersobjout.size();j++) {
-                    String message = "moved;" + GameManager.actualplayer.getId();
+        System.out.println("Wysyłam ścieżkę");
+        for(int j = 0; j < GameManager.playersobjout.size();j++) {
+            String message = "moved:" + GameManager.actualplayer.getId();
 
-                    try {
-                        GameManager.playersobjout.get(j).writeObject(message);
-                        GameManager.playersobjout.get(j).writeObject(MoveManager.paths.get(i));
-                    } catch (IOException e) {
-                        System.out.println("failed to send path object: IOException" + e);
-                    }
-                }
-                return;
+            try {
+                GameManager.playersobjout.get(j).writeObject(message);
+                GameManager.playersobjout.get(j).writeObject(path);
+            } catch (IOException e) {
+                System.out.println("failed to send path object: IOException" + e);
             }
+        }
+        return;
+    }
+
+    void sendMoveMessage( Field destination)
+    {
+        if(!(GameManager.actualplayer.isBot())) {
+            for (int i = 0; i < MoveManager.paths.size(); i++) {
+                System.out.println(i);
+                if (MoveManager.paths.get(i).end.getId().equals(destination.getId())) {
+                    move(MoveManager.paths.get(i));
+                }
+
+            }
+        }else
+        {
+            move(GameManager.actualplayer.getBotchoosenpath());
         }
     }
     void sendPossibleMovesMessage(Field field)
     {
-        System.out.println("Jestem w metodzie co sciezki wysyle");
+
         Pawn pawn =GameManager.actualplayer.getPawnById(field.getId());
 
         System.out.println(GameManager.actualplayer.getId());
