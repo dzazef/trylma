@@ -1,6 +1,8 @@
 package views;
 
 import handlers.Handle;
+import javafx.animation.FillTransition;
+import javafx.animation.Timeline;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -9,9 +11,12 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Sphere;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 import models.client.CircleField;
 import models.client.board_players.board.Board;
 import javafx.scene.Group;
@@ -84,8 +89,9 @@ public class BoardView {
         boardStage.setResizable(false);
         boardStage.setTitle("Trylma");
         boardStage.initModality(Modality.APPLICATION_MODAL);
-
         skip.setOnAction(e -> Handle.skipHandle());
+
+        //tu testy
     }
 
     /**
@@ -124,7 +130,7 @@ public class BoardView {
         group.getChildren().removeAll(circleFields);
     }
 
-    public static void setMyColor(Color color) {
+    public static void setMyColor(Paint color) {
         BoardView.circle.setFill(color);
     }
 }

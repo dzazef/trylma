@@ -1,6 +1,7 @@
 package models.client;
 
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import serializable.Field;
 
 import java.util.ArrayList;
@@ -29,7 +30,7 @@ public class FieldGenerator {
      */
     public static List<CircleField> generateFields(boolean d3, boolean ud, int lines, int x, int y, int z,
                                                    int ch, double radius,
-                                                   double WGap, double HGap, Color color) {
+                                                   double WGap, double HGap, Paint color) {
         List<CircleField> circleFields = new ArrayList<>();
         double currentCenterX = (y-((float)x/2-(1.5*ch)))*(WGap+2*radius)+WGap+radius;
         double currentCenterY = abs(HGap)+radius+(x+2*ch)*(2*radius-HGap);

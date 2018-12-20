@@ -1,6 +1,7 @@
 package models.client;
 
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import serializable.Field;
 
@@ -20,7 +21,7 @@ public class CircleField extends Circle implements Serializable {
         System.out.println("run empty constructor for circlefield");
     }
 
-    public CircleField(Field field1, double centerX, double centerY, double radius, Color color){
+    public CircleField(Field field1, double centerX, double centerY, double radius, Paint color){
         super(centerX, centerY, radius, color);
         this.field=field1;
     }

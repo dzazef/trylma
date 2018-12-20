@@ -1,9 +1,9 @@
 package models.client.board_players.players;
 
+import javafx.scene.paint.*;
 import models.client.CircleField;
 import models.client.FieldGenerator;
 import handlers.Handle;
-import javafx.scene.paint.Color;
 import views.BoardView;
 
 import java.util.Iterator;
@@ -49,22 +49,42 @@ public class Player {
      * @param wGap patrz {@link views.BoardView#initialize(int, int, double, double)}
      * @param hGap patrz {@link views.BoardView#initialize(int, int, double, double)}
      */
+    @SuppressWarnings("Duplicates")
     public void generateFields(boolean isThisMe, double radius, int ch, double wGap, double hGap) {
-        int x = 0; int y = 0; int z = 0; boolean ud = false; Color color = Color.GRAY;
+        RadialGradient radialGradient;
+        int x = 0; int y = 0; int z = 0; boolean ud = false; Paint color = Color.GRAY;
         assert ID<=6;
         switch(ID) {
             case 1: {
-                x = -2*ch; y = -ch; z = -ch; ud = false; color = Color.SALMON; break;
+                radialGradient =
+                        new RadialGradient(0, 0, 0.5, 0.5, 1, true, CycleMethod.NO_CYCLE,
+                                new Stop(0, Color.web("#ffb4a5")), new Stop(1, Color.web("#ab0000")));
+                x = -2*ch; y = -ch; z = -ch; ud = false; color = radialGradient; break;
             } case 4: {
-                x = -1; y = ch; z = -(ch+1); ud = true; color = Color.GREEN; break;
+                radialGradient =
+                        new RadialGradient(0, 0, 0.5, 0.5, 1, true, CycleMethod.NO_CYCLE,
+                                new Stop(0, Color.web("#d3fbd2")), new Stop(1, Color.web("#328900")));
+                x = -1; y = ch; z = -(ch+1); ud = true; color = radialGradient; break;
             } case 6: {
-                x = 1; y = ch+1; z = -ch; ud = false; color = Color.RED; break;
+                radialGradient =
+                        new RadialGradient(0, 0, 0.5, 0.5, 1, true, CycleMethod.NO_CYCLE,
+                                new Stop(0, Color.web("#dce3fb")), new Stop(1, Color.web("#0007f9")));
+                x = 1; y = ch+1; z = -ch; ud = false; color = radialGradient; break;
             } case 2: {
-                x = 2*ch; y = ch; z = ch; ud = true; color = Color.BLUE; break;
+                radialGradient =
+                        new RadialGradient(0, 0, 0.5, 0.5, 1, true, CycleMethod.NO_CYCLE,
+                                new Stop(0, Color.web("#ffc0f9")), new Stop(1, Color.web("#a100f9")));
+                x = 2*ch; y = ch; z = ch; ud = true; color = radialGradient; break;
             } case 3: {
-                x = 1; y = -ch; z = ch+1; ud = false; color = Color.VIOLET; break;
+                radialGradient =
+                        new RadialGradient(0, 0, 0.5, 0.5, 1, true, CycleMethod.NO_CYCLE,
+                                new Stop(0, Color.web("#d2f2e4")), new Stop(1, Color.web("#00d0f4")));
+                x = 1; y = -ch; z = ch+1; ud = false; color = radialGradient; break;
             } case 5: {
-                x = -1; y = -(ch+1); z = ch; ud = true; color = Color.ORANGE; break;
+                radialGradient =
+                        new RadialGradient(0, 0, 0.5, 0.5, 1, true, CycleMethod.NO_CYCLE,
+                                new Stop(0, Color.web("#ffffc6")), new Stop(1, Color.web("#ffcb00")));
+                x = -1; y = -(ch+1); z = ch; ud = true; color = radialGradient; break;
             }
         }
         circleFieldList = FieldGenerator.generateFields(true, ud, ch, x, y, z, ch, radius, wGap, hGap, color);

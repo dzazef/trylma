@@ -1,18 +1,16 @@
-C:\Users\Bartek Stajnowski\Documents\GitHub\trylma\TrylmaClient\src\main\java\serializable\MovePathIterator.java
-C:\Users\Bartek Stajnowski\Documents\GitHub\trylma\TrylmaClient\src\main\java\models\client\FieldGenerator.java
-C:\Users\Bartek Stajnowski\Documents\GitHub\trylma\TrylmaClient\src\main\java\views\BoardView.java
-C:\Users\Bartek Stajnowski\Documents\GitHub\trylma\TrylmaClient\src\main\java\handlers\Handle.java
-C:\Users\Bartek Stajnowski\Documents\GitHub\trylma\TrylmaClient\src\main\java\models\client\CircleField.java
-C:\Users\Bartek Stajnowski\Documents\GitHub\trylma\TrylmaClient\src\main\java\TrylmaClient.java
-C:\Users\Bartek Stajnowski\Documents\GitHub\trylma\TrylmaClient\src\main\java\views\NewGameView.java
-C:\Users\Bartek Stajnowski\Documents\GitHub\trylma\TrylmaClient\src\main\java\views\ErrorView.java
-C:\Users\Bartek Stajnowski\Documents\GitHub\trylma\TrylmaClient\src\main\java\views\MenuView.java
-C:\Users\Bartek Stajnowski\Documents\GitHub\trylma\TrylmaClient\src\main\java\serializable\FieldsSet.java
-C:\Users\Bartek Stajnowski\Documents\GitHub\trylma\TrylmaClient\src\main\java\models\client\board_players\board\Board.java
-C:\Users\Bartek Stajnowski\Documents\GitHub\trylma\TrylmaClient\src\main\java\models\client\board_players\players\Player.java
-C:\Users\Bartek Stajnowski\Documents\GitHub\trylma\TrylmaClient\src\main\java\serializable\Field.java
-C:\Users\Bartek Stajnowski\Documents\GitHub\trylma\TrylmaClient\src\main\java\models\client\board_players\players\PlayerFieldIterator.java
-C:\Users\Bartek Stajnowski\Documents\GitHub\trylma\TrylmaClient\src\main\java\controllers\MenuController.java
-C:\Users\Bartek Stajnowski\Documents\GitHub\trylma\TrylmaClient\src\main\java\controllers\NewGameController.java
-C:\Users\Bartek Stajnowski\Documents\GitHub\trylma\TrylmaClient\src\main\java\controllers\ErrorController.java
-C:\Users\Bartek Stajnowski\Documents\GitHub\trylma\TrylmaClient\src\main\java\models\client_server\Connection.java
+/home/dzazef/Pulpit/git10/trylma/TrylmaClient/src/main/java/views/MenuView.java
+/home/dzazef/Pulpit/git10/trylma/TrylmaClient/src/main/java/models/client/board_players/players/PlayerFieldIterator.java
+/home/dzazef/Pulpit/git10/trylma/TrylmaClient/src/main/java/views/NewGameView.java
+/home/dzazef/Pulpit/git10/trylma/TrylmaClient/src/main/java/TrylmaClient.java
+/home/dzazef/Pulpit/git10/trylma/TrylmaClient/src/main/java/models/client_server/Connection.java
+/home/dzazef/Pulpit/git10/trylma/TrylmaClient/src/main/java/models/client/board_players/board/Board.java
+/home/dzazef/Pulpit/git10/trylma/TrylmaClient/src/main/java/serializable/MovePathIterator.java
+/home/dzazef/Pulpit/git10/trylma/TrylmaClient/src/main/java/models/client/CircleField.java
+/home/dzazef/Pulpit/git10/trylma/TrylmaClient/src/main/java/models/client/board_players/players/Player.java
+/home/dzazef/Pulpit/git10/trylma/TrylmaClient/src/main/java/models/client/FieldGenerator.java
+/home/dzazef/Pulpit/git10/trylma/TrylmaClient/src/main/java/controllers/MenuController.java
+/home/dzazef/Pulpit/git10/trylma/TrylmaClient/src/main/java/serializable/FieldsSet.java
+/home/dzazef/Pulpit/git10/trylma/TrylmaClient/src/main/java/controllers/NewGameController.java
+/home/dzazef/Pulpit/git10/trylma/TrylmaClient/src/main/java/views/BoardView.java
+/home/dzazef/Pulpit/git10/trylma/TrylmaClient/src/main/java/handlers/Handle.java
+/home/dzazef/Pulpit/git10/trylma/TrylmaClient/src/main/java/serializable/Field.java

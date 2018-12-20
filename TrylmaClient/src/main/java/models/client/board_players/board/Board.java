@@ -1,6 +1,10 @@
 package models.client.board_players.board;
 
 import javafx.animation.PathTransition;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.paint.Paint;
+import javafx.scene.paint.RadialGradient;
 import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
@@ -13,6 +17,8 @@ import models.client.board_players.players.Player;
 import serializable.Field;
 import serializable.FieldsSet;
 import views.BoardView;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -27,7 +33,7 @@ public class Board {
     private static int ch;
     private static List<CircleField> circleFields = new ArrayList<>();
     private static List<Player> playerList = new ArrayList<>();
-    private static List<CircleField> possibleFields;
+    private static List<CircleField> possibleFields = new ArrayList<>();
 
     /**
      * Ustawia parametry planszy.
@@ -86,7 +92,7 @@ public class Board {
         Iterator iterator = FieldsSet.createIterator();
         Field sourceField = (Field) iterator.next();
         Field temp = sourceField;
-        System.out.println("source: "+sourceField.getX()+" "+sourceField.getY()+" "+sourceField.getZ()+" ");
+        System.out.println("MOVEINFO: source: "+sourceField.getX()+" "+sourceField.getY()+" "+sourceField.getZ()+" ");
         CircleField sourceCircle = null;
         Player player = null;
 
@@ -99,7 +105,7 @@ public class Board {
             if (p.getID()==playerID) player=p;
         }
         if (player!=null) {
-            System.out.println("player: "+player.getID());
+            System.out.println("MOVEINFO: player: "+player.getID());
             for (CircleField cf : player.getCircleFields()) {
                 if (cf.compare(sourceField)) sourceCircle = cf;
             }
@@ -110,7 +116,7 @@ public class Board {
                 path.getElements().add(new MoveTo(sourceCircle.getCenterX(), sourceCircle.getCenterY()));
                 while(iterator.hasNext()) {
                     temp = (Field) iterator.next();
-                    System.out.println("moveto: "+temp.getX()+" "+temp.getY()+" "+temp.getZ());
+                    System.out.println("MOVEINFO: moveto: "+temp.getX()+" "+temp.getY()+" "+temp.getZ());
                     centerX = (temp.getY()-((float)temp.getX()/2-(1.5*ch)))*(wGap+2*radius)+wGap+radius;
                     centerY = abs(hGap)+radius+(temp.getX()+2*ch)*(2*radius-hGap);
                     path.getElements().add(new LineTo(centerX, centerY));
@@ -132,16 +138,16 @@ public class Board {
                 pathTransition.play();
             }
             else {
-                System.err.println("Circle not found. Command error");
+                System.err.println("ERROR: Pawn not found. Check coordinates.");
             }
         }
         else {
-            System.err.println("Player not found. Command error");
+            System.err.println("ERROR: Player not found. Check playerID.");
         }
     }
 
     public static void showPossibleFields(FieldsSet FieldsSet) {
-        if (possibleFields!=null && possibleFields.size()>0) removePossibleFields();
+        if (possibleFields.size()>0) removePossibleFields();
         possibleFields = new ArrayList<>();
         CircleField circleField;
         double centerX, centerY;
@@ -150,7 +156,11 @@ public class Board {
             Field field = (Field) iterator.next();
             centerX = (field.getY()-((float)field.getX()/2-(1.5*ch)))*(wGap+2*radius)+wGap+radius;
             centerY = abs(hGap)+radius+(field.getX()+2*ch)*(2*radius-hGap);
-            circleField = new CircleField(field, centerX, centerY, radius, Color.GOLD);
+
+            circleField = new CircleField(field, centerX, centerY, radius, Color.BLACK);
+            circleField.setScaleX(1.03);
+            circleField.setScaleY(1.03);
+
             possibleFields.add(circleField);
             CircleField finalCircleField = circleField;
             circleField.setOnMouseClicked(e -> Handle.possibleFieldHandle(finalCircleField));

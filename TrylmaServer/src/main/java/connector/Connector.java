@@ -208,7 +208,7 @@ public class Connector {
                     }
                     else
                     {
-                        sleep(2000);
+                        sleep(100);
                         System.out.println("Teraz się rusza bot" + this.player_to_handle.getId());
                         this.player_to_handle.botMove();
                         command.sendMoveMessage(GameManager.actualplayer.getBotchoosendestination());

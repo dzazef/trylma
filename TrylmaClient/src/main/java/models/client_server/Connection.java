@@ -43,7 +43,7 @@ public class Connection {
 
     public static void sendConnect() {
         if (isConnectionSuccessfull()) {
-            System.out.println("connect");
+            System.out.println("connect ->");
             try {
                 os.writeObject("connect");
             } catch (IOException e) {
@@ -55,7 +55,7 @@ public class Connection {
     public static void sendCreateNewGameCommand(int players, int bots) {
         String info = "creategame" + ":" + bots + ":" + players+":4"; //TODO: size of plansza
         if (isConnectionSuccessfull()) {
-            System.out.println(info);
+            System.out.println(info+" ->");
             try {
                 os.writeObject(info);
                 NewGameView.hide();
@@ -79,7 +79,7 @@ public class Connection {
     public static void sendChosenPawn(Field field) {
         if(isitMyTurn()) {
             String command = "startfield";
-            System.out.println(command);
+            System.out.println(command+" ->");
             try {
                 os.writeObject(command);
                 os.writeObject(field);
@@ -93,8 +93,10 @@ public class Connection {
     public static void sendSkip() {
         if(isitMyTurn()) {
             String command = "skip";
-            System.out.println(command);
+            System.out.println(command+" ->");
             try {
+                myTurn = false;
+                System.out.println("INFO: End of my turn.");
                 os.writeObject(command);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -104,10 +106,9 @@ public class Connection {
     }
 
     public static void sendChosenField(Field field) {
-        System.out.println("Sending endfield");
         if(isitMyTurn()) {
             String command = "endfield";
-            System.out.println(command);
+            System.out.println(command+" ->");
             try {
                 os.writeObject(command);
                 os.writeObject(field);
@@ -116,14 +117,15 @@ public class Connection {
                 System.out.println("Error while writing chosen pawn to OutputStream");
             }
             myTurn = false;
+            System.out.println("INFO: End of my turn. Now waiting for info about my move.");
             Board.removePossibleFields();
         }
     }
 
     public static boolean commandInterpreter(String command) {
-        System.out.println(command);
+        System.out.println(command+" <-");
         if (command.equals("yourturn")) {
-            System.out.println("Now is my turn.");
+            System.out.println("INFO: Now is my turn.");
             myTurn=true;
         } else if (command.matches("moved(.*)")) {
             String[] temp = command.split(":");
@@ -149,7 +151,7 @@ public class Connection {
         else if (command.matches("joingame(.*)")) {
             String[] temp = command.split(":");
             Platform.runLater( () -> {
-                BoardView.initialize(800, 4, 5, 5); //TODO: checkers as variable
+                BoardView.initialize(600, 4, 5, 0); //TODO: checkers as variable
                 BoardView.show();
                 BoardView.initializeFields();
                 int playerid = Integer.parseInt(temp[1]); //TODO: potrzebuję tylko id, bez 'player'
@@ -198,7 +200,6 @@ public class Connection {
         if (isConnectionSuccessfull()) {
             new Thread(() -> {
                 while (true) {
-                    System.out.println("loop1");
                     try {
                         Object object = is.readObject();
                         Connection.commandInterpreter((String) object);
