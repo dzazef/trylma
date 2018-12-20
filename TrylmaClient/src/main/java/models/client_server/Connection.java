@@ -98,6 +98,7 @@ public class Connection {
                 myTurn = false;
                 System.out.println("INFO: End of my turn.");
                 os.writeObject(command);
+                Platform.runLater(Board::removePossibleFields);
             } catch (IOException e) {
                 e.printStackTrace();
                 System.err.println("Error while sending skip command");

@@ -68,12 +68,12 @@ public class Player {
             } case 6: {
                 radialGradient =
                         new RadialGradient(0, 0, 0.5, 0.5, 1, true, CycleMethod.NO_CYCLE,
-                                new Stop(0, Color.web("#dce3fb")), new Stop(1, Color.web("#0007f9")));
+                                new Stop(0, Color.web("#ffc0f9")), new Stop(1, Color.web("#a100f9")));
                 x = 1; y = ch+1; z = -ch; ud = false; color = radialGradient; break;
             } case 2: {
                 radialGradient =
                         new RadialGradient(0, 0, 0.5, 0.5, 1, true, CycleMethod.NO_CYCLE,
-                                new Stop(0, Color.web("#ffc0f9")), new Stop(1, Color.web("#a100f9")));
+                                new Stop(0, Color.web("#dce3fb")), new Stop(1, Color.web("#0007f9")));
                 x = 2*ch; y = ch; z = ch; ud = true; color = radialGradient; break;
             } case 3: {
                 radialGradient =

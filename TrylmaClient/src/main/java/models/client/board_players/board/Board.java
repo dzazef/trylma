@@ -1,6 +1,8 @@
 package models.client.board_players.board;
 
+import javafx.animation.FillTransition;
 import javafx.animation.PathTransition;
+import javafx.animation.Timeline;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Paint;
@@ -34,6 +36,7 @@ public class Board {
     private static List<CircleField> circleFields = new ArrayList<>();
     private static List<Player> playerList = new ArrayList<>();
     private static List<CircleField> possibleFields = new ArrayList<>();
+    private static List<FillTransition> fillTransitions = new ArrayList<>();
 
     /**
      * Ustawia parametry planszy.
@@ -147,9 +150,10 @@ public class Board {
     }
 
     public static void showPossibleFields(FieldsSet FieldsSet) {
-        if (possibleFields.size()>0) removePossibleFields();
-        possibleFields = new ArrayList<>();
+        removePossibleFields();
+        possibleFields.clear();
         CircleField circleField;
+        FillTransition ft;
         double centerX, centerY;
         Iterator iterator = FieldsSet.createIterator();
         while (iterator.hasNext()) {
@@ -161,15 +165,27 @@ public class Board {
             circleField.setScaleX(1.03);
             circleField.setScaleY(1.03);
 
+            ft = new FillTransition(Duration.millis(800), circleField, Color.web("#3e3e3e") ,Color.GRAY);
+            ft.setCycleCount(Timeline.INDEFINITE);
+            ft.setAutoReverse(true);
+            fillTransitions.add(ft);
+
             possibleFields.add(circleField);
             CircleField finalCircleField = circleField;
             circleField.setOnMouseClicked(e -> Handle.possibleFieldHandle(finalCircleField));
         }
         BoardView.draw(possibleFields);
+        for (FillTransition fillTransition : fillTransitions) {
+            fillTransition.play();
+        }
     }
 
     public static void removePossibleFields() {
+        for (FillTransition fillTransition : fillTransitions) {
+            fillTransition.stop();
+        }
         BoardView.undraw(possibleFields);
-        possibleFields = new ArrayList<>();
+        fillTransitions.clear();
+        possibleFields.clear();
     }
 }

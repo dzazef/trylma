@@ -5,6 +5,7 @@ import models.client.CircleField;
 import java.util.Iterator;
 import java.util.List;
 
+@Deprecated
 public class PlayerFieldIterator implements Iterator {
     private List<CircleField> circleFieldList;
     private int pos = 0;
