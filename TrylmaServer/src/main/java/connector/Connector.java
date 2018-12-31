@@ -30,6 +30,7 @@ public class Connector {
      */
     public static class Handler extends Thread {
 
+        private boolean connected;
 
         /**
          * Obiekt klasy Command, która posiada funkcje do generowanie i wysyłania wiadomości do klienta
@@ -65,6 +66,7 @@ public class Connector {
             }
             if(GameManager.freePlacesForGame >0)
             {
+                this.connected = true;
                 GameManager.playersobjout.add(objout);
             }
             if((GameManager.numberOfPlayers - GameManager.freePlacesForGame +1)==1)
@@ -115,6 +117,7 @@ public class Connector {
          * @param socket socket na którym połączony zostanie klient.
          */
         public Handler(Socket socket) {
+            this.connected = false;
             this.player_to_handle = null;
             this.socket = socket;
             try {
@@ -125,20 +128,22 @@ public class Connector {
             {
                 System.out.println("Failed to create Output or Input stream. Player Handler");
             }
-            command = new Command(objout,objin);
+            command = new Command(objout);
         }
 
 
         private Handler(Socket socket,Player player,ObjectInputStream in, ObjectOutputStream out) {
+            this.connected = true;
             this.socket = socket;
             this.player_to_handle = player;
             this.objout =out;
             this.objin = in;
-            command = new Command(objout,objin);
+            command = new Command(objout);
         }
         private void handleCommands() throws Exception {
                 Object t;
                 if (GameManager.actualplayer.getId().equals(this.player_to_handle.getId())) {
+                    System.out.println("Handle commands" + this.player_to_handle.getId());
 
                         if (!this.player_to_handle.isBot()) {
                         try {
@@ -147,9 +152,7 @@ public class Connector {
                             throw new Exception("Failed to send yourturn message" + e + " : " + this.player_to_handle.getId());
                         }
                         try {
-                            synchronized (objin) {
-                                t = this.objin.readObject();
-                            }
+                            t = this.objin.readObject();
                         } catch (Exception e) {
                             throw new Exception("Failed to read startfield command from client "+ e + " : " + this.player_to_handle.getId());
                         }
@@ -158,19 +161,16 @@ public class Connector {
                             System.out.println("Wszedłem do startfield");
                             Field field;
                             try {
-                                synchronized (objin) {
-                                    field = (Field) objin.readObject();
-                                }
+                                field = (Field) objin.readObject();
                             } catch (Exception e) {
                                 throw new Exception("Failed to read Field class object for startfield "+ e + " : " + this.player_to_handle.getId());
                             }
                             MoveManager.choosenPawn = this.player_to_handle.getPawnById(field.getId());
                             System.out.println("Wczytałem obiekt");
-                            if (field != null) {
-                                System.out.println("Chce wyslac sciezki");
-                                command.sendPossibleMovesMessage(field);
-                                MoveManager.choosenPawn = GameManager.actualplayer.getPawnById(field.getId());
-                            }
+                            System.out.println("Chce wyslac sciezki");
+                            command.sendPossibleMovesMessage(field);
+                            MoveManager.choosenPawn = GameManager.actualplayer.getPawnById(field.getId());
+
                             System.out.println("Wysłałem ścieżki");
 
                         } else if (s.startsWith("skip")) {
@@ -208,7 +208,7 @@ public class Connector {
                     }
                     else
                     {
-                        sleep(100);
+                        sleep(1000);
                         System.out.println("Teraz się rusza bot" + this.player_to_handle.getId());
                         this.player_to_handle.botMove();
                         command.sendMoveMessage(GameManager.actualplayer.getBotchoosendestination());
@@ -216,7 +216,13 @@ public class Connector {
                         GameManager.actualplayer.movePawn(GameManager.actualplayer.getBotchoosenpawn(), GameManager.actualplayer.getBotchoosendestination());
                         GameManager.nextPlayer();
                     }
-
+                    Player winner = GameManager.checkWin();
+                    if(winner != null)
+                    {
+                        System.out.println("Wysyłam wiadomość o wygranej");
+                        command.sendWinMessage(winner);
+                        GameManager.gameInProgerss = false;
+                    }
                 }
         }
 
@@ -286,21 +292,27 @@ public class Connector {
                 addPlayer();
                 GameManager.actualplayer = GameManager.players.get(GameManager.numberOfPlayers - 1 - GameManager.freePlacesForGame);
             }
-
             else {
                 System.out.println("Failure, game has not been created");
             }
 
         }
         public void run() {
-
-
+            if(this.player_to_handle != null) {
+                if (this.player_to_handle.getId().equals("1")) {
+                    System.out.println(this.connected);
+                }
+            }
                 while(true) {
-                    if(this.player_to_handle!=null)
-                    {
-                       // System.out.println(this.player_to_handle.getId());
-                    }
-                    if(!GameManager.gameInProgerss) {
+                    if(!GameManager.gameInProgerss && !this.connected) {
+//                        if(this.player_to_handle != null)
+//                        {
+//                            System.out.println("Wszedłem " + this.player_to_handle);
+//                        }
+//                        else
+//                        {
+//                            System.out.println("Wszedłem null");
+//                        }
                         if(this.player_to_handle==null)
                         {
                         String s;
@@ -309,11 +321,11 @@ public class Connector {
                         } catch (Exception e) {
                             if(this.player_to_handle!=null)
                             {
-                                System.out.println("Failedo to read connect command" + this.player_to_handle.getId());
+                                System.out.println("Failed to read connect command" + this.player_to_handle.getId());
                             }
                             else
                             {
-                                System.out.println("Failedo to read connect command  player is null" );
+                                System.out.println("Failed to read connect command player is null" );
                             }
                             break;
                         }
@@ -339,59 +351,18 @@ public class Connector {
                         }
                     }
                     }
-                    else
+                    else if(this.connected && GameManager.gameInProgerss)
                     {
                         try {
-
                             handleCommands();
                         }
                         catch (Exception e)
                         {
                             System.out.println("Wywaliło serwer");
-                            System.out.println(e.getMessage());
+                            System.out.println(e);
                             break;
                         }
                     }
-                   /* if (!GameManager.gameInProgerss && !this.connected) {
-                        String s;
-                        if (GameManager.freePlacesForGame == 0) {
-                            GameManager.gameInProgerss = true;
-                        }
-                        try {
-                            s = (String) objin.readObject();
-                        }
-                        catch (Exception e)
-                        {
-                            System.out.println("Failedo to read connect command");
-                            break;
-                        }
-                        if (s.startsWith("connect") && !GameManager.gameInProgerss) {
-                            if (GameManager.numberOfPlayers == 0) {
-                                createGame();
-                                this.connected = true;
-                            }
-                        } else if (GameManager.freePlacesForGame > 0) {
-                            addPlayer();
-                            GameManager.playersobjout.add(objout);
-                            String message = "joingame" + ":" + GameManager.players.get(GameManager.numberOfPlayers - 1 - GameManager.freePlacesForGame).getId() + ":" + GameManager.numberOfPlayers;
-                            try {
-                                objout.writeObject(message);
-                            }
-                            catch (Exception e)
-                            {
-                                System.out.println("Failed to send joingame message");
-                            }
-                        }
-                    } else if (GameManager.gameInProgerss && this.connected) {
-                        handleCommands();
-                    } else if (GameManager.gameInProgerss && !this.connected) {
-                        String s;
-
-
-                        if (s.startsWith("connect")) {
-                            objout.writeObject("gamefull");
-                        }
-                    }*/
                 }
 
         }

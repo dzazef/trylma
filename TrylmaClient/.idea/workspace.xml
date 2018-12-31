@@ -7,12 +7,55 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="63c90eab-028f-44c2-91e5-543cfc98ea18" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/views/MenuView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/views/MenuView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/woohoo.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TrylmaClient.iml" beforeDir="false" afterPath="$PROJECT_DIR$/TrylmaClient.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/client/TrylmaClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/client/TrylmaClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/MenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/MenuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/NewGameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/NewGameController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/handlers/Handle.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/handlers/Handle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/models/client/CircleField.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/models/client/CircleField.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/models/client/FieldGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/models/client/FieldGenerator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/models/client/board_players/board/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/models/client/board_players/board/Board.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/models/client/board_players/players/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/models/client/board_players/players/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/models/client/board_players/players/PlayerFieldIterator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/models/client/board_players/players/PlayerFieldIterator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/models/client_server/Connection.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/models/client_server/Connection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/serializable/Field$State.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/serializable/Field$State.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/serializable/Field.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/serializable/Field.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/serializable/FieldsSet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/serializable/FieldsSet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/serializable/MovePathIterator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/serializable/MovePathIterator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/views/BoardView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/BoardView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/views/MenuView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/MenuView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/views/NewGameView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/NewGameView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/.idea/artifacts/Server_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/src/main/java/connector/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/connector/Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/src/main/java/connector/Connector.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/connector/Connector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/src/main/java/gamemanager/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/gamemanager/GameManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/src/main/java/gamemanager/MoveManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/gamemanager/MoveManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/src/main/java/player/Player1.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/player/Player1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/src/main/java/player/Player2.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/player/Player2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/src/main/java/player/Player3.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/player/Player3.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/src/main/java/player/Player4.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/player/Player4.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/src/main/java/player/Player5.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/player/Player5.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/src/main/java/player/Player6.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/player/Player6.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/target/classes/connector/Command.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/target/classes/connector/Command.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/target/classes/connector/Connector$Handler.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/target/classes/connector/Connector$Handler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/target/classes/connector/Connector.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/target/classes/connector/Connector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/target/classes/gamemanager/GameManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/target/classes/gamemanager/GameManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/target/classes/gamemanager/MoveManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/target/classes/gamemanager/MoveManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/target/classes/player/Player1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/target/classes/player/Player1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/target/classes/player/Player2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/target/classes/player/Player2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/target/classes/player/Player3.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/target/classes/player/Player3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/target/classes/player/Player4.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/target/classes/player/Player4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/target/classes/player/Player5.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/target/classes/player/Player5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/target/classes/player/Player6.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/target/classes/player/Player6.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,11 +76,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file leaf-file-name="Connection.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/models/client_server/Connection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1005">
-              <caret line="78" column="28" selection-start-line="78" selection-start-column="28" selection-end-line="78" selection-end-column="28" />
+            <state relative-caret-position="17">
+              <caret line="72" column="36" selection-start-line="72" selection-start-column="36" selection-end-line="72" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -45,76 +88,73 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file leaf-file-name="Board.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/models/client/board_players/board/Board.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="152" column="31" lean-forward="true" selection-start-line="152" selection-start-column="31" selection-end-line="152" selection-end-column="31" />
+            <state relative-caret-position="2278">
+              <caret line="162" selection-start-line="162" selection-end-line="162" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file leaf-file-name="MenuView.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/views/MenuView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
+            <state relative-caret-position="493">
+              <caret line="38" selection-start-line="38" selection-end-line="38" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/models/client/board_players/players/Player.java">
+      <file leaf-file-name="NewGameController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/controllers/NewGameController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="810">
-              <caret line="71" selection-start-line="71" selection-end-line="71" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="85">
+              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file leaf-file-name="BoardView.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/views/BoardView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="675">
-              <caret line="71" column="51" selection-start-line="71" selection-start-column="51" selection-end-line="71" selection-end-column="51" />
+            <state relative-caret-position="850">
+              <caret line="76" column="51" selection-start-line="76" selection-start-column="51" selection-end-line="76" selection-end-column="51" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file leaf-file-name="FieldGenerator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/models/client/FieldGenerator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="32" column="81" selection-start-line="32" selection-start-column="81" selection-end-line="32" selection-end-column="81" />
+            <state relative-caret-position="442">
+              <caret line="33" column="59" selection-start-line="33" selection-start-column="59" selection-end-line="33" selection-end-column="59" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file leaf-file-name="Handle.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/handlers/Handle.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
+            <state relative-caret-position="204">
               <caret line="13" column="48" selection-start-line="13" selection-start-column="48" selection-end-line="13" selection-end-column="48" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file leaf-file-name="CircleField.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/models/client/CircleField.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="31" selection-start-line="31" selection-end-line="31" />
+            <state relative-caret-position="34">
+              <caret line="2" column="25" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file leaf-file-name="PlayerFieldIterator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/models/client/board_players/players/PlayerFieldIterator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
+            <state relative-caret-position="255">
               <caret line="24" selection-start-line="24" selection-end-line="24" />
             </state>
           </provider>
@@ -185,7 +225,6 @@
         <option value="$PROJECT_DIR$/src/main/java/serializable/MovePathIterator.java" />
         <option value="$PROJECT_DIR$/src/main/java/serializable/MovePath.java" />
         <option value="$PROJECT_DIR$/src/main/java/serializable/FieldsSet.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/models/client/CircleField.java" />
         <option value="$PROJECT_DIR$/src/main/java/models/client/FieldGenerator.java" />
         <option value="$PROJECT_DIR$/src/main/java/controllers/MenuController.java" />
@@ -195,8 +234,15 @@
         <option value="$PROJECT_DIR$/src/main/java/models/client/board_players/board/Board.java" />
         <option value="$PROJECT_DIR$/src/main/java/models/client_server/Connection.java" />
         <option value="$PROJECT_DIR$/src/main/java/views/MenuView.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -205,171 +251,23 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="63" />
-    <option name="y" value="25" />
-    <option name="width" value="1857" />
-    <option name="height" value="1055" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-10" />
+    <option name="width" value="979" />
+    <option name="height" value="1040" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="TrylmaClient" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TrylmaClient" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TrylmaClient" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TrylmaClient" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TrylmaClient" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TrylmaClient" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TrylmaClient" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TrylmaClient" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
-              <item name="TrylmaClient_jar" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TrylmaClient" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TrylmaClient" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TrylmaClient" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TrylmaClient" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TrylmaClient" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TrylmaClient" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TrylmaClient" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TrylmaClient" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TrylmaClient" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TrylmaClient" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="handlers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TrylmaClient" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TrylmaClient" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TrylmaClient" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TrylmaClient" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TrylmaClient" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TrylmaClient" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="board_players" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TrylmaClient" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TrylmaClient" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="board_players" type="462c0819:PsiDirectoryNode" />
-              <item name="board" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TrylmaClient" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TrylmaClient" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="board_players" type="462c0819:PsiDirectoryNode" />
-              <item name="players" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TrylmaClient" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TrylmaClient" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-              <item name="client_server" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TrylmaClient" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TrylmaClient" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="serializable" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TrylmaClient" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TrylmaClient" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TrylmaClient" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TrylmaClient" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="PackagesPane" />
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545276838908" />
     <property name="last.edited.regexp" value="wonwonwownown" />
-    <property name="last_opened_file_path" value="$USER_HOME$/IdeaProjects/test" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../TrylmaServer" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
@@ -405,26 +303,19 @@
     <configuration name="TrylmaClient (1)" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="client.TrylmaClient" />
       <module name="TrylmaClient" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
     </configuration>
     <configuration name="TrylmaClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="client.TrylmaClient" />
       <module name="TrylmaClient" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
     </configuration>
     <configuration name="TrylmaClient.jar" type="JarApplication" factoryName="JAR Application">
       <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/TrylmaClient_jar/TrylmaClient.jar" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <method v="2" />
     </configuration>
     <list>
       <item itemvalue="Application.TrylmaClient (1)" />
-      <item itemvalue="Application.TrylmaClient" />
       <item itemvalue="JAR Application.TrylmaClient.jar" />
+      <item itemvalue="Application.TrylmaClient" />
     </list>
     <recent_temporary>
       <list>
@@ -488,102 +379,236 @@
       <workItem from="1545265253491" duration="7925000" />
       <workItem from="1545274243430" duration="1786000" />
       <workItem from="1545276060018" duration="741000" />
+      <workItem from="1546005298061" duration="7262000" />
+      <workItem from="1546175226056" duration="11467000" />
+      <workItem from="1546205904682" duration="1853000" />
+      <workItem from="1546260438691" duration="314000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="107987000" />
+    <option name="totallyTimeSpent" value="128909000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="63" y="25" width="1857" height="1055" extended-state="6" />
+    <frame x="-8" y="0" width="783" height="832" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3533959" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Designer" order="2" />
-      <window_info id="Image Layers" order="3" />
-      <window_info id="Capture Tool" order="4" />
-      <window_info id="UI Designer" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Statistic" visible="true" weight="0.6803456" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.49460045" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49972722" visible="true" weight="0.23542117" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39956802" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="CheckStyle" order="9" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.32051283" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info id="Image Layers" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50027275" side_tool="true" weight="0.28833693" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.3261339" />
+      <window_info anchor="right" id="Maven Projects" order="9" />
       <window_info anchor="bottom" id="Database Changes" order="12" />
       <window_info anchor="bottom" id="Version Control" order="13" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49972722" weight="0.23132184" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="Designer" order="2" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.74026847" />
       <window_info anchor="bottom" id="Analysis" order="14" />
-      <window_info anchor="bottom" id="Duplicate detector" order="15" weight="0.32937366" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Maven" order="3" />
-      <window_info anchor="right" id="Palette" order="4" />
-      <window_info anchor="right" id="Capture Analysis" order="5" />
       <window_info anchor="right" id="Database" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="UI Designer" order="5" />
       <window_info anchor="right" id="Theme Preview" order="8" />
-      <window_info anchor="right" id="Maven Projects" order="9" />
-      <window_info anchor="right" id="Coverage" order="10" side_tool="true" weight="0.32965213" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39956802" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Duplicate detector" order="15" weight="0.32937366" />
+      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="CheckStyle" order="9" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" x="0" y="0" width="419" height="855" id="Documentation" order="11" side_tool="true" weight="0.32951444" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="right" id="Maven" order="3" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Statistic" order="7" visible="true" weight="0.6803456" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.49460045" />
+      <window_info anchor="right" id="Coverage" order="10" side_tool="true" weight="0.32965213" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14496644" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Maven" order="3" />
       <window_info id="Designer" order="2" />
+      <window_info anchor="bottom" id="Duplicate detector" order="15" weight="0.32937366" />
+      <window_info anchor="bottom" id="Analysis" order="14" />
+      <window_info anchor="right" id="Palette" order="4" />
       <window_info id="Image Layers" order="3" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49972722" weight="0.24973767" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="Capture Tool" order="4" />
       <window_info id="UI Designer" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.49460045" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49972722" weight="0.24973767" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39956802" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="CheckStyle" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50027275" side_tool="true" weight="0.28833693" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32829374" />
+      <window_info anchor="right" x="0" y="0" width="419" height="855" id="Documentation" order="11" side_tool="true" weight="0.32951444" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Database Changes" order="12" />
       <window_info anchor="bottom" id="Version Control" order="13" />
-      <window_info anchor="bottom" id="Analysis" order="14" />
-      <window_info anchor="bottom" id="Duplicate detector" order="15" weight="0.32937366" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Maven" order="3" />
-      <window_info anchor="right" id="Palette" order="4" />
-      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="Maven Projects" order="9" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14496644" />
       <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Theme Preview" order="8" />
-      <window_info anchor="right" id="Maven Projects" order="9" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Coverage" order="10" side_tool="true" weight="0.32965213" />
-      <window_info anchor="right" x="0" y="0" width="419" height="855" id="Documentation" order="11" side_tool="true" weight="0.32951444" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.49460045" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39956802" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/java/models/client/board_players/players/PlayerFieldIterator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/maven/lib/maven3/lib/maven-model-builder-3.3.9.jar!/org/apache/maven/model/pom-4.0.0.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="490">
+          <caret line="78" column="8" selection-start-line="78" selection-start-column="8" selection-end-line="78" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/views/NewGameView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="14" column="41" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/serializable/MoveDestinations.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/views/ErrorView.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/ErrorController.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/client/TrylmaClient.java" />
+    <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/ext/jfxrt.jar!/javafx/scene/shape/Circle.class" />
+    <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/ext/jfxrt.jar!/javafx/scene/paint/RadialGradient.class" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/MenuController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/serializable/MovePathIterator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/serializable/FieldsSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/models/client/board_players/players/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="918">
+          <caret line="91" selection-start-line="91" selection-end-line="91" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/views/BoardView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="850">
+          <caret line="76" column="51" selection-start-line="76" selection-start-column="51" selection-end-line="76" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/models/client/FieldGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="33" column="59" selection-start-line="33" selection-start-column="59" selection-end-line="33" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/models/client/CircleField.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/models/client/board_players/players/PlayerFieldIterator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/models/client/board_players/board/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2278">
+          <caret line="162" selection-start-line="162" selection-end-line="162" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/views/MenuView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="38" selection-start-line="38" selection-end-line="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/handlers/Handle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="13" column="48" selection-start-line="13" selection-start-column="48" selection-end-line="13" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/NewGameController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/models/client_server/Connection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="82">
+          <caret line="67" column="54" selection-start-line="67" selection-start-column="54" selection-end-line="67" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/connection/Connection.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/views/Menu.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/views/Board.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/models/client_server/TreeMoves.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/models/client_server/AllMovePaths.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/models/client/FieldCircle.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/NewGameController.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/NewGameController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/models/client_server/ConnectionLoop.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/serializable/Field.java" />
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/maven/lib/maven3/lib/maven-model-builder-3.3.9.jar!/org/apache/maven/model/pom-4.0.0.xml">
@@ -597,11 +622,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="14" column="41" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#654#655#0" expanded="true" />
-            <element signature="e#689#690#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -612,42 +632,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#228#229#0" expanded="true" />
-            <element signature="e#256#257#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="47" selection-start-line="11" selection-start-column="20" selection-end-line="22" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/ext/jfxrt.jar!/javafx/scene/shape/Circle.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="39" column="11" selection-start-line="39" selection-start-column="11" selection-end-line="39" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/ext/jfxrt.jar!/javafx/scene/paint/RadialGradient.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="64" column="11" selection-start-line="64" selection-start-column="11" selection-end-line="64" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/ext/jfxrt.jar!/javafx/scene/shape/Circle.class" />
+    <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/ext/jfxrt.jar!/javafx/scene/paint/RadialGradient.class" />
     <entry file="file://$PROJECT_DIR$/src/main/java/controllers/MenuController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="19" selection-start-line="19" selection-end-line="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -655,9 +648,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -665,16 +655,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="18" selection-start-line="18" selection-end-line="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/models/client_server/Connection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1005">
-          <caret line="78" column="28" selection-start-line="78" selection-start-column="28" selection-end-line="78" selection-end-column="28" />
+        <state relative-caret-position="17">
+          <caret line="72" column="36" selection-start-line="72" selection-start-column="36" selection-end-line="72" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -685,58 +672,55 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="810">
           <caret line="71" selection-start-line="71" selection-end-line="71" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/views/BoardView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="71" column="51" selection-start-line="71" selection-start-column="51" selection-end-line="71" selection-end-column="51" />
+        <state relative-caret-position="850">
+          <caret line="76" column="51" selection-start-line="76" selection-start-column="51" selection-end-line="76" selection-end-column="51" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/models/client/FieldGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="32" column="81" selection-start-line="32" selection-start-column="81" selection-end-line="32" selection-end-column="81" />
+        <state relative-caret-position="442">
+          <caret line="33" column="59" selection-start-line="33" selection-start-column="59" selection-end-line="33" selection-end-column="59" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/handlers/Handle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
+        <state relative-caret-position="204">
           <caret line="13" column="48" selection-start-line="13" selection-start-column="48" selection-end-line="13" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/models/client/CircleField.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="31" selection-start-line="31" selection-end-line="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/models/client/board_players/players/PlayerFieldIterator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
+        <state relative-caret-position="255">
           <caret line="24" selection-start-line="24" selection-end-line="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/models/client/board_players/board/Board.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="152" column="31" lean-forward="true" selection-start-line="152" selection-start-column="31" selection-end-line="152" selection-end-column="31" />
+        <state relative-caret-position="2278">
+          <caret line="162" selection-start-line="162" selection-end-line="162" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/views/MenuView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
+        <state relative-caret-position="493">
+          <caret line="38" selection-start-line="38" selection-end-line="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/models/client/CircleField.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="25" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
         </state>
       </provider>
     </entry>

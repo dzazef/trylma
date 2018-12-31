@@ -12,26 +12,25 @@ import java.io.*;
 
 public class Command {
     private ObjectOutputStream objout;
-    private ObjectInputStream objin;
 
 
 
-    Command(ObjectOutputStream objectout, ObjectInputStream objectin)
+
+    Command(ObjectOutputStream objectout)
     {
         this.objout = objectout;
-        this.objin = objectin;
-
     }
 
     public void sendWinMessage(Player winner)
     {
-        String message = "won:"+winner.getId();
-        try {
-            objout.writeObject(message);
-        }
-        catch (IOException e)
-        {
-            System.out.println("Failed to send won message: IOExcception" + e);
+        for(int j = 0; j < GameManager.playersobjout.size();j++) {
+            String message = "won:" + winner.getId();
+
+            try {
+                GameManager.playersobjout.get(j).writeObject(message);
+            } catch (IOException e) {
+                System.out.println("failed to send path object: IOException" + e);
+            }
         }
 
     }
@@ -60,7 +59,6 @@ public class Command {
                 if (MoveManager.paths.get(i).end.getId().equals(destination.getId())) {
                     move(MoveManager.paths.get(i));
                 }
-
             }
         }else
         {

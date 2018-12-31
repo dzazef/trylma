@@ -1,7 +1,6 @@
 package gamemanager;
 import serializable.Field;
 import player.Pawn;
-import serializable.MoveDestinations;
 import serializable.FieldsSet;
 
 import java.util.ArrayList;
@@ -29,7 +28,7 @@ public class MoveManager {
 
         }
     }
-    public static String getIdFromCoordinates(int x,int y,int z)
+    private static String getIdFromCoordinates(int x, int y, int z)
     {
         return x+","+y+","+z;
     }
@@ -40,15 +39,15 @@ public class MoveManager {
         {
             if (field.getId().equals(set.end.getId()))
             {
-                return true;
+                return false;
             }
         }
-        return false;
+        return true;
     }
     private static FieldsSet addJump(Field jumpEnd, Field jumpOver, FieldsSet previousPath)
     {
         if(jumpEnd != null) {
-            if( !alreadyInSet(jumpEnd)) {
+            if(alreadyInSet(jumpEnd)) {
                 if (jumpOver != null) {
                     if (jumpOver.getState() == Field.State.TAKEN) {
                         for (FieldsSet path1 : paths) {
@@ -133,14 +132,6 @@ public class MoveManager {
             jumpEnd = GameManager.board.getFieldById(getIdFromCoordinates(whereWeAre.getX() + 2, whereWeAre.getY() + 2, whereWeAre.getZ()));
             set6 = addJump(jumpEnd, jumpOver, previousPath);
         }
-        /*for(FieldsSet set : MoveManager.paths)
-        {
-            System.out.println("---------------------------");
-            for(Field f : set.path)
-            {
-                System.out.println(f.getId());
-            }
-        }*/
         if(set1 != null)
         {
             jump(set1);
@@ -175,7 +166,7 @@ public class MoveManager {
     {
         if(stepEnd != null)
         {
-            if(!alreadyInSet(stepEnd)) {
+            if(alreadyInSet(stepEnd)) {
                 if (stepEnd.getState() == Field.State.FREE) {
                     FieldsSet path = new FieldsSet(previousPath.path);
                     path.addField(stepEnd);

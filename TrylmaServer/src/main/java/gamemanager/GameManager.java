@@ -28,8 +28,15 @@ public abstract class GameManager {
             }
         }
     }
-    public Player checkWin()
+    public static Player checkWin()
     {
+        for(Player player : players)
+        {
+            if(player.checkWin())
+            {
+                return player;
+            }
+        }
         return null;
     }
     public static void initialize()
