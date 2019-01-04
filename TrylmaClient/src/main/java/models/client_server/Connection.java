@@ -23,6 +23,11 @@ public class Connection {
     private static boolean connectionSuccess = false;
     private static boolean myTurn = false;
 
+    /**
+     * Funkcja umożliwiająca nawiązanie połączenia z serwerem.
+     * @param host nazwa hosta
+     * @return zwraca true jeśli połącznie zostało nawiązane, w przeciwnym wypadku zwraca false.
+     */
     public static boolean establishConnection(String host)
     {
         try {
@@ -37,10 +42,18 @@ public class Connection {
             return false;
         }
     }
+
+    /**
+     * Funkcja sprawdzająca czy nawiąane jest połączenie z serwerem.
+     * @return zwraca prawdę jeśli połączenie jest nawiązane, w przeciwnym wypadku false.
+     */
     private static boolean isConnectionSuccessfull() {
         return connectionSuccess;
     }
 
+    /**
+     * Metoda wysyła komendę do serwera informującą o próbie połączenia.
+     */
     public static void sendConnect() {
         if (isConnectionSuccessfull()) {
             System.out.println("connect ->");
@@ -52,6 +65,12 @@ public class Connection {
         }
     }
 
+    /**
+     * Metoda wysyła komende do serwera informującą o parametrach nowej gry.
+     * @param players liczba graczy
+     * @param bots liczba botów
+     * @param board rozmiar planszy
+     */
     public static void sendCreateNewGameCommand(int players, int bots, int board) {
         String info = "creategame" + ":" + bots + ":" + players+":"+board;
         if (isConnectionSuccessfull()) {
@@ -76,6 +95,10 @@ public class Connection {
         }
     }
 
+    /**
+     * Metoda wysyła pole początkowe do serwera.
+     * @param field pole początkowe
+     */
     public static void sendChosenPawn(Field field) {
         if(isitMyTurn()) {
             String command = "startfield";
@@ -90,6 +113,9 @@ public class Connection {
         }
     }
 
+    /**
+     * Metoda wysyła informację o spasowaniu do serwera.
+     */
     public static void sendSkip() {
         if(isitMyTurn()) {
             String command = "skip";
@@ -107,6 +133,10 @@ public class Connection {
         }
     }
 
+    /**
+     * Metoda wysyła pole kończące ruch do serwera.
+     * @param field pole kończące ruch.
+     */
     public static void sendChosenField(Field field) {
         if(isitMyTurn()) {
             String command = "endfield";
@@ -125,7 +155,11 @@ public class Connection {
         }
     }
 
-    private static boolean commandInterpreter(String command) {
+    /**
+     * Metoda umożliwiająca interpretowanie komend odebranych od serwera.
+     * @param command komenda
+     */
+    private static void commandInterpreter(String command) {
         System.out.println(command+" <-");
         if (command.equals("yourturn")) {
             System.out.println("INFO: Now is my turn.");
@@ -184,7 +218,6 @@ public class Connection {
                 alert.setContentText("Wygrał gracz nr "+playerid);
                 alert.showAndWait();
             });
-            return true;
         }
         else if (command.equals("possible_fields")) {
             try {
@@ -202,9 +235,11 @@ public class Connection {
         else {
             System.out.println("Failed to interprete command.");
         }
-        return false;
     }
 
+    /**
+     * Metoda tworząca nowy wątek odpowiedzialny za odczytywanie komend wysłanych przez serwer.
+     */
     public static void startConnectionLoop () {
         if (isConnectionSuccessfull()) {
             new Thread(() -> {
@@ -221,6 +256,10 @@ public class Connection {
         }
     }
 
+    /**
+     * Funkcja spradzająca czy gracz ma mozliwość ruchu.
+     * @return zwraca true, jeśli gracz ma możliwość ruchu, w przeciwnym wypadku false
+     */
     public static boolean isitMyTurn() {
         return myTurn;
     }

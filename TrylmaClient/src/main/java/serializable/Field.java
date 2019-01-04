@@ -2,7 +2,11 @@ package serializable;
 
 import java.io.Serializable;
 
+/**
+ * Klasa określająca pole na planszy za pomocą trzech współrzędnych.
+ */
 public class Field implements Serializable {
+    static final long serialVersionUID = -1176358169417913238L;
     int x,y,z;
     public enum State{
         TAKEN,FREE

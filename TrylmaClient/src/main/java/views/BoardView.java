@@ -16,6 +16,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import models.client_server.Connection;
 
 import java.util.List;
 
@@ -84,7 +85,7 @@ public class BoardView {
 //        boardStage.setResizable(false);
         boardStage.setTitle("Trylma");
         boardStage.initModality(Modality.APPLICATION_MODAL);
-        skip.setOnAction(e -> Handle.skipHandle());
+        skip.setOnAction(e -> Connection.sendSkip());
 
         //tu testy
     }
@@ -113,21 +114,33 @@ public class BoardView {
     }
 
     /**
-     * Funkcja umieszcza pola na planszy.
+     * Metoda umieszcza pola na planszy.
      * @param circleFields lista pól do umieszczenia na planszy.
      */
     public static void draw(List<CircleField> circleFields) {
         group.getChildren().addAll(circleFields);
     }
 
+    /**
+     * Metoda usuwa pola z planszy.
+     * @param circleFields lista pól do usunięcia z planszy
+     */
     public static void undraw(List<CircleField> circleFields) {
         group.getChildren().removeAll(circleFields);
     }
 
+    /**
+     * Metoda ustawia kolor gracza.
+     * @param color kolor gracza
+     */
     public static void setMyColor(Paint color) {
         BoardView.myColor.setFill(color);
     }
 
+    /**
+     * Metoda ustawiająca kolor indykatora informującego o możliwości ruchu.
+     * @param b true, jeśli jest możliwy ruch, w przeciwnym wypadku false.
+     */
     public static void setMyTurn(boolean b) {
         if (b) myTurn.setFill(Color.GOLD); else myTurn.setFill(Color.SILVER);
     }

@@ -11,10 +11,18 @@ import models.client_server.Connection;
 public class MenuController {
     @FXML
     TextField textfieldAddress;
+
+    /**
+     * Metoda wyłączająca program po naciśnięciu przycisku 'Wyjście'.
+     */
     @FXML
     public void menuExit() {
         System.exit(0);
     }
+
+    /**
+     * Metoda tworząca połączenie z serwerem.
+     */
     @FXML
     public void menuNewGame() {
         if(Connection.establishConnection(textfieldAddress.getText())) {

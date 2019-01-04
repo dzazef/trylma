@@ -4,10 +4,16 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Slider;
 import models.client_server.Connection;
 
-@SuppressWarnings("Duplicates")
+/**
+ * Kontroler dla okna NewGame
+ */
 public class NewGameController {
     @FXML
     Slider playerSlider, botSlider, boardSlider;
+
+    /**
+     * Metoda obsługująca tworzenie nowej gry.
+     */
     @FXML
     public void handleCreateNewGame() {
         int bots = (int)botSlider.getValue();

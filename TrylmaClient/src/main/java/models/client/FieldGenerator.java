@@ -15,7 +15,7 @@ import static java.lang.Math.abs;
 public class FieldGenerator {
     /**
      * Funkcja gennerująca trójkąt pól powiązane z kołami. Pozwala na tworzenie nowych planszy oraz graczy.
-     * @param d3 parametr określa czy trójkąt powinien być przeskalowany (pionki trochę większe niż pola).
+     * @param scale parametr określa czy trójkąt powinien być przeskalowany (pionki trochę większe niż pola).
      * @param ud parametr określa czy trójkąt jest odwrócony.
      * @param lines parametr okresla z ilu linii składa się trójkąt.
      * @param x współrzędna x punktu startowego.
@@ -28,7 +28,7 @@ public class FieldGenerator {
      * @param color parametr określa kolor narysowanego pionka.
      * @return zwraca listę obiektów FieldCircle, łączących narysowane koła z polami.
      */
-    public static List<CircleField> generateFields(boolean d3, boolean ud, int lines, int x, int y, int z,
+    public static List<CircleField> generateFields(boolean scale, boolean ud, int lines, int x, int y, int z,
                                                    int ch, double radius,
                                                    double WGap, double HGap, Paint color) {
         List<CircleField> circleFields = new ArrayList<>();
@@ -41,7 +41,7 @@ public class FieldGenerator {
             for (int j = 0; j <= i; j++) {
                 final Field field = (new Field(x, y, z, false));
                 CircleField circleField = new CircleField(field, currentCenterX, currentCenterY, radius, color);
-                if (d3) {
+                if (scale) {
                     circleField.setScaleX(1.03);
                     circleField.setScaleY(1.03);
                 }
