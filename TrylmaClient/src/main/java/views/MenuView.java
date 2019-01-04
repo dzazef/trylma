@@ -1,6 +1,5 @@
 package views;
 
-import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -27,14 +26,14 @@ public class MenuView {
     /**
      * Funkcja pokazująca okno Menu.
      */
-    public void show(Stage menuStage) {
+    public static void show() {
         menuStage.show();
     }
 
     /**
      * Funkcja ukrywająca okno Menu.
      */
-    public void hide(Stage menuStage) {
+    public void hide() {
         menuStage.hide();
     }
 }

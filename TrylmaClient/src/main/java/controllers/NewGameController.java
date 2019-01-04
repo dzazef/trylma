@@ -14,7 +14,7 @@ public class NewGameController {
         int players = (int)playerSlider.getValue();
         int board = (int)boardSlider.getValue();
         if (players==5 || bots>players) {
-            System.out.println("Wrong values"); //TODO: make user friendly
+            System.out.println("Wrong values");
         }
         else {
             Connection.sendCreateNewGameCommand(players, bots, board);

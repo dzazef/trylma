@@ -1,23 +1,15 @@
 package views;
 
 import handlers.Handle;
-import javafx.animation.FillTransition;
-import javafx.animation.Timeline;
-import javafx.application.Platform;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Sphere;
 import javafx.scene.text.Text;
-import javafx.util.Duration;
 import models.client.CircleField;
 import models.client.board_players.board.Board;
 import javafx.scene.Group;
@@ -43,7 +35,7 @@ public class BoardView {
     private static Button skip;
     private static GridPane gridPane;
     private static Text yourMove;
-    private static Circle circle;
+    private static Circle myColor, myTurn;
 
     /**
      * Funkcja ustawiająca parametry okna Board.
@@ -71,17 +63,19 @@ public class BoardView {
         yourMove = new Text("Twój kolor: ");
         yourMove.setFill(Color.WHITESMOKE);
         yourMove.setStyle("-fx-font-weight: bold");
-        circle = new Circle(8, Color.GRAY);
+        myColor = new Circle(8, Color.GRAY);
+        myTurn = new Circle(8, Color.SILVER);
 
 
         gridPane = new GridPane();
         gridPane.setPadding(new Insets(8, 5, 8, 0.27*windowWidth1));
         skip.setMaxHeight(10);
-        gridPane.getColumnConstraints().addAll(new ColumnConstraints(100), new ColumnConstraints(90), new ColumnConstraints(100));
+        gridPane.getColumnConstraints().addAll(new ColumnConstraints(100), new ColumnConstraints(90), new ColumnConstraints(100), new ColumnConstraints(100));
         gridPane.setStyle("-fx-background-color: #575757");
         gridPane.add(skip, 0, 0);
         gridPane.add(yourMove, 1, 0);
-        gridPane.add(circle, 2, 0);
+        gridPane.add(myColor, 2, 0);
+        gridPane.add(myTurn, 3, 0);
 
         Scene scene = new Scene(borderPane, windowWidth1, windowHeight);
         boardStage.setScene(scene);
@@ -131,6 +125,10 @@ public class BoardView {
     }
 
     public static void setMyColor(Paint color) {
-        BoardView.circle.setFill(color);
+        BoardView.myColor.setFill(color);
+    }
+
+    public static void setMyTurn(boolean b) {
+        if (b) myTurn.setFill(Color.GOLD); else myTurn.setFill(Color.SILVER);
     }
 }

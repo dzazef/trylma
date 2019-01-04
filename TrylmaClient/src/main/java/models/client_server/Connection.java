@@ -6,6 +6,7 @@ import models.client.board_players.board.Board;
 import serializable.Field;
 import serializable.FieldsSet;
 import views.BoardView;
+import views.MenuView;
 import views.NewGameView;
 
 import java.io.*;
@@ -95,6 +96,7 @@ public class Connection {
             System.out.println(command+" ->");
             try {
                 myTurn = false;
+                Platform.runLater(() -> BoardView.setMyTurn(false));
                 System.out.println("INFO: End of my turn.");
                 os.writeObject(command);
                 Platform.runLater(Board::removePossibleFields);
@@ -117,16 +119,18 @@ public class Connection {
                 System.out.println("Error while writing chosen pawn to OutputStream");
             }
             myTurn = false;
+            Platform.runLater(() -> BoardView.setMyTurn(false));
             System.out.println("INFO: End of my turn. Now waiting for info about my move.");
             Board.removePossibleFields();
         }
     }
 
-    public static boolean commandInterpreter(String command) {
+    private static boolean commandInterpreter(String command) {
         System.out.println(command+" <-");
         if (command.equals("yourturn")) {
             System.out.println("INFO: Now is my turn.");
             myTurn=true;
+            Platform.runLater(() -> BoardView.setMyTurn(true));
         } else if (command.matches("moved(.*)")) {
             String[] temp = command.split(":");
             FieldsSet movePath;
@@ -151,7 +155,7 @@ public class Connection {
         else if (command.matches("joingame(.*)")) {
             String[] temp = command.split(":");
             Platform.runLater( () -> {
-                BoardView.initialize(600, Integer.parseInt(temp[3]), 5, 0); //TODO: checkers as variable
+                BoardView.initialize(600, Integer.parseInt(temp[3]), 5, 0);
                 BoardView.show();
                 BoardView.initializeFields();
                 int playerid = Integer.parseInt(temp[1]);
@@ -189,6 +193,11 @@ public class Connection {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        }
+        else if (command.equals("failure")) {
+            NewGameView.hide();
+            BoardView.hide();
+            MenuView.show();
         }
         else {
             System.out.println("Failed to interprete command.");
