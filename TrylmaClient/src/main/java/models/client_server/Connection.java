@@ -13,7 +13,6 @@ import java.net.Socket;
 
 /**
  * Klasa obsługuje połączenie z serwerem.
- * TODO: dokończ
  */
 @SuppressWarnings("Duplicates")
 public class Connection {
@@ -52,14 +51,14 @@ public class Connection {
         }
     }
 
-    public static void sendCreateNewGameCommand(int players, int bots) {
-        String info = "creategame" + ":" + bots + ":" + players+":4"; //TODO: size of plansza
+    public static void sendCreateNewGameCommand(int players, int bots, int board) {
+        String info = "creategame" + ":" + bots + ":" + players+":"+board;
         if (isConnectionSuccessfull()) {
             System.out.println(info+" ->");
             try {
                 os.writeObject(info);
                 NewGameView.hide();
-                BoardView.initialize(600, 4, 5, 0);
+                BoardView.initialize(600, board, 5, 0);
                 BoardView.initializeFields();
                 BoardView.show();
                 for (int i = 1; i<=bots; i++) {
@@ -152,10 +151,10 @@ public class Connection {
         else if (command.matches("joingame(.*)")) {
             String[] temp = command.split(":");
             Platform.runLater( () -> {
-                BoardView.initialize(600, 4, 5, 0); //TODO: checkers as variable
+                BoardView.initialize(600, Integer.parseInt(temp[3]), 5, 0); //TODO: checkers as variable
                 BoardView.show();
                 BoardView.initializeFields();
-                int playerid = Integer.parseInt(temp[1]); //TODO: potrzebuję tylko id, bez 'player'
+                int playerid = Integer.parseInt(temp[1]);
                 for (int i = 1; i <= Integer.parseInt(temp[2]); i++) {
                     if (i == playerid) Board.addNewPlayer(true);
                     else Board.addNewPlayer(false);

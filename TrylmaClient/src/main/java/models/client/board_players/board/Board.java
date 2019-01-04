@@ -67,11 +67,6 @@ public class Board {
     public static List<Player> getPlayerList() {
         return playerList;
     }
-    public static void addHandlersToCircles() {
-        for(CircleField circleField : circleFields) {
-            circleField.setOnMouseClicked(e -> Handle.boardHandle(circleField, radius, ch, wGap, hGap));
-        }
-    }
 
     /**
      * Funkcja dodaje nowego gracza.

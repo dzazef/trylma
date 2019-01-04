@@ -1,5 +1,6 @@
 package views;
 
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -12,7 +13,7 @@ public class NewGameView {
     public static void initialize() throws IOException {
         final Parent newGameParent = FXMLLoader.load(NewGameView.class.getResource("../newGameStructure.fxml"));
         newGameStage.setScene(new Scene(newGameParent));
-        newGameStage.setResizable(false);
+//        newGameStage.setResizable(false);
         newGameStage.setTitle("Nowa gra");
     }
     public static void show() {

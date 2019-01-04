@@ -3,6 +3,7 @@ package views;
 import handlers.Handle;
 import javafx.animation.FillTransition;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -70,7 +71,7 @@ public class BoardView {
         yourMove = new Text("Twój kolor: ");
         yourMove.setFill(Color.WHITESMOKE);
         yourMove.setStyle("-fx-font-weight: bold");
-        circle = new Circle(8, Color.SALMON);
+        circle = new Circle(8, Color.GRAY);
 
 
         gridPane = new GridPane();
@@ -86,7 +87,7 @@ public class BoardView {
         boardStage.setScene(scene);
         borderPane.setCenter(group);
         borderPane.setBottom(gridPane);
-        boardStage.setResizable(false);
+//        boardStage.setResizable(false);
         boardStage.setTitle("Trylma");
         boardStage.initModality(Modality.APPLICATION_MODAL);
         skip.setOnAction(e -> Handle.skipHandle());
@@ -115,7 +116,6 @@ public class BoardView {
         Board.set(radius, ch, wGap, hGap);
         Board.generateFields();
         draw(Board.getCircleFields());
-        Board.addHandlersToCircles();
     }
 
     /**

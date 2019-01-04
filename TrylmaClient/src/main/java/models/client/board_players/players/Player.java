@@ -95,7 +95,7 @@ public class Player {
     }
     private void addPlayerHandlers(List<CircleField> circleFields, double radius, int ch, double wGap, double hGap) {
         for (CircleField circleField : circleFields) {
-            circleField.setOnMousePressed(e -> Handle.playerHandle(circleField, radius, ch, wGap, hGap));
+            circleField.setOnMousePressed(e -> Handle.playerHandle(circleField));
         }
     }
 }
