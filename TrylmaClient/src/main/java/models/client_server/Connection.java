@@ -2,14 +2,16 @@ package models.client_server;
 
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
-import models.client.board.Board;
 import serializable.Field;
 import serializable.FieldsSet;
 import views.BoardView;
+import views.BoardViewManager;
 import views.MenuView;
 import views.NewGameView;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 /**
@@ -79,15 +81,15 @@ public class Connection {
             try {
                 os.writeObject(info);
                 NewGameView.hide();
-                BoardView.initialize(600, board, wGap, 0);
-                BoardView.initializeFields();
-                BoardView.show();
+                BoardViewManager.initialize(600, board, wGap, 0);
+                BoardViewManager.initializeFields();
+                BoardViewManager.show();
                 for (int i = 1; i<=bots; i++) {
-                    Board.addNewPlayer(false);
+                    BoardViewManager.addNewPlayer(false);
                 }
-                if (players>bots) Board.addNewPlayer(true);
+                if (players>bots) BoardViewManager.addNewPlayer(true);
                 for (int i = bots+2; i<=players; i++) {
-                    Board.addNewPlayer(false);
+                    BoardViewManager.addNewPlayer(false);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -123,10 +125,10 @@ public class Connection {
             System.out.println(command+" ->");
             try {
                 myTurn = false;
-                Platform.runLater(() -> BoardView.setMyTurn(false));
+                Platform.runLater(() -> BoardViewManager.setMyTurn(false));
                 System.out.println("INFO: End of my turn.");
                 os.writeObject(command);
-                Platform.runLater(Board::removePossibleFields);
+                Platform.runLater(BoardViewManager::removePossibleFields);
             } catch (IOException e) {
                 e.printStackTrace();
                 System.err.println("Error while sending skip command");
@@ -150,9 +152,9 @@ public class Connection {
                 System.out.println("Error while writing chosen pawn to OutputStream");
             }
             myTurn = false;
-            Platform.runLater(() -> BoardView.setMyTurn(false));
+            Platform.runLater(() -> BoardViewManager.setMyTurn(false));
             System.out.println("INFO: End of my turn. Now waiting for info about my move.");
-            Board.removePossibleFields();
+            BoardViewManager.removePossibleFields();
         }
     }
 
@@ -165,13 +167,13 @@ public class Connection {
         if (command.equals("yourturn")) {
             System.out.println("INFO: Now is my turn.");
             myTurn=true;
-            Platform.runLater(() -> BoardView.setMyTurn(true));
+            Platform.runLater(() -> BoardViewManager.setMyTurn(true));
         } else if (command.matches("moved(.*)")) {
             String[] temp = command.split(":");
             FieldsSet movePath;
             try {
                 movePath = (FieldsSet) is.readObject();
-                Platform.runLater( () -> Board.makeMove(Integer.parseInt(temp[1]), movePath));
+                Platform.runLater( () -> BoardViewManager.makeMove(Integer.parseInt(temp[1]), movePath));
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
                 System.out.println("failed to read object");
@@ -192,11 +194,11 @@ public class Connection {
             Platform.runLater( () -> {
                 BoardView.initialize(600, Integer.parseInt(temp[3]), wGap, 0);
                 BoardView.show();
-                BoardView.initializeFields();
+                BoardViewManager.initializeFields();
                 int playerid = Integer.parseInt(temp[1]);
                 for (int i = 1; i <= Integer.parseInt(temp[2]); i++) {
-                    if (i == playerid) Board.addNewPlayer(true);
-                    else Board.addNewPlayer(false);
+                    if (i == playerid) BoardViewManager.addNewPlayer(true);
+                    else BoardViewManager.addNewPlayer(false);
                 }
             });
         }
@@ -223,14 +225,14 @@ public class Connection {
         else if (command.equals("possible_fields")) {
             try {
                 FieldsSet movePath = (FieldsSet) is.readObject();
-                Platform.runLater(() -> Board.showPossibleFields(movePath));
+                Platform.runLater(() -> BoardViewManager.showPossibleFields(movePath));
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
         else if (command.equals("failure")) {
             NewGameView.hide();
-            BoardView.hide();
+            BoardViewManager.hide();
             MenuView.show();
         }
         else {

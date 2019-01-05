@@ -1,10 +1,11 @@
-package models.client.board;
+package views;
 
 import handlers.Handle;
 import javafx.animation.FillTransition;
 import javafx.animation.PathTransition;
 import javafx.animation.Timeline;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
@@ -15,7 +16,6 @@ import models.client.players.Player;
 import models.client.players.PlayerFactory;
 import serializable.Field;
 import serializable.FieldsSet;
-import views.BoardView;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -23,59 +23,48 @@ import java.util.List;
 
 import static java.lang.Math.abs;
 
-/**
- * Klasa obsługująca planszę.
- */
-@SuppressWarnings("Duplicates")
-public class Board {
-    private static double radius, wGap, hGap;
-    private static int ch;
-    private static List<CircleField> circleFields = new ArrayList<>();
-    private static List<Player> playerList = new ArrayList<>();
-    private static List<CircleField> possibleFields = new ArrayList<>();
-    private static List<FillTransition> fillTransitions = new ArrayList<>();
-
-    /**
-     * Ustawia parametry planszy.
-     * @param radius1 patrz {@link views.BoardView#initialize(int, int, double, double)}
-     * @param ch1 patrz {@link views.BoardView#initialize(int, int, double, double)}
-     * @param wGap1 patrz {@link views.BoardView#initialize(int, int, double, double)}
-     * @param hGap1 patrz {@link views.BoardView#initialize(int, int, double, double)}
-     */
-    public static void set(double radius1, int ch1, double wGap1, double hGap1) {
-        radius=radius1;
-        ch=ch1;
-        wGap=wGap1;
-        hGap=hGap1;
-    }
-
-    /**
-     * Funkcja generuje pola dla poszczególnych trójkątów, z których się składa plansza.
-     */
-    public static void generateFields() {
+public class BoardViewManager extends BoardView {
+    private static List<CircleField> circleFields;
+    private static List<Player> playerList;
+    private static List<CircleField> possibleFields;
+    private static List<FillTransition> fillTransitions;
+    public static void initializeFields() {
+        circleFields = new ArrayList<>();
+        playerList = new ArrayList<>();
+        possibleFields = new ArrayList<>();
+        fillTransitions = new ArrayList<>();
         circleFields.addAll(FieldGenerator.generateFields(false,false, 3*ch+1, -(2* ch), -ch, -ch, ch, radius, wGap, hGap, Color.GRAY));
         circleFields.addAll(FieldGenerator.generateFields(false, true, ch, -1, -(ch+1), ch, ch, radius, wGap, hGap, Color.GRAY));
         circleFields.addAll(FieldGenerator.generateFields(false,true, ch, -1, ch, -(ch+1), ch, radius, wGap, hGap, Color.GRAY));
         circleFields.addAll(FieldGenerator.generateFields(false,true, ch, 2*ch, ch, ch, ch, radius, wGap, hGap, Color.GRAY));
-    }
-    public static List<CircleField> getCircleFields() {
-        return circleFields;
-    }
-    public static List<Player> getPlayerList() {
-        return playerList;
+        draw(circleFields);
     }
 
-    /**
-     * Funkcja dodaje nowego gracza.
-     * @param isThisMe parametr określa czy dany gracz jest obsługiwany przez aktualnie uruchomionego klienta (czy jest innym klientem.
-     */
     public static void addNewPlayer(boolean isThisMe) {
         Player player = PlayerFactory.getPlayer(playerList.size()+1, isThisMe, radius, ch, wGap, hGap);
         if (player==null) System.err.println("Wrong user id. Couldn't create user.");
         else {
             playerList.add(player);
-            BoardView.draw(player.getCircleFields());
+            BoardViewManager.draw(player.getCircleFields());
         }
+    }
+
+    /**
+     * Metoda ustawia kolor gracza.
+     * @param color kolor gracza
+     */
+    public static void setMyColor(Paint color) {
+        myColor.setFill(color);
+    }
+
+
+    /**
+     * Metoda ustawiająca kolor indykatora informującego o możliwości ruchu.
+     * @param b true, jeśli jest możliwy ruch, w przeciwnym wypadku false.
+     */
+    public static void setMyTurn(boolean b) {
+        if (b) myTurn.setFill(Color.GOLD);
+        else myTurn.setFill(Color.SILVER);
     }
 
     /**
@@ -167,7 +156,7 @@ public class Board {
             CircleField finalCircleField = circleField;
             circleField.setOnMouseClicked(e -> Handle.possibleFieldHandle(finalCircleField));
         }
-        BoardView.draw(possibleFields);
+        BoardViewManager.draw(possibleFields);
         for (FillTransition fillTransition : fillTransitions) {
             fillTransition.play();
         }
@@ -177,8 +166,31 @@ public class Board {
         for (FillTransition fillTransition : fillTransitions) {
             fillTransition.stop();
         }
-        BoardView.undraw(possibleFields);
+        BoardViewManager.undraw(possibleFields);
         fillTransitions.clear();
         possibleFields.clear();
+    }
+
+    public static void reset() {
+        if (isBoardInitialized()) {
+            undraw(circleFields);
+            for (Player p : playerList) {
+                undraw(p.getCircleFields());
+            }
+            circleFields.clear();
+            playerList.clear();
+            possibleFields.clear();
+            fillTransitions.clear();
+            setMyColor(Color.GRAY);
+            setMyTurn(false);
+        }
+    }
+
+    public static List<CircleField> getCircleFields() {
+        return circleFields;
+    }
+
+    public static List<Player> getPlayerList() {
+        return playerList;
     }
 }
