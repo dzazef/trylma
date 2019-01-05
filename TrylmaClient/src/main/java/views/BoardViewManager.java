@@ -37,9 +37,12 @@ public class BoardViewManager extends BoardView {
         circleFields.addAll(FieldGenerator.generateFields(false, true, ch, -1, -(ch+1), ch, ch, radius, wGap, hGap, Color.GRAY));
         circleFields.addAll(FieldGenerator.generateFields(false,true, ch, -1, ch, -(ch+1), ch, radius, wGap, hGap, Color.GRAY));
         circleFields.addAll(FieldGenerator.generateFields(false,true, ch, 2*ch, ch, ch, ch, radius, wGap, hGap, Color.GRAY));
-        draw(circleFields);
     }
 
+    /**
+     * Funkcja dodaje nowego gracza.
+     * @param isThisMe true, jeśli gracz jest aktualnym klientem
+     */
     public static void addNewPlayer(boolean isThisMe) {
         Player player = PlayerFactory.getPlayer(playerList.size()+1, isThisMe, radius, ch, wGap, hGap);
         if (player==null) System.err.println("Wrong user id. Couldn't create user.");
@@ -131,6 +134,10 @@ public class BoardViewManager extends BoardView {
         }
     }
 
+    /**
+     * Funkcja pokazuje możliwe pola za pomocą animacji.
+     * @param FieldsSet lista możliwych pól
+     */
     public static void showPossibleFields(FieldsSet FieldsSet) {
         removePossibleFields();
         possibleFields.clear();
@@ -162,6 +169,9 @@ public class BoardViewManager extends BoardView {
         }
     }
 
+    /**
+     * Metoda usuwa możliwe pola z planszy.
+     */
     public static void removePossibleFields() {
         for (FillTransition fillTransition : fillTransitions) {
             fillTransition.stop();
@@ -171,6 +181,9 @@ public class BoardViewManager extends BoardView {
         possibleFields.clear();
     }
 
+    /**
+     * Metoda resetuje planszę.
+     */
     public static void reset() {
         if (isBoardInitialized()) {
             undraw(circleFields);
@@ -186,10 +199,18 @@ public class BoardViewManager extends BoardView {
         }
     }
 
+    /**
+     * Funkcja zwraca listę pól planszy.
+     * @return lista pól planszy.
+     */
     public static List<CircleField> getCircleFields() {
         return circleFields;
     }
 
+    /**
+     * Funkcja zwraca listę graczy.
+     * @return lista graczy.
+     */
     public static List<Player> getPlayerList() {
         return playerList;
     }

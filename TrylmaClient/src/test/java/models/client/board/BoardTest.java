@@ -2,20 +2,26 @@ package models.client.board;
 
 import models.client.players.Player;
 import models.client.players.PlayerFactory;
+import org.junit.Before;
 import org.junit.Test;
 import views.BoardViewManager;
 
 import static org.junit.Assert.*;
 
 public class BoardTest {
+    @Before
+    public void init() {
+        BoardViewManager.initializeFields();
+    }
+
     @Test
     public void generateFields() {
-        BoardViewManager.initializeFields();
         assertTrue(BoardViewManager.getCircleFields().size()>0);
     }
 
     private void addNewPlayer() {
-        Player player = PlayerFactory.getPlayer(BoardViewManager.getPlayerList().size()+1, false, 4, 4, 4, 4);
+        int id = BoardViewManager.getPlayerList().size()+1;
+        Player player = PlayerFactory.getPlayer(id, false, 4, 4, 4, 4);
         if (player==null) System.err.println("Wrong user id. Couldn't create user.");
         else {
             BoardViewManager.getPlayerList().add(player);

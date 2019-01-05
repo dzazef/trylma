@@ -8,7 +8,7 @@ public class Player6 extends Player{
     Player6(boolean isThisMe, double radius, int ch, double wGap, double hGap) {
         this.setID(6);
         this.generateFields(isThisMe, radius, ch, wGap, hGap);
-        this.addPlayerHandlers();
+        if (isThisMe) this.addPlayerHandlers();
     }
     @Override
     public void generateFields(boolean isThisMe, double radius, int ch, double wGap, double hGap) {

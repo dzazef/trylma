@@ -83,6 +83,7 @@ public class Connection {
                 NewGameView.hide();
                 BoardViewManager.initialize(600, board, wGap, 0);
                 BoardViewManager.initializeFields();
+                BoardViewManager.draw(BoardViewManager.getCircleFields());
                 BoardViewManager.show();
                 for (int i = 1; i<=bots; i++) {
                     BoardViewManager.addNewPlayer(false);
@@ -195,6 +196,7 @@ public class Connection {
                 BoardView.initialize(600, Integer.parseInt(temp[3]), wGap, 0);
                 BoardView.show();
                 BoardViewManager.initializeFields();
+                BoardViewManager.draw(BoardViewManager.getCircleFields());
                 int playerid = Integer.parseInt(temp[1]);
                 for (int i = 1; i <= Integer.parseInt(temp[2]); i++) {
                     if (i == playerid) BoardViewManager.addNewPlayer(true);

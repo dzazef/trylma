@@ -22,7 +22,5 @@ public class FieldSetIterator implements Iterator, Serializable {
     public Object next() {
         return this.movePath.get(pos++);
     }
-    public void remove() {
-
-    }
+    public void remove() {}
 }
