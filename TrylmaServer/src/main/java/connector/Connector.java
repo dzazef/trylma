@@ -123,7 +123,7 @@ public class Connector {
         {
             System.out.println("1");
             try {
-                sleep(Bot.delay*3);
+                sleep(Bot.delay);
             }
             catch (Exception e)
             {

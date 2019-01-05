@@ -9,11 +9,11 @@ import java.util.List;
 /**
  * Iterator po polach dla danego ruchu.
  */
-public class MovePathIterator implements Iterator, Serializable {
+public class FieldSetIterator implements Iterator, Serializable {
     private static final long serialVersionUID = -670142841088144675L;
     private List<Field> movePath;
     private int pos = 0;
-    MovePathIterator(List<Field> movePath) {
+    FieldSetIterator(List<Field> movePath) {
         this.movePath=movePath;
     }
     public boolean hasNext() {

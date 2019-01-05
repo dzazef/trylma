@@ -1,6 +1,5 @@
 package views;
 
-import handlers.Handle;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
@@ -11,7 +10,7 @@ import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 import models.client.CircleField;
-import models.client.board_players.board.Board;
+import models.client.board.Board;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.stage.Modality;

@@ -1,4 +1,4 @@
-package models.client.board_players.players;
+package models.client.players;
 
 public class PlayerFactory {
     public static Player getPlayer(int id, boolean isThisMe, double radius, int ch, double wGap, double hGap) {

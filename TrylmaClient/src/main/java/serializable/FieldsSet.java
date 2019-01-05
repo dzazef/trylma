@@ -36,6 +36,6 @@ public class FieldsSet implements Serializable {
         this.path.remove(this.path.size()-1);
     }
     public Iterator createIterator() {
-        return new MovePathIterator(path);
+        return new FieldSetIterator(path);
     }
 }

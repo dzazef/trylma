@@ -2,7 +2,7 @@ package models.client_server;
 
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
-import models.client.board_players.board.Board;
+import models.client.board.Board;
 import serializable.Field;
 import serializable.FieldsSet;
 import views.BoardView;
@@ -17,6 +17,7 @@ import java.net.Socket;
  */
 @SuppressWarnings("Duplicates")
 public class Connection {
+    private static int wGap = 3;
     private static Socket socket;
     private static ObjectInputStream is;
     private static ObjectOutputStream os;
@@ -78,7 +79,7 @@ public class Connection {
             try {
                 os.writeObject(info);
                 NewGameView.hide();
-                BoardView.initialize(600, board, 5, 0);
+                BoardView.initialize(600, board, wGap, 0);
                 BoardView.initializeFields();
                 BoardView.show();
                 for (int i = 1; i<=bots; i++) {
@@ -189,7 +190,7 @@ public class Connection {
         else if (command.matches("joingame(.*)")) {
             String[] temp = command.split(":");
             Platform.runLater( () -> {
-                BoardView.initialize(600, Integer.parseInt(temp[3]), 5, 0);
+                BoardView.initialize(600, Integer.parseInt(temp[3]), wGap, 0);
                 BoardView.show();
                 BoardView.initializeFields();
                 int playerid = Integer.parseInt(temp[1]);

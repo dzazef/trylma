@@ -1,4 +1,4 @@
-package models.client.board_players.players;
+package models.client.players;
 
 import handlers.Handle;
 import models.client.CircleField;

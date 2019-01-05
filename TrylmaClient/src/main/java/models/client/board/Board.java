@@ -1,4 +1,4 @@
-package models.client.board_players.board;
+package models.client.board;
 
 import handlers.Handle;
 import javafx.animation.FillTransition;
@@ -11,8 +11,8 @@ import javafx.scene.shape.Path;
 import javafx.util.Duration;
 import models.client.CircleField;
 import models.client.FieldGenerator;
-import models.client.board_players.players.Player;
-import models.client.board_players.players.PlayerFactory;
+import models.client.players.Player;
+import models.client.players.PlayerFactory;
 import serializable.Field;
 import serializable.FieldsSet;
 import views.BoardView;
@@ -101,7 +101,7 @@ public class Board {
             if (p.getID()==playerID) player =p;
         }
         if (player !=null) {
-            System.out.println("MOVEINFO: playerOld: "+ player.getID());
+            System.out.println("MOVEINFO: player: "+ player.getID());
             for (CircleField cf : player.getCircleFields()) {
                 if (cf.compare(sourceField)) sourceCircle = cf;
             }
