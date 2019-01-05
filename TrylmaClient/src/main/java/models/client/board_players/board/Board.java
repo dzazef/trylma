@@ -1,29 +1,26 @@
 package models.client.board_players.board;
 
+import handlers.Handle;
 import javafx.animation.FillTransition;
 import javafx.animation.PathTransition;
 import javafx.animation.Timeline;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.scene.paint.Paint;
-import javafx.scene.paint.RadialGradient;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
 import javafx.util.Duration;
 import models.client.CircleField;
 import models.client.FieldGenerator;
-import handlers.Handle;
-import javafx.scene.paint.Color;
 import models.client.board_players.players.Player;
+import models.client.board_players.players.PlayerFactory;
 import serializable.Field;
 import serializable.FieldsSet;
 import views.BoardView;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
 import static java.lang.Math.abs;
 
 /**
@@ -73,11 +70,12 @@ public class Board {
      * @param isThisMe parametr określa czy dany gracz jest obsługiwany przez aktualnie uruchomionego klienta (czy jest innym klientem.
      */
     public static void addNewPlayer(boolean isThisMe) {
-        int playerID = playerList.size()+1;
-        Player player = new Player(playerID);
-        player.generateFields(isThisMe, radius, ch, wGap, hGap);
-        playerList.add(player);
-        BoardView.draw(player.getCircleFields());
+        Player player = PlayerFactory.getPlayer(playerList.size()+1, isThisMe, radius, ch, wGap, hGap);
+        if (player==null) System.err.println("Wrong user id. Couldn't create user.");
+        else {
+            playerList.add(player);
+            BoardView.draw(player.getCircleFields());
+        }
     }
 
     /**
@@ -100,10 +98,10 @@ public class Board {
         double centerY = 0;
 
         for (Player p : playerList) {
-            if (p.getID()==playerID) player=p;
+            if (p.getID()==playerID) player =p;
         }
-        if (player!=null) {
-            System.out.println("MOVEINFO: player: "+player.getID());
+        if (player !=null) {
+            System.out.println("MOVEINFO: playerOld: "+ player.getID());
             for (CircleField cf : player.getCircleFields()) {
                 if (cf.compare(sourceField)) sourceCircle = cf;
             }
@@ -160,7 +158,7 @@ public class Board {
             circleField.setScaleX(1.03);
             circleField.setScaleY(1.03);
 
-            ft = new FillTransition(Duration.millis(800), circleField, Color.web("#3e3e3e") ,Color.GRAY);
+            ft = new FillTransition(Duration.millis(800), circleField, Color.web("#3e3e3e"), Color.GRAY);
             ft.setCycleCount(Timeline.INDEFINITE);
             ft.setAutoReverse(true);
             fillTransitions.add(ft);
