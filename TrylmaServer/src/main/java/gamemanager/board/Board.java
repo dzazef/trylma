@@ -4,32 +4,54 @@ import player.Pawn;
 import serializable.Field;
 
 import java.util.ArrayList;
+import java.util.List;
 
+/**
+ * Board class, as the name suggests, creates a Board objects, that plays role of board for chinese checkers game. It stores the fields with information if they are taken or free.
+ */
 public class Board {
-    public ArrayList<Field> fields;
+    /**
+     * List, of board fields.
+     */
+    private List fields;
 
     public Board()
     {
-        this.fields = new ArrayList<Field>();
+        this.fields = new ArrayList<>();
     }
-    public void move(Pawn from, Field destination)
+
+    /**
+     * Function that moves pawn on the board. Changes pawn start field state to FREE, and pawn end field state to TAKEN.
+     * @param from Pawn start field.
+     * @param destination Pawn end field.
+     */
+    public final void move(Pawn from, Field destination)
     {
         Field field = getFieldById(destination.getId());
         field.changeState();
         field = getFieldById(from.getId());
         field.changeState();
     }
+
+    /**
+     * Function that advises other ones by returning Field by its id.
+     * @param id Searched Field id.
+     * @return Field found by its id.
+     */
     public Field getFieldById(String id)
     {
-        for(int i = 0; i < fields.size(); i++)
-        {
-            if(fields.get(i).getId().equals(id))
-            {
-                return fields.get(i);
+        for (Object field : fields) {
+            if (((Field)field).getId().equals(id)) {
+                return (Field)field;
             }
         }
         return null;
     }
+
+    /**
+     * Function that initializes the whole board, depending on numOfPawns magic number, that defines how board looks.
+     * @param numOfPawns Magic number, that indicates the look of the board. It is number of pawns on side of the players home space.
+     */
     public void build(int numOfPawns)
     {
         /*

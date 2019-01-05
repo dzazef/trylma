@@ -1,122 +1,94 @@
 package connector;
 
 import gamemanager.GameManager;
-import gamemanager.MoveManager;
-import serializable.Field;
 import player.*;
-import serializable.FieldsSet;
-
-import javax.rmi.ssl.SslRMIClientSocketFactory;
 import java.io.*;
+import java.lang.reflect.GenericArrayType;
 import java.net.ServerSocket;
 import java.net.Socket;
 
 /**
- * Klasa Connector jest główną klasą komunikacyjną serwera. Jej zaadaniem jest odbieranie informaji od klientów i, z pomocą obiektu klasy Command,
- * wysyłanie komunikatów zwrotnych. Connector posiada klasę communicationLoop, która zawiera w sobie pętlę komunikacyjną. Serwer każdemy klientowi
- * przypisuje jego obiekt klasy Handler, który rozszerza klasę Thread i działą na osobnym Sockecie na tym samym porcie.
- * W Handlarze odbywa się cała komunikacja konkretnego klienta z serwerem.
+ * Connector class is the class responsible for communication in server application. It receives messages from clients and sends answers.
+ * It has the communication loop that is responsible for connecting clients with server, and than in unique Handler thread handle the communication
+ * with this particular client. The inner class Handler extends Thread class. One Handler communicates with and runs adequate logic functions
+ * of server for distinct player.
  */
-
-
 public class Connector {
-    /**
-     * Serwer, do którego podłączać się będą klienci.
-     */
-    private ServerSocket server;
 
     /**
-     * Klasa obsługująca połączenie pojedynczego klienta.
+     * Handler class responsible for communicating and running server logic functions for distinct player.
      */
     public static class Handler extends Thread {
-
+        /**
+         * Boolean variable, that decides about thread life. When the thread is created it gains true value, so threads run function runs.
+         * When the thread is no longer needed, GameManager can kill it by setting its value as false.
+         */
+        private boolean inUse;
+        /**
+         * Variable storing information if client is already connected or not.
+         */
         private boolean connected;
 
         /**
-         * Obiekt klasy Command, która posiada funkcje do generowanie i wysyłania wiadomości do klienta
+         * Command class object, responsible for sending messages to client.
          */
         private Command command;
         /**
-         * Strumień wyjściowy.
+         * Handlers unique ObjectOutputStream by which every message and serialized objects will be send.
          */
         private ObjectOutputStream objout;
         /**
-         * Strumień wejściowy.
+         * Handlers unique ObjectInputStream from which every message and serialized objects will be read.
          */
         private ObjectInputStream objin;
         /**
-         * Nazwa gracza/klienta, którego handler obsługuje.
+         * Player class object, representing distinct player the handler is handling.
          */
         private Player player_to_handle;
         /**
-         * Socket, na którym połączony jest klient.
+         * The clients socket, by which client is connected to server.
          */
         private Socket socket;
 
-
         /**
-         * Funkcja dodająca gracza w zależności ile graczy jest już w grze.
+         * Turns the thread off.
          */
-        private void addPlayer()
+        public synchronized void turnOff()
         {
-            if (GameManager.freePlacesForGame == 0) {
-                GameManager.playersobjout.add(objout);
-                GameManager.gameInProgerss = true;
+            this.inUse = false;
+        }
+        /**
+         * Function responsible for creating and adding new player to game if there is place at the table.
+         */
+        private synchronized void addPlayer()
+        {
+            if (GameManager.getFreePlacesForGame() == 0) {
+                GameManager.getPlayersobjout().add(objout);
+                GameManager.setGameInProgerss(true);
                 return;
             }
-            if(GameManager.freePlacesForGame >0)
+            if(GameManager.getFreePlacesForGame() >0)
             {
                 this.connected = true;
-                GameManager.playersobjout.add(objout);
+                GameManager.getPlayersobjout().add(objout);
             }
-            if((GameManager.numberOfPlayers - GameManager.freePlacesForGame +1)==1)
-            {
-                Player1 player = new Player1(GameManager.numberOfPawns,false);
-                GameManager.players.add(player);
-                this.player_to_handle = player;
-            }
-            else if((GameManager.numberOfPlayers - GameManager.freePlacesForGame +1)==2)
-            {
-                Player2 player = new Player2(GameManager.numberOfPawns,false);
-                GameManager.players.add(player);
-                this.player_to_handle = player;
-            }
-            else if((GameManager.numberOfPlayers - GameManager.freePlacesForGame +1)==3)
-            {
-                Player3 player = new Player3(GameManager.numberOfPawns,false);
-                GameManager.players.add(player);
-                this.player_to_handle = player;
-            }
-            else if((GameManager.numberOfPlayers - GameManager.freePlacesForGame +1)==4)
-            {
-                Player4 player = new Player4(GameManager.numberOfPawns,false);
-                GameManager.players.add(player);
-                this.player_to_handle = player;
-            }
-            else if((GameManager.numberOfPlayers - GameManager.freePlacesForGame +1)==5)
-            {
-                Player5 player = new Player5(GameManager.numberOfPawns,false);
-                GameManager.players.add(player);
-                this.player_to_handle = player;
-            }
-            else if((GameManager.numberOfPlayers - GameManager.freePlacesForGame +1)==6)
-            {
-                Player6 player = new Player6(GameManager.numberOfPawns,false);
-                GameManager.players.add(player);
-                this.player_to_handle = player;
-            }
+            Player player = GameManager.getPlayerCreators().get(GameManager.getNumberOfPlayers() - GameManager.getFreePlacesForGame()).createPlayer(GameManager.getNumberOfPawns(),false);
+            GameManager.getPlayers().add(player);
+            this.player_to_handle = player;
 
-            GameManager.freePlacesForGame--;
-            if (GameManager.freePlacesForGame == 0) {
-                GameManager.gameInProgerss = true;
+            GameManager.setFreePlacesForGame(GameManager.getFreePlacesForGame() - 1);
+            if (GameManager.getFreePlacesForGame() == 0) {
+                GameManager.setGameInProgerss(true);
             }
         }
 
         /**
-         * Konstruktor, używany do tworzenia handlera dla gracza.
-         * @param socket socket na którym połączony zostanie klient.
+         * Handlers constructor, used to start handler for normal player.
+         * @param socket Clients socket, by which client is connected.
          */
-        public Handler(Socket socket) {
+        Handler(Socket socket) {
+            GameManager.handlers.add(this);
+            this.inUse = true;
             this.connected = false;
             this.player_to_handle = null;
             this.socket = socket;
@@ -131,102 +103,94 @@ public class Connector {
             command = new Command(objout);
         }
 
-
-        private Handler(Socket socket,Player player,ObjectInputStream in, ObjectOutputStream out) {
+        /**
+         * Handlers constructor, used to start handler for bot player.
+         * @param player Player the bot is playing;
+         */
+        private Handler(Player player) {
+            GameManager.handlers.add(this);
+            this.inUse = true;
             this.connected = true;
-            this.socket = socket;
             this.player_to_handle = player;
-            this.objout =out;
-            this.objin = in;
+
             command = new Command(objout);
         }
-        private void handleCommands() throws Exception {
-                Object t;
-                if (GameManager.actualplayer.getId().equals(this.player_to_handle.getId())) {
-                    System.out.println("Handle commands" + this.player_to_handle.getId());
 
-                        if (!this.player_to_handle.isBot()) {
-                        try {
-                            this.objout.writeObject("yourturn");
-                        } catch (Exception e) {
-                            throw new Exception("Failed to send yourturn message" + e + " : " + this.player_to_handle.getId());
-                        }
-                        try {
-                            t = this.objin.readObject();
-                        } catch (Exception e) {
-                            throw new Exception("Failed to read startfield command from client "+ e + " : " + this.player_to_handle.getId());
-                        }
-                        String s = (String) t;
-                        if (s.startsWith("startfield")) {
-                            System.out.println("Wszedłem do startfield");
-                            Field field;
-                            try {
-                                field = (Field) objin.readObject();
-                            } catch (Exception e) {
-                                throw new Exception("Failed to read Field class object for startfield "+ e + " : " + this.player_to_handle.getId());
-                            }
-                            MoveManager.choosenPawn = this.player_to_handle.getPawnById(field.getId());
-                            System.out.println("Wczytałem obiekt");
-                            System.out.println("Chce wyslac sciezki");
-                            command.sendPossibleMovesMessage(field);
-                            MoveManager.choosenPawn = GameManager.actualplayer.getPawnById(field.getId());
-
-                            System.out.println("Wysłałem ścieżki");
-
-                        } else if (s.startsWith("skip")) {
-                            System.out.println("Tu wszedłem");
-                            GameManager.nextPlayer();
-                            System.out.println("Nie wyjebało");
-                        }
-                        else if (s.startsWith("endfield")) {
-                            System.out.println("Wszedłem do endfield");
-                            Field field;
-                            try {
-                                field = (Field) objin.readObject();
-                            } catch (Exception e) {
-                                System.out.println("5");
-                                throw new Exception("Failed to read object for endfield " + e + " : " + this.player_to_handle.getId());
-                            }
-                            System.out.println(MoveManager.choosenPawn.getId());
-                            System.out.println(field.getId());
-                            command.sendMoveMessage(field);
-
-                            GameManager.board.move(MoveManager.choosenPawn, field);
-
-                            GameManager.actualplayer.movePawn(MoveManager.choosenPawn, field);
-
-                            System.out.println(MoveManager.choosenPawn.getId());
-                            System.out.println(field.getId());
-
-                            System.out.println("Wysłałem wiadomość o ruchu");
-                            GameManager.nextPlayer();
-                            System.out.println("Ruszyłem się");
-                            for (Field x : GameManager.board.fields) {
-                                System.out.println(x.getId() + "  :  " + x.getState());
-                            }
-                        }
-                    }
-                    else
-                    {
-                        sleep(1000);
-                        System.out.println("Teraz się rusza bot" + this.player_to_handle.getId());
-                        this.player_to_handle.botMove();
-                        command.sendMoveMessage(GameManager.actualplayer.getBotchoosendestination());
-                        GameManager.board.move(GameManager.actualplayer.getBotchoosenpawn(), GameManager.actualplayer.getBotchoosendestination());
-                        GameManager.actualplayer.movePawn(GameManager.actualplayer.getBotchoosenpawn(), GameManager.actualplayer.getBotchoosendestination());
-                        GameManager.nextPlayer();
-                    }
-                    Player winner = GameManager.checkWin();
-                    if(winner != null)
-                    {
-                        System.out.println("Wysyłam wiadomość o wygranej");
-                        command.sendWinMessage(winner);
-                        GameManager.gameInProgerss = false;
-                    }
-                }
+        /**
+         * Function responsible for moving if the player the Handler handles is a bot player.
+         */
+        private void botMove() throws IOException
+        {
+            System.out.println("1");
+            try {
+                sleep(Bot.delay*3);
+            }
+            catch (Exception e)
+            {
+                System.out.println(e.getMessage());
+            }
+            System.out.println("2");
+            Bot.botMove(this.player_to_handle);
+            System.out.println("3");
+            command.sendMoveMessage(GameManager.getActualplayer().getBotchoosendestination());
+            System.out.println("4");
+            GameManager.getBoard().move(GameManager.getActualplayer().getBotchoosenpawn(), GameManager.getActualplayer().getBotchoosendestination());
+            System.out.println("5");
+            GameManager.getActualplayer().movePawn(GameManager.getActualplayer().getBotchoosenpawn(), GameManager.getActualplayer().getBotchoosendestination());
+            System.out.println("6");
+            GameManager.nextPlayer();
         }
 
-        private void createGame()
+        /**
+         * Function that checks if any of the players is a winner, executed after the handler finishes his move algorithm.
+         */
+        private synchronized void checkWin() throws IOException
+        {
+            Player winner = GameManager.checkWin();
+            if(winner != null)
+            {
+                System.out.println("Winner " + winner.getId());
+                command.sendWinMessage(winner);
+                GameManager.setGameInProgerss(false);
+                GameManager.initialize();
+                this.connected = false;
+            }
+        }
+
+        /**
+         * Function that handles commands received from clients application.
+         * @throws IOException
+         */
+        private void handleCommands() throws IOException{
+            Object t;
+            try {
+                t = this.objin.readObject();
+            } catch (Exception e) {
+                throw new IOException("Failed to read startfield command from client "+ e + " : " + this.player_to_handle.getId());
+            }
+            String s = (String) t;
+            GameManager.getChainOfResponsibility().handleMessage(s, this.objin, this.command, this.player_to_handle);
+        }
+
+        /**
+         * Function that creates and adds adequate number of bots while creating the game.
+         * @param numberOfBots Number of bots in game.
+         * @param numberOfPawns Number indicating how board and players will look like. It doesn't exactly specifies the number of pawns the players have, but it says how big is side of the triangle,
+         *                      that is the players home.
+         */
+        private void addBots(int numberOfBots, int numberOfPawns)
+        {
+            for (int i = 0; i < numberOfBots; i++) {
+                Player player = GameManager.getPlayerCreators().get(i).createPlayer(numberOfPawns,true);
+                GameManager.getPlayers().add(player);
+                (new Handler(player)).start();
+            }
+        }
+
+        /**
+         * Function invoked at the beginning of game, responsible for creating the game.
+         */
+        private void createGame() throws Exception
         {
             String s;
             try {
@@ -258,124 +222,142 @@ public class Connector {
                     System.out.println("Creating board error");
                 }
 
-                GameManager.freePlacesForGame = numOfPlayersint - numOfBotsint;
-                GameManager.numberOfPlayers = numOfPlayersint;
-                GameManager.numberOfPawns = numOfPawnsint;
-                GameManager.board.build(numOfPawnsint);
-                for (int i = 1; i <= numOfBotsint; i++) {
-                    if (i == 1) {
-                        Player1 player1 = new Player1(numOfPawnsint, true);
-                        GameManager.players.add(player1);
-                        (new Handler(this.socket,player1,objin,objout)).start();
-                    } else if (i == 2) {
-                        Player2 player2 = new Player2(numOfPawnsint, true);
-                        GameManager.players.add(player2);
-                        (new Handler(this.socket,player2,objin,objout)).start();
-                    } else if (i == 3) {
-                        Player3 player3 = new Player3(numOfPawnsint, true);
-                        GameManager.players.add(player3);
-                        (new Handler(this.socket,player3,objin,objout)).start();
-                    } else if (i == 4) {
-                        Player4 player4 = new Player4(numOfPawnsint, true);
-                        GameManager.players.add(player4);
-                        (new Handler(this.socket,player4,objin,objout)).start();
-                    } else if (i == 5) {
-                        Player5 player5 = new Player5(numOfPawnsint, true);
-                        GameManager.players.add(player5);
-                        new Handler(this.socket,player5,objin,objout).start();
-                    } else if (i == 6) {
-                        Player6 player6 = new Player6(numOfPawnsint, true);
-                        GameManager.players.add(player6);
-                        (new Handler(this.socket,player6,objin, objout)).start();
-                    }
-                }
+                GameManager.setFreePlacesForGame(numOfPlayersint - numOfBotsint);
+                GameManager.setNumberOfPlayers(numOfPlayersint);
+                GameManager.setNumberOfPawns(numOfPawnsint);
+                GameManager.getBoard().build(numOfPawnsint);
+                addBots(numOfBotsint,numOfPawnsint);
                 addPlayer();
-                GameManager.actualplayer = GameManager.players.get(GameManager.numberOfPlayers - 1 - GameManager.freePlacesForGame);
+                GameManager.setActualplayer(GameManager.getPlayers().get(GameManager.getNumberOfPlayers() - 1 - GameManager.getFreePlacesForGame()));
             }
             else {
-                System.out.println("Failure, game has not been created");
+                throw new Exception("Failure, game has not been created");
             }
 
         }
-        public void run() {
-            if(this.player_to_handle != null) {
-                if (this.player_to_handle.getId().equals("1")) {
-                    System.out.println(this.connected);
+
+        /**
+         * Function invoked when there is a connect message received from new client.
+         */
+        void connectMessageHandle() throws Exception
+        {
+            if (GameManager.getFreePlacesForGame() == 0) {
+                try {
+                    objout.writeObject("gamefull");
+                } catch (Exception e) {
+                    System.out.println("Failed to send gamefull message");
+                }
+            } else if (GameManager.getNumberOfPlayers() == 0) {
+                createGame();
+            } else if (GameManager.getFreePlacesForGame() > 0) {
+                addPlayer();
+                String message = "joingame" + ":" + GameManager.getPlayers().get(GameManager.getNumberOfPlayers() - 1 - GameManager.getFreePlacesForGame()).getId() + ":" + GameManager.getNumberOfPlayers() +":" + GameManager.getNumberOfPawns();
+                try {
+                    objout.writeObject(message);
+                } catch (Exception e) {
+                    System.out.println("Failed to send joingame message");
                 }
             }
-                while(true) {
-                    if(!GameManager.gameInProgerss && !this.connected) {
-//                        if(this.player_to_handle != null)
-//                        {
-//                            System.out.println("Wszedłem " + this.player_to_handle);
-//                        }
-//                        else
-//                        {
-//                            System.out.println("Wszedłem null");
-//                        }
-                        if(this.player_to_handle==null)
-                        {
-                        String s;
-                        try {
-                            s = (String) objin.readObject();
-                        } catch (Exception e) {
-                            if(this.player_to_handle!=null)
-                            {
-                                System.out.println("Failed to read connect command" + this.player_to_handle.getId());
+        }
+
+        /**
+         * Thread main function, in which everything is happening.
+         */
+        public void run() {
+            while(this.inUse) {
+                //noinspection SynchronizeOnNonFinalField
+                synchronized (GameManager.gameInProgerss) {
+                    if (!GameManager.isGameInProgerss() && !this.connected) {
+                        if (this.player_to_handle == null) {
+                            String s;
+                            try {
+                                s = (String) objin.readObject();
+                            } catch (Exception e) {
+                                System.out.println("Failed to read connect command" );
+                                break;
                             }
-                            else
-                            {
-                                System.out.println("Failed to read connect command player is null" );
-                            }
-                            break;
-                        }
-                        if (s.startsWith("connect")) {
-                            if (GameManager.freePlacesForGame == 0) {
+                            if (s.startsWith("connect")) {
                                 try {
-                                    objout.writeObject("gamefull");
-                                } catch (Exception e) {
-                                    System.out.println("Failed to send gamefull message");
+                                    connectMessageHandle();
                                 }
-                            } else if (GameManager.numberOfPlayers == 0) {
-                                createGame();
-                            } else if (GameManager.freePlacesForGame > 0) {
-                                addPlayer();
-                                GameManager.playersobjout.add(objout);
-                                String message = "joingame" + ":" + GameManager.players.get(GameManager.numberOfPlayers - 1 - GameManager.freePlacesForGame).getId() + ":" + GameManager.numberOfPlayers;
-                                try {
-                                    objout.writeObject(message);
-                                } catch (Exception e) {
-                                    System.out.println("Failed to send joingame message");
+                                catch (Exception e)
+                                {
+                                    command.sendFailureMessage();
+                                    GameManager.gameFailure();
+                                    this.connected = false;
                                 }
                             }
                         }
-                    }
-                    }
-                    else if(this.connected && GameManager.gameInProgerss)
-                    {
-                        try {
-                            handleCommands();
-                        }
-                        catch (Exception e)
-                        {
-                            System.out.println("Wywaliło serwer");
-                            System.out.println(e);
-                            break;
-                        }
+                    } else if (this.connected && GameManager.isGameInProgerss()) {
+                        gameplay();
                     }
                 }
+            }
+        }
 
+        /**
+         * Special function responsible for conducting the whole gameplay for handled player.
+         */
+        private synchronized void gameplay()
+        {
+            if (GameManager.isGameInProgerss() && GameManager.getActualplayer().getId().equals(this.player_to_handle.getId())) {
+                    if (!this.player_to_handle.isBot()) {
+                        try {
+                            this.objout.writeObject("yourturn");
+                        }
+                        catch (Exception e) {
+                            System.out.println("Connection failure 1 " +e +" : "+ e.getMessage());
+                            command.sendFailureMessage();
+                            GameManager.gameFailure();
+                            this.connected = false;
+                        }
+                        try {
+
+
+                            handleCommands();
+                        }
+                        catch (Exception e) {
+                            System.out.println("Connection failure 2 " +e +" : "+ e.getMessage());
+                            command.sendFailureMessage();
+                            GameManager.gameFailure();
+                            this.connected = false;
+                        }
+                    } else {
+                        try {
+                            botMove();
+                        }
+                        catch (Exception e) {
+                            System.out.println(this.player_to_handle.getId() + "  Connection failure 3 " +e +" : "+ e.getMessage());
+                            command.sendFailureMessage();
+                            GameManager.gameFailure();
+                            this.connected = false;
+                        }
+                    }
+                    try {
+                        checkWin();
+                    }
+                    catch (Exception e) {
+                        System.out.println("Connection failure 4 " +e +" : "+ e.getMessage());
+                        command.sendFailureMessage();
+                        GameManager.gameFailure();
+                        this.connected = false;
+                    }
+
+
+            }
         }
     }
 
 
+
     /**
-     * Funkcja połączenia, która odpowiada za całe połączenie serwera.
+     * Main connection loop, responsible for connecting, and running handlers for new connected sockets.
      */
-    public void communicationLoop()
+    public void connectionLoop()
     {
+        ServerSocket server;
         try {
-            this.server = new ServerSocket(9090);
+            server = new ServerSocket(9090);
         }
         catch (IOException e)
         {
@@ -385,7 +367,6 @@ public class Connector {
         try {
             try{
                 while (true){
-
                     new Handler(server.accept()).start();
                 }
             }

@@ -7,11 +7,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="63c90eab-028f-44c2-91e5-543cfc98ea18" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/connector/EndfieldMessage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/connector/MessageChain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/connector/SkipMessage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/connector/StartfieldMessage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/player/Bot.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/player/Player1ConcreteCreator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/player/Player2ConcreteCreator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/player/Player3ConcreteCreator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/player/Player4ConcreteCreator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/player/Player5ConcreteCreator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/player/Player6ConcreteCreator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/player/PlayerCreator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../TrylmaServer/src/test/java/SerializableTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TrylmaClient.iml" beforeDir="false" afterPath="$PROJECT_DIR$/TrylmaClient.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/client/TrylmaClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/client/TrylmaClient.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controllers/MenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/MenuController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controllers/NewGameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/NewGameController.class" afterDir="false" />
@@ -20,38 +29,63 @@
       <change beforePath="$PROJECT_DIR$/target/classes/models/client/FieldGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/models/client/FieldGenerator.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/models/client/board_players/board/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/models/client/board_players/board/Board.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/models/client/board_players/players/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/models/client/board_players/players/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/models/client/board_players/players/PlayerFieldIterator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/models/client/board_players/players/PlayerFieldIterator.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/models/client_server/Connection.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/models/client_server/Connection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/newGameStructure.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/newGameStructure.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/serializable/Field$State.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/serializable/Field$State.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/serializable/Field.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/serializable/Field.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/serializable/FieldsSet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/serializable/FieldsSet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/serializable/MovePathIterator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/serializable/MovePathIterator.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/views/BoardView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/BoardView.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/views/MenuView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/MenuView.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/views/NewGameView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/views/NewGameView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../TrylmaServer/.idea/artifacts/Server_jar.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../TrylmaServer/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/src/main/java/Server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/Server/Server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TrylmaServer/src/main/java/connector/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/connector/Command.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TrylmaServer/src/main/java/connector/Connector.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/connector/Connector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TrylmaServer/src/main/java/gamemanager/GameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/gamemanager/GameManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TrylmaServer/src/main/java/gamemanager/MoveManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/gamemanager/MoveManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/src/main/java/gamemanager/Path.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/src/main/java/gamemanager/board/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/gamemanager/board/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/src/main/java/player/Pawn.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/player/Pawn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/src/main/java/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/player/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TrylmaServer/src/main/java/player/Player1.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/player/Player1.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TrylmaServer/src/main/java/player/Player2.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/player/Player2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TrylmaServer/src/main/java/player/Player3.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/player/Player3.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TrylmaServer/src/main/java/player/Player4.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/player/Player4.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TrylmaServer/src/main/java/player/Player5.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/player/Player5.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TrylmaServer/src/main/java/player/Player6.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/player/Player6.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/src/main/java/serializable/Field.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/serializable/Field.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/src/main/java/serializable/FieldsSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/serializable/FieldsSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/src/main/java/serializable/MoveDestinations.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/src/main/java/serializable/MovePathIterator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/src/main/java/serializable/MovePathIterator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/src/test/java/ConnectorTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/src/test/java/GameManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/src/test/java/GameManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/src/test/java/PlayerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/src/test/java/PlayerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/target/classes/Server/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/target/classes/Server/Server.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TrylmaServer/target/classes/connector/Command.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/target/classes/connector/Command.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TrylmaServer/target/classes/connector/Connector$Handler.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/target/classes/connector/Connector$Handler.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TrylmaServer/target/classes/connector/Connector.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/target/classes/connector/Connector.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TrylmaServer/target/classes/gamemanager/GameManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/target/classes/gamemanager/GameManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TrylmaServer/target/classes/gamemanager/MoveManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/target/classes/gamemanager/MoveManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/target/classes/gamemanager/Path.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/target/classes/gamemanager/board/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/target/classes/gamemanager/board/Board.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/target/classes/player/Pawn.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/target/classes/player/Pawn.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/target/classes/player/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/target/classes/player/Player.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TrylmaServer/target/classes/player/Player1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/target/classes/player/Player1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TrylmaServer/target/classes/player/Player2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/target/classes/player/Player2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TrylmaServer/target/classes/player/Player3.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/target/classes/player/Player3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TrylmaServer/target/classes/player/Player4.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/target/classes/player/Player4.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TrylmaServer/target/classes/player/Player5.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/target/classes/player/Player5.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../TrylmaServer/target/classes/player/Player6.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/target/classes/player/Player6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/target/classes/serializable/Field$State.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/target/classes/serializable/Field$State.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/target/classes/serializable/Field.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/target/classes/serializable/Field.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/target/classes/serializable/FieldsSet.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/target/classes/serializable/FieldsSet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/target/classes/serializable/MoveDestinations.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/target/surefire-reports/ConnectorTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/target/surefire-reports/ConnectorTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/target/surefire-reports/TEST-ConnectorTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/target/surefire-reports/TEST-ConnectorTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/target/test-classes/ConnectorTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/target/test-classes/GameManagerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/target/test-classes/GameManagerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../TrylmaServer/target/test-classes/PlayerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/../TrylmaServer/target/test-classes/PlayerTest.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -80,9 +114,28 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/models/client_server/Connection.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="17">
-              <caret line="72" column="36" selection-start-line="72" selection-start-column="36" selection-end-line="72" selection-end-column="36" />
+              <caret line="172" selection-start-line="172" selection-end-line="172" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FieldsSet.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/serializable/FieldsSet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="18" selection-start-line="18" selection-end-line="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MenuController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/controllers/MenuController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#394#395#0" expanded="true" />
+                <element signature="e#424#425#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -91,8 +144,8 @@
       <file leaf-file-name="Board.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/models/client/board_players/board/Board.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2278">
-              <caret line="162" selection-start-line="162" selection-end-line="162" />
+            <state relative-caret-position="1037">
+              <caret line="89" selection-start-line="89" selection-end-line="89" />
             </state>
           </provider>
         </entry>
@@ -106,20 +159,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NewGameController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/controllers/NewGameController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="BoardView.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/views/BoardView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="850">
-              <caret line="76" column="51" selection-start-line="76" selection-start-column="51" selection-end-line="76" selection-end-column="51" />
+            <state relative-caret-position="867">
+              <caret line="71" column="51" selection-start-line="71" selection-start-column="51" selection-end-line="71" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -136,8 +180,8 @@
       <file leaf-file-name="Handle.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/handlers/Handle.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="13" column="48" selection-start-line="13" selection-start-column="48" selection-end-line="13" selection-end-column="48" />
+            <state relative-caret-position="221">
+              <caret line="14" column="48" selection-start-line="14" selection-start-column="48" selection-end-line="14" selection-end-column="48" />
             </state>
           </provider>
         </entry>
@@ -267,7 +311,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545276838908" />
     <property name="last.edited.regexp" value="wonwonwownown" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../TrylmaServer" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/TrylmaServer" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
@@ -299,7 +343,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.TrylmaClient">
+  <component name="RunManager" selected="Application.TrylmaClient (1)">
     <configuration name="TrylmaClient (1)" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="client.TrylmaClient" />
       <module name="TrylmaClient" />
@@ -383,11 +427,22 @@
       <workItem from="1546175226056" duration="11467000" />
       <workItem from="1546205904682" duration="1853000" />
       <workItem from="1546260438691" duration="314000" />
+      <workItem from="1546442105870" duration="10411000" />
+      <workItem from="1546467903100" duration="601000" />
+      <workItem from="1546529285617" duration="5803000" />
+      <workItem from="1546599015762" duration="18000" />
+      <workItem from="1546633165082" duration="625000" />
+      <workItem from="1546638854023" duration="19000" />
+      <workItem from="1546638972718" duration="4254000" />
+      <workItem from="1546650542557" duration="24000" />
+      <workItem from="1546650701022" duration="1415000" />
+      <workItem from="1546652209474" duration="5005000" />
+      <workItem from="1546657581211" duration="17000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="128909000" />
+    <option name="totallyTimeSpent" value="157101000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="0" width="783" height="832" extended-state="0" />
@@ -395,7 +450,6 @@
     <layout>
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.32051283" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info id="Image Layers" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
@@ -403,11 +457,11 @@
       <window_info anchor="right" id="Maven Projects" order="9" />
       <window_info anchor="bottom" id="Database Changes" order="12" />
       <window_info anchor="bottom" id="Version Control" order="13" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49972722" weight="0.23132184" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49972722" weight="0.22877698" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="4" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" weight="0.74026847" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.7877947" />
       <window_info anchor="bottom" id="Analysis" order="14" />
       <window_info anchor="right" id="Database" order="6" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -417,6 +471,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39956802" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.31988472" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Duplicate detector" order="15" weight="0.32937366" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
@@ -590,9 +645,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="82">
           <caret line="67" column="54" selection-start-line="67" selection-start-column="54" selection-end-line="67" selection-end-column="54" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -604,8 +656,8 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/models/client/FieldCircle.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/controllers/NewGameController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        <state relative-caret-position="119">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -637,34 +689,10 @@
     </entry>
     <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/ext/jfxrt.jar!/javafx/scene/shape/Circle.class" />
     <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/ext/jfxrt.jar!/javafx/scene/paint/RadialGradient.class" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/MenuController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/serializable/MovePathIterator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/serializable/FieldsSet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/models/client_server/Connection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="72" column="36" selection-start-line="72" selection-start-column="36" selection-end-line="72" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -677,8 +705,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/views/BoardView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="850">
-          <caret line="76" column="51" selection-start-line="76" selection-start-column="51" selection-end-line="76" selection-end-column="51" />
+        <state relative-caret-position="867">
+          <caret line="71" column="51" selection-start-line="71" selection-start-column="51" selection-end-line="71" selection-end-column="51" />
         </state>
       </provider>
     </entry>
@@ -691,8 +719,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/handlers/Handle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="13" column="48" selection-start-line="13" selection-start-column="48" selection-end-line="13" selection-end-column="48" />
+        <state relative-caret-position="221">
+          <caret line="14" column="48" selection-start-line="14" selection-start-column="48" selection-end-line="14" selection-end-column="48" />
         </state>
       </provider>
     </entry>
@@ -700,13 +728,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="24" selection-start-line="24" selection-end-line="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/models/client/board_players/board/Board.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2278">
-          <caret line="162" selection-start-line="162" selection-end-line="162" />
         </state>
       </provider>
     </entry>
@@ -721,6 +742,38 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="25" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/serializable/FieldsSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/MenuController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+          <folding>
+            <element signature="e#394#395#0" expanded="true" />
+            <element signature="e#424#425#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/models/client/board_players/board/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1037">
+          <caret line="89" selection-start-line="89" selection-end-line="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/models/client_server/Connection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="172" selection-start-line="172" selection-end-line="172" />
         </state>
       </provider>
     </entry>

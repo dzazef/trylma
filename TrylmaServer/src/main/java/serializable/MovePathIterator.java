@@ -7,7 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Iterator po polach dla danego ruchu.
+ * Iterator class, an Iterator design patter embodiment, used in FieldsSet class.
  */
 public class MovePathIterator implements Iterator, Serializable {
     private static final long serialVersionUID = -670142841088144675L;

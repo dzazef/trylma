@@ -23,7 +23,7 @@ public class Player1 implements Player {
         this.id = "1";
         this.bot = bot;
         this.numOfPawns = numOfPawns;
-        this.pawns = new ArrayList<Pawn>();
+        this.pawns = new ArrayList<>();
         int initialy = -1;
         int initialz = -numOfPawns;
         int x = -(numOfPawns+1);
@@ -33,7 +33,7 @@ public class Player1 implements Player {
             for (int i = 0; i < k; i++) {
                 Pawn pawn = new Pawn(x,y,z);
                 this.pawns.add(pawn);
-                GameManager.board.getFieldById(pawn.getId()).changeState();
+                GameManager.getBoard().getFieldById(pawn.getId()).changeState();
                 y--;
                 z++;
             }
@@ -50,11 +50,6 @@ public class Player1 implements Player {
         }
         return null;
     }
-    public ArrayList<Pawn> getPawns()
-    {
-        return pawns;
-    }
-
     public boolean isBot() {
         return bot;
     }
@@ -71,6 +66,32 @@ public class Player1 implements Player {
         return botchoosenpath;
     }
 
+    @Override
+    public void clear()
+    {
+        this.botchoosenpath = null;
+        this.botchoosenpawn = null;
+    }
+    @Override
+    public ArrayList<Pawn> getPawns() {
+        return pawns;
+    }
+
+    @Override
+    public void setBotchoosenpawn(Pawn pawn) {
+        this.botchoosenpawn = pawn;
+    }
+
+    @Override
+    public void setBotchoosendestination(Field desination) {
+        this.botchoosendestination = desination;
+    }
+
+    @Override
+    public void setBotchoosenpath(FieldsSet path) {
+        this.botchoosenpath = path;
+    }
+
     public String getId() {
         return id;
     }
@@ -84,86 +105,6 @@ public class Player1 implements Player {
         return true;
     }
 
-    public void botMove() {
-        this.botchoosenpath = null;
-        this.botchoosenpawn = null;
-        System.out.println("Wywołuję funkcję ruchu bota");
-        int points = 0;
-        for (Pawn pawn : pawns) {
-            MoveManager.generateMovePaths(pawn);
-            if(this.botchoosenpath == null)
-            {
-                if(MoveManager.paths.size() >0)
-                {
-                    this.botchoosenpath = MoveManager.paths.get(0);
-                    this.botchoosenpawn = pawn;
-                }
-            }
-            if (MoveManager.paths != null) {
-                for (int i = 0; i < MoveManager.paths.size(); i++) {
-                    int pointstemp = calculatePoints(MoveManager.paths.get(i).start,MoveManager.paths.get(i).end);
-                    if(pointstemp>points)
-                    {
-                        this.botchoosenpath = MoveManager.paths.get(i);
-                        this.botchoosenpawn = pawn;
-                        points = pointstemp;
-                    }
-                    else if (pointstemp == points)
-                    {
-                        int rand = (new Random(System.currentTimeMillis())).nextInt();
-                        if(rand%2 == 0)
-                        {
-                            this.botchoosenpath = MoveManager.paths.get(i);
-                            this.botchoosenpawn = pawn;
-                            points = pointstemp;
-                        }
-                    }
-                }
-            }
-        }
-        this.botchoosendestination = this.botchoosenpath.end;
-    }
-
-    private int calculatePoints(Field start, Field end)
-    {
-        int points = 0;
-        for(Pawn pawn:pawns)
-        {
-            if(pawn.getId().equals(start.getId()))
-            {
-                points += calculateFieldPoints(end);
-            }
-            else
-            {
-                points += calculateFieldPoints(GameManager.board.getFieldById(pawn.getId()));
-            }
-        }
-        return points;
-    }
-    private int calculateFieldPoints(Field end)
-    {
-        int points = 0;
-        if(end.getY()>=1 && end.getY()<=4)
-        {
-            points += 10;
-        }
-        else
-        {
-            points += 8 - Math.abs(end.getY() - 4);
-        }
-
-        if(end.getZ()>= 1 && end.getZ() <= 4)
-        {
-            points += 10;
-        }
-        else
-        {
-            points += 8 - Math.abs(end.getZ() - 4);
-        }
-
-        points += 16 - Math.abs(end.getX() - 8);
-        return points;
-    }
     public void movePawn(Pawn pawn, Field destination) {
         for (Pawn pawn1 : pawns) {
             if (pawn1.getId().equals(pawn.getId())) {
