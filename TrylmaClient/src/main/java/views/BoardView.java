@@ -32,9 +32,6 @@ public class BoardView {
     //window elements
     private static Stage boardStage;
     private static Group group;
-    private static Button skip;
-    private static GridPane gridPane;
-    private static Text yourMove;
     private static Circle myColor, myTurn;
 
     /**
@@ -56,18 +53,18 @@ public class BoardView {
         radius=(windowWidth1 - wGap *(3* BoardView.ch +2))/(2*(3* BoardView.ch + 1));
         double windowHeight = 50+(2 * (4 * BoardView.ch + 1)) * radius + 2 * abs(hGap) - 4 * BoardView.ch * hGap;
 
-        skip=new Button("P");
+        Button skip = new Button("P");
         skip.setStyle("-fx-background-radius: 10em; "+"-fx-min-width: 16px; "+
                 "-fx-min-height: 16px; "+"-fx-max-width: 16px; "+"-fx-max-height: 16px; "+
                 "-fx-background-color: #c9c9c9;" + "-fx-background-insets: 0px; "+"-fx-padding: 0px;");
-        yourMove = new Text("Twój kolor: ");
+        Text yourMove = new Text("Twój kolor: ");
         yourMove.setFill(Color.WHITESMOKE);
         yourMove.setStyle("-fx-font-weight: bold");
         myColor = new Circle(8, Color.GRAY);
         myTurn = new Circle(8, Color.SILVER);
 
 
-        gridPane = new GridPane();
+        GridPane gridPane = new GridPane();
         gridPane.setPadding(new Insets(8, 5, 8, 0.27*windowWidth1));
         skip.setMaxHeight(10);
         gridPane.getColumnConstraints().addAll(new ColumnConstraints(100), new ColumnConstraints(90), new ColumnConstraints(100), new ColumnConstraints(100));
@@ -85,8 +82,6 @@ public class BoardView {
         boardStage.setTitle("Trylma");
         boardStage.initModality(Modality.APPLICATION_MODAL);
         skip.setOnAction(e -> Connection.sendSkip());
-
-        //tu testy
     }
 
     /**

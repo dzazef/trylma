@@ -1,6 +1,5 @@
 package models.client;
 
-import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import serializable.Field;
 
@@ -42,8 +41,8 @@ public class FieldGenerator {
                 final Field field = (new Field(x, y, z, false));
                 CircleField circleField = new CircleField(field, currentCenterX, currentCenterY, radius, color);
                 if (scale) {
-                    circleField.setScaleX(1.04);
-                    circleField.setScaleY(1.04);
+                    circleField.setScaleX(1.03);
+                    circleField.setScaleY(1.03);
                 }
                 circleFields.add(circleField);
                 y++;
