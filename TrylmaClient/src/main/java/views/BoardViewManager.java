@@ -57,7 +57,7 @@ public class BoardViewManager extends BoardView {
      * @param color kolor gracza
      */
     public static void setMyColor(Paint color) {
-        myColor.setFill(color);
+        if (myColor!=null) myColor.setFill(color);
     }
 
 

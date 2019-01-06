@@ -22,16 +22,15 @@ import static java.lang.Math.abs;
 /**
  * Klasa obsługująca widok okna Board.
  */
-@SuppressWarnings("Duplicates")
 public abstract class BoardView {
     //board parameters
     static int ch;
     static double hGap, wGap, radius;
     //window elements
-    static Stage boardStage;
-    static Group group;
+    private static Stage boardStage;
+    private static Group group;
     static Circle myColor, myTurn;
-    static boolean gameInitialized = false;
+    private static boolean gameInitialized = false;
 
 
     /**
@@ -114,7 +113,7 @@ public abstract class BoardView {
      * Metoda usuwa pola z planszy.
      * @param circleFields lista pól do usunięcia z planszy
      */
-    public static void undraw(List<CircleField> circleFields) {
+    static void undraw(List<CircleField> circleFields) {
         group.getChildren().removeAll(circleFields);
     }
 
@@ -122,7 +121,7 @@ public abstract class BoardView {
      * Funkcja sprawdza czy plansza została utworzona
      * @return true jeśli plansza została utowrzona, w przeciwnym wypadku false
      */
-    public static boolean isBoardInitialized() {
+    static boolean isBoardInitialized() {
         return gameInitialized;
     }
 }
