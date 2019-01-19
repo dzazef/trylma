@@ -8,5 +8,5 @@ Możliwa jest gra z botami jak i dostosowanie rozmiaru planszy.\
 Ekran logowania:\
 ![alt text](https://github.com/dzazef/trylma/blob/master/resources/login.png)\
 \
-Przykładowa gra:\
-![alt text](https://github.com/dzazef/trylma/blob/master/resources/gameplay.gif)\
+Przykładowa gra (tylko boty):\
+![alt text](https://github.com/dzazef/trylma/blob/master/resources/gameplay.gif)
