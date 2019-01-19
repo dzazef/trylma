@@ -18,7 +18,6 @@ public class MenuView {
     public static void initialize() throws IOException {
         final Parent menuParent = FXMLLoader.load(MenuView.class.getResource("../menuStructure.fxml"));
         menuStage.setScene(new Scene(menuParent));
-//        menuStage.setResizable(false);
         menuStage.setTitle("Trylma");
         menuStage.show();
     }
